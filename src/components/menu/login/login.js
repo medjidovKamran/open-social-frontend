@@ -15,11 +15,11 @@ const Login = () => {
       <form className={s.loginForm} onSubmit={handleSubmit}>
         <label htmlFor='email'>
           Email:
-          <input ref={emailRef} type='text' />
+          <input ref={emailRef} id="email" type='email' required/>
         </label>
         <label htmlFor='password'>
           Password:
-          <input ref={passwordRef} type='password' />
+          <input ref={passwordRef} id="email" type='password' required/>
         </label>
         <button>Login</button>
       </form>
