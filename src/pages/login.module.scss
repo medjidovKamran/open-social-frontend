@@ -38,6 +38,10 @@
       background: rgb(187, 43, 55);
       cursor: pointer;
     }
+    &:focus {
+      background: rgb(187, 43, 55);
+      outline: none;
+    }
     &:active {
       background: rgb(126, 14, 23);
     }
