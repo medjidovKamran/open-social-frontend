@@ -19,7 +19,7 @@ const Signup = () => {
   return (
     <main className={s.signupMain}>
       <form className={s.signupForm} onSubmit={handleSubmit}>
-        <h1>Registration</h1>
+        <h1>Register</h1>
         <p>* all fields are required</p>
         <label htmlFor='first-name'>
           First name:
