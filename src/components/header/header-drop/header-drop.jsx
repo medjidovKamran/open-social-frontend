@@ -13,6 +13,10 @@ class HeaderDrop extends Component {
             title: 'about'},
         {link: 'login',
             title:'login/logout'},
+        {
+            link: 'signup',
+            title: 'signup'
+        },
         {link:'create',
             title: 'create'}];
     render() {

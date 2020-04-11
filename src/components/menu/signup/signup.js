@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'
+
 import s from './signup.module.scss';
 
 const Signup = () => {
@@ -80,6 +82,8 @@ const Signup = () => {
           />
         </label>
         <button>Signup</button>
+        <p>If you already have account please <Link to="/login">login</Link></p>
+
       </form>
     </main>
   );

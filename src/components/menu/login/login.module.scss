@@ -7,9 +7,7 @@
 .loginForm {
   display: flex;
   flex-direction: column;
-  // width: 300px;
   padding: 120px 40px;
-  // border: 1px rgb(237, 192, 241) solid;
   border-radius: 4px;
   box-shadow: 0px 3px 5px 5px rgba(0, 0, 0, 0.09);
   label {
@@ -45,5 +43,9 @@
     &:active {
       background: rgb(126, 14, 23);
     }
+  }
+  p {
+    font-size: 12px;
+    text-align: center;
   }
 }

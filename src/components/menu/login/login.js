@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import s from './login.module.scss';
+import { Link } from 'react-router-dom'
 const Login = () => {
 
   const handleSubmit = (e) => {
@@ -22,6 +23,7 @@ const Login = () => {
           <input ref={passwordRef} id="email" type='password' required/>
         </label>
         <button>Login</button>
+        <p>If you don't have account please <Link to="/signup">signup</Link></p>
       </form>
     </main>
   );
