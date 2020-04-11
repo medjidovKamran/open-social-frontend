@@ -4,7 +4,8 @@ import {
     About,
     Create,
     Home,
-    Login
+    Login,
+    Signup
 } from '../../pages'
 import {Route, Switch} from "react-router-dom";
 import Header from "../header";
@@ -19,6 +20,7 @@ const App = () => {
                <Route path='/create/' component={Create} exact />
                <Route path='/home/' component={Home} exact />
                <Route path='/login/' component={Login} exact />
+               <Route path='/signup/' component={Signup} exact />
 
 
            </Switch>
