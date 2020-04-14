@@ -7,7 +7,6 @@ import s from './signup.module.scss';
 const Signup = () => {
   const [registerForm, setRegisterForm] = useState({});
 
-
   const handleInput = event => {
     setRegisterForm({
       ...registerForm,
