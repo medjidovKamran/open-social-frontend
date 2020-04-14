@@ -1,3 +1,11 @@
 {
-    "git.ignoreLimitWarning": true
+  "eslint.packageManager": "yarn",
+  "eslint.workingDirectories": [
+    {
+      "directory": "./client",
+      "changeProcessCWD": true
+    }
+  ],
+  "editor.formatOnSave": false,
+  "eslint.autoFixOnSave": true
 }
