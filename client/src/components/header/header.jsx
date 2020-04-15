@@ -30,7 +30,7 @@ class Header extends Component {
           <div className={s.logoImg}>
             <img src={logo} alt="logo" />
           </div>
-          <div className={s.logoName}>Logo</div>
+          <div className={s.logoName}>Open Social Network</div>
         </div>
         <div className={s.buttonWrapper} onClick={this.handleOpenMenu}>
           <div className={clazz} />
