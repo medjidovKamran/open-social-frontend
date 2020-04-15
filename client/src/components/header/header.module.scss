@@ -1,9 +1,8 @@
-@import "src/style/index.scss";
+@import 'src/style/index.scss';
 
-.header{
+.header {
   position: fixed;
   z-index: 50;
-
   top: 0;
   left: 0;
   width: 100%;
@@ -14,36 +13,43 @@
   justify-content: space-between;
   align-items: center;
 }
-.logo{
+
+.logo {
   display: flex;
-align-items: center;
+  align-items: center;
   z-index: 50;
 }
 
-.logoImg{
+.logoImg {
   display: flex;
   align-items: center;
+
+  img {
+    height: 60px;
+  }
 }
 
-.logoName{
+.logoName {
   font-size: 30px;
-  margin-left: 15px;
   color: $color-header-text;
 }
-.buttonWrapper{
+
+.buttonWrapper {
   width: 40px;
   height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.button{
+
+.button {
   z-index: 100;
   position: relative;
   width: 40px;
   height: 5px;
   background-color: $color-header-text;
-  &::before{
+
+  &::before {
     position: absolute;
     left: 0;
     top: -10px;
@@ -53,7 +59,8 @@ align-items: center;
     background-color: $color-header-text;
     transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
   }
-  &::after{
+
+  &::after {
     position: absolute;
     left: 0;
     top: 10px;
@@ -63,14 +70,17 @@ align-items: center;
     background-color: $color-header-text;
     transition: transform 0.2s ease-in, top 0.2s linear 0.2s;
   }
-  &.active{
+
+  &.active {
     background-color: transparent;
-    &:before{
+
+    &::before {
       transform: rotate(45deg);
       top: 0;
       transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
     }
-    &:after{
+
+    &::after {
       transform: rotate(-45deg);
       top: 0;
       transition: top 0.2s linear, transform 0.2s ease-in 0.2s;
