@@ -1,11 +1,13 @@
 /* eslint-disable no-console */
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import DatePicker from 'react-datepicker';
 import s from './signup.module.scss';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const Signup = () => {
   const [registerForm, setRegisterForm] = useState({});
+  const [date, setDate] = useState(new Date());
 
   const handleInput = event => {
     setRegisterForm({
@@ -13,6 +15,8 @@ const Signup = () => {
       [event.target.name]: event.target.value,
     });
   };
+
+  const handleChange = date => setDate(date);
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -58,12 +62,16 @@ const Signup = () => {
         </label>
         <label htmlFor="birthday">
           Birthday:
-          <input
-            type="text"
-            id="birthday"
-            name="birthdayDate"
+          <DatePicker
+            selected={date}
+            onChange={handleChange}
+            dateFormat="MM/dd/yyyy"
+            peekNextMonth
+            showMonthDropdown
+            showYearDropdown
+            dropdownMode="select"
             required
-            onChange={handleInput}
+            maxDate={date}
           />
         </label>
         <label htmlFor="password">
@@ -86,7 +94,9 @@ const Signup = () => {
             onChange={handleInput}
           />
         </label>
-        <button type="button">Signup</button>
+        <button className={s.SignupButton} type="button">
+          Signup
+        </button>
         <p>
           If you already have account please <Link to="/login">login</Link>
         </p>

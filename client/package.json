@@ -40,6 +40,7 @@
     "react-bootstrap-table": "~4.3.1",
     "react-chartjs-2": "~2.8.0",
     "react-d3-speedometer": "0.7.1",
+    "react-datepicker": "^2.14.1",
     "react-dom": "~16.9.0",
     "react-hamburger-menu": "~1.1.1",
     "react-lodash": "0.1.2",
