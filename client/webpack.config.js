@@ -23,6 +23,11 @@ module.exports = {
         },
       },
       {
+        include: path.join(__dirname, 'node_modules'),
+        loader: 'style-loader!css-loader',
+        test: /(\.css|\.scss)$/,
+      },
+      {
         loader: [
           isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
