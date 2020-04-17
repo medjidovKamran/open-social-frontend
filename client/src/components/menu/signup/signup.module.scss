@@ -1,3 +1,49 @@
+* {
+  outline: none;
+}
+
+input[class*=ignore-onclickoutside] {
+  margin-right: -17px;
+}
+
+div[class*=month-container] {
+  box-shadow: 0 0 10px gray;
+  font-size: 16px;
+}
+
+div[class*=react-datepicker__header] {
+  background: #3f426b;
+}
+
+select[class*=month-select],
+select[class*=year-select] {
+  border-radius: 5px;
+  padding: 4px;
+  font-size: 16px;
+}
+
+div[class*=current-month--hasMonthDropdown] {
+  padding: 2px 0 7px;
+}
+
+div[class*=day--selected][class*=weekend] {
+  background: #3f426b;
+  color: white;
+}
+
+div[class*=current-month--hasMonthDropdown],
+div[class*=day-name] {
+  color: white;
+}
+
+div[class*=day--weekend] {
+  color: #dd404e;
+}
+
+div[class*=day--weekend][class*=day--disabled] {
+  color: gray;
+}
+
 .signupMain {
   display: flex;
   flex-direction: column;

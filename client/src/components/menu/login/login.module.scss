@@ -1,3 +1,7 @@
+* {
+  outline: none;
+}
+
 .loginMain {
   display: flex;
   justify-content: center;
@@ -9,12 +13,14 @@
   flex-direction: column;
   padding: 120px 40px;
   border-radius: 4px;
-  box-shadow: 0px 3px 5px 5px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.09);
+
   label {
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     input {
       font-size: 18px;
       padding-left: 10px;
@@ -23,6 +29,7 @@
       height: 40px;
     }
   }
+
   button {
     margin-top: 60px;
     height: 40px;
@@ -32,18 +39,22 @@
     border-radius: 4px;
     color: white;
     border: none;
+
     &:hover {
       background: rgb(187, 43, 55);
       cursor: pointer;
     }
+
     &:focus {
       background: rgb(187, 43, 55);
       outline: none;
     }
+
     &:active {
       background: rgb(126, 14, 23);
     }
   }
+
   p {
     font-size: 12px;
     text-align: center;
