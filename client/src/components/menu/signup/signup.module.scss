@@ -26,7 +26,8 @@ div[class*=current-month--hasMonthDropdown] {
   padding: 2px 0 7px;
 }
 
-div[class*=day--selected][class*=weekend] {
+div[class*=day--selected][class*=weekend],
+div[class*=day--selected] {
   background: #3f426b;
   color: white;
 }
