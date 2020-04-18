@@ -26,6 +26,7 @@
     "cookie-parser": "~1.4.4",
     "core-js": "~3.2.1",
     "express": "~4.17.1",
+    "formik": "^2.1.4",
     "history": "~4.7.0",
     "isomorphic-cookie": "^1.2.4",
     "isomorphic-style-loader": "~5.1.0",
@@ -60,7 +61,8 @@
     "serialize-javascript": ">=2.1.1",
     "universal-router": "~8.2.1",
     "url-loader": "^2.2.0",
-    "whatwg-fetch": "~3.0.0"
+    "whatwg-fetch": "~3.0.0",
+    "yup": "^0.28.3"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
