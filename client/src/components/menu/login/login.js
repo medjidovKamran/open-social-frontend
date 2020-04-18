@@ -19,9 +19,6 @@ const validationSchema = Yup.object({
   email: Yup.string()
     .email('* Invalid email address')
     .required('* Email is required'),
-  onSubmit: values => {
-    console.log(JSON.stringify(values, null, 2));
-  },
   password: Yup.string()
     .max(SCHEMA_VALUES.MAX_PASSWORD_LENGTH, '* Should be 30 characters or less')
     .required('*Password is required'),
@@ -32,6 +29,9 @@ const Login = () => {
   const passwordReference = useRef(null);
   const formik = useFormik({
     initialValues,
+    onSubmit: values => {
+      console.log(JSON.stringify(values, null, 2));
+    },
     validationSchema,
   });
 
