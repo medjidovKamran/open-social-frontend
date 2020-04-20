@@ -6,4 +6,4 @@ export const LOADING_FILTER_DATA = 'LOADING_FILTER_DATA';
 export const SET_CURRENT_TAB = 'SET_CURRENT_TAB';
 export const SET_USER_MESSAGE = 'SET_USER_MESSAGE';
 export const FILTER_DATA_LOADING = 'FILTER_DATA_LOADING';
-export const apiURL = 'http://localhost:4000';
+export const apiURL = 'http://178.20.156.208:4000';

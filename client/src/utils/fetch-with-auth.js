@@ -3,12 +3,12 @@ import isomorphicCookie from 'isomorphic-cookie';
 import history from '../history';
 
 const authHeader = {
-  Authorization: `Bearer:${isomorphicCookie.load('user_token')}`,
+  Authorization: `Bearer:${isomorphicCookie.load('token')}`,
 };
 
 const authorize = response => {
   if (response.Message) {
-    isomorphicCookie.remove('user_token');
+    isomorphicCookie.remove('token');
     history.push('/login');
   }
 };

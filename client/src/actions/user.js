@@ -23,14 +23,20 @@ export const login = ({ email, password }) => dispatch => {
   const cookieExpires = 60;
   return axios
     .post(
-      `${apiURL}/authenticate`,
+      `${apiURL}/api/v1/auth/login`,
       JSON.stringify({
         email,
         password,
       }),
+      {
+        headers: {
+          Authorization: '',
+          'content-type': 'application/json',
+        },
+      },
     )
     .then(response => {
-      isomorphicCookie.save('user_token', response.data.Token, {
+      isomorphicCookie.save('token', response.data.Token, {
         expires: moment()
           .add(cookieExpires, 'minute')
           .toDate(),
@@ -40,33 +46,50 @@ export const login = ({ email, password }) => dispatch => {
     })
     .catch(error => {
       const { response } = error;
-      if (response) dispatch(setUserMessage(response.data));
+      if (response) {
+        dispatch(setUserMessage(response.data.body));
+      }
+
       return error.toJSON();
     });
 };
 
-export const signup = ({ email, password }) => dispatch => {
+export const signup = ({
+  firstName,
+  lastName,
+  birthdayDate,
+  email,
+  password,
+}) => dispatch => {
   setTimeout(() => dispatch(resetMessage()), DELAY);
   return axios
     .post(
-      `${apiURL}/register`,
+      `${apiURL}/api/v1/auth/register`,
       JSON.stringify({
+        birthdayDate,
         email,
+        firstName,
+        lastName,
         password,
       }),
+      {
+        headers: {
+          'content-type': 'application/json',
+        },
+      },
     )
     .then(response => {
       dispatch(setUserMessage(response.data));
       return response;
     })
     .catch(error => {
-      dispatch(setUserMessage(error.response.data));
+      dispatch(setUserMessage(error.response));
       return error.toJSON();
     });
 };
 
 export const signout = () => dispatch => {
-  isomorphicCookie.remove('user_token');
+  isomorphicCookie.remove('token');
   history.push('/login');
   dispatch(setUserMessage('Signed out!'));
   setTimeout(() => dispatch(resetMessage()), DELAY);

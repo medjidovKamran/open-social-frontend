@@ -45,15 +45,24 @@ class Menu extends React.Component {
             [s.menuItemsActive]: isMenuOpen,
           })}
         >
-          {this.menuItems.map(item => (
-            <MenuItem
-              key={item.text}
-              item={item}
-              isActive={currentTab === item.text}
-              closeMenu={this.onMenuClick}
-            />
-          ))}
-          {!isomorphicCookie.load('user_token') && (
+          {isomorphicCookie.load('token')
+            ? this.menuItems.map(item => (
+                <MenuItem
+                  key={item.text}
+                  item={item}
+                  isActive={currentTab === item.text}
+                  closeMenu={this.onMenuClick}
+                />
+              ))
+            : this.menuItemsOffline.map(item2 => (
+                <MenuItem
+                  key={item2.text}
+                  item={item2}
+                  isActive={currentTab === item2.text}
+                  closeMenu={this.onMenuClick}
+                />
+              ))}
+          {isomorphicCookie.load('token') && (
             <Button
               variant="outline-light"
               className={s.signout}
@@ -84,6 +93,14 @@ class Menu extends React.Component {
       text: 'About',
     },
     {
+      icon: chats,
+      path: 'chats',
+      text: 'Chats',
+    },
+  ];
+
+  menuItemsOffline = [
+    {
       icon: login,
       path: 'login',
       text: 'Login',
@@ -92,11 +109,6 @@ class Menu extends React.Component {
       icon: signup,
       path: 'signup',
       text: 'SignUp',
-    },
-    {
-      icon: chats,
-      path: 'chats',
-      text: 'Chats',
     },
   ];
 }

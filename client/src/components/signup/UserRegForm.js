@@ -15,10 +15,23 @@ const UserForm = ({ handleSubmit, submitText }) => {
         </Form.Label>
         <Col sm={8}>
           <Field
-            name="lname"
+            name="firstName"
             component={FieldInput}
             type="text"
             placeholder="first name"
+          />
+        </Col>
+      </Form.Group>
+      <Form.Group as={Row}>
+        <Form.Label column sm={4}>
+          Last name:
+        </Form.Label>
+        <Col sm={8}>
+          <Field
+            name="lastName"
+            component={FieldInput}
+            type="text"
+            placeholder="last name"
           />
         </Col>
       </Form.Group>
@@ -33,7 +46,9 @@ const UserForm = ({ handleSubmit, submitText }) => {
             </InputGroup.Prepend>
             <Form.Control
               type="text"
-              placeholder="Username"
+              name="username"
+              placeholder="username"
+              component={FieldInput}
               aria-describedby="inputGroupPrepend"
               required
             />
@@ -55,6 +70,19 @@ const UserForm = ({ handleSubmit, submitText }) => {
       </Form.Group>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
+          Birth Date
+        </Form.Label>
+        <Col sm={8}>
+          <Field
+            name="birthdayDate"
+            component={FieldInput}
+            type="date"
+            placeholder="Enter birthdayDate"
+          />
+        </Col>
+      </Form.Group>
+      <Form.Group as={Row}>
+        <Form.Label column sm={4}>
           Password
         </Form.Label>
         <Col sm={8}>
@@ -68,11 +96,11 @@ const UserForm = ({ handleSubmit, submitText }) => {
       </Form.Group>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          Confirm:
+          Confirm
         </Form.Label>
         <Col sm={8}>
           <Field
-            name="password"
+            name="confpass"
             component={FieldInput}
             type="password"
             placeholder="Enter password"

@@ -84,7 +84,7 @@ app.get('*', async (request, response, next) => {
       // You can access redux through react-redux connect
       store,
       storeSubscription: null,
-      token: isomorphicCookie.load('user_token', request),
+      token: isomorphicCookie.load('token', request),
     };
 
     const route = await router.resolve(context);
