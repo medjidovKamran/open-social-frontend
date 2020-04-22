@@ -46,6 +46,11 @@ const routes = [
       },
       {
         load: () =>
+          import(/* webpackChunkName: 'about' */ '../components/Chats'),
+        path: '/chats',
+      },
+      {
+        load: () =>
           import(/* webpackChunkName: 'not-found' */ '../components/not-found'),
         path: '(.+)',
       },
