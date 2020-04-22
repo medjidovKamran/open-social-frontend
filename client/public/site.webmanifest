@@ -1,0 +1,10 @@
+{
+    "icons": [
+      {
+        "src": "favicon.ico",
+        "sizes": "128x128",
+        "type": "image/vnd.microsoft.icon"
+      }
+    ],
+    "start_url": "/profile"
+  }

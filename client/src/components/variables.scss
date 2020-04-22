@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+:root {
+  /*
+   * Typography
+   * ======================================================================== */
+
+  --font-family-base: 'Montserrat', 'HelveticaNeue-Light', sans-serif;
+
+  /*
+   * Layout
+   * ======================================================================== */
+
+  --max-content-width: 1000px;
+  --color-header-background: #3f426b;
+  --color-header-text: #eee;
+
+  /*
+   * Media queries breakpoints
+   * ======================================================================== */
+
+  --screen-xs-min: 480px;
+
+  /* Extra small screen / phone */
+  --screen-sm-min: 768px;
+
+  /* Small screen / tablet */
+  --screen-md-min: 992px;
+
+  /* Medium screen / desktop */
+  --screen-lg-min: 1200px;
+
+  /* Large screen / wide desktop */
+}
