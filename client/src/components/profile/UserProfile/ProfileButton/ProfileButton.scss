@@ -1,0 +1,64 @@
+@media (max-width: 1024px) {
+  .ProfileButton {
+    width: 8.5em !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .ProfileButton {
+    width: 7.2em !important;
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .ProfileButton {
+    width: 8.45em !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .ProfileButton {
+    width: 7.1em !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .ProfileButton {
+    width: 7.5em !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .ProfileButton {
+    width: 7.15em !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 330px) {
+  .ProfileButton {
+    width: 7.35em !important;
+    font-size: 11px !important;
+  }
+}
+
+.ProfileButton {
+  width: 9.5em !important;
+  height: 2.5em !important;
+  margin: .5em 0 0 .6em !important;
+  background-color: lightgray !important;
+  color: #4e555b !important;
+  border: 1px solid lightgray !important;
+  border-radius: 2px !important;
+
+  &:hover {
+    background-color: #0d3349 !important;
+    color: white !important;
+    transition: 0.3s !important;
+  }
+}

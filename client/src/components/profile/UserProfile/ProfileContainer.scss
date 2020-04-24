@@ -1,0 +1,40 @@
+.UserProfile {
+  border-radius: 5px;
+  box-shadow: 0 0 10px gray;
+  padding: 1em !important;
+  margin: 0 auto !important;
+
+  .ProfileCard {
+    margin: 0.5em 0.5em 0 0.5em;
+    border-radius: 0;
+  }
+
+  .CardBody {
+    margin: 1em 0 1em 0;
+    border-radius: 0;
+    border: none;
+  }
+
+  .RowContainer {
+    border: 0;
+  }
+
+  .FollowersContainer {
+    padding: 0 .5em 0 0.5em;
+  }
+
+  .FollowersCard {
+    border: 0;
+  }
+
+  .FollowersRow {
+    padding: 0;
+    margin: 0;
+  }
+
+  .Followers {
+    border: 1px solid lightgray;
+    padding: 0.5em 0.5em 0 0.5em;
+    text-align: center;
+  }
+}
