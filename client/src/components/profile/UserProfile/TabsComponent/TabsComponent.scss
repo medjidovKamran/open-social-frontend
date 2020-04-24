@@ -4,7 +4,8 @@
     font-size: 18px;
   }
 
-  .Bell, .Cog {
+  .Bell,
+  .Cog {
     float: right;
     font-size: 18px !important;
   }
@@ -94,7 +95,8 @@
     margin-left: 1em;
   }
 
-  .Bell, .Cog {
+  .Bell,
+  .Cog {
     float: right;
     font-size: 16px !important;
   }
@@ -109,7 +111,7 @@
   min-width: 20em;
   padding: 0 0.5em 0 -0.5em;
   margin: -2px;
-  margin-left: -1.80em;
+  margin-left: -1.8em;
 
   ul[class*=tab-list] {
     border: none;
@@ -121,16 +123,15 @@
     margin: 0.3em 0 0 0 !important;
     box-shadow: none;
     top: -0.2em;
-
   }
 
   li[aria-selected*=true] {
     background-color: lightgray;
 
 
-    &:after {
+    &::after {
       border: medium solid transparent;
-      content: "";
+      content: '';
       top: 100%;
       left: 50%;
       position: absolute;
@@ -151,7 +152,8 @@
     margin-right: 2em !important;
   }
 
-  .Bell, .Cog {
+  .Bell,
+  .Cog {
     float: right;
     border: 0 !important;
     margin: -1.7em 0 0 1em;
@@ -167,7 +169,7 @@
     &:active {
     }
 
-    &:after {
+    &::after {
       color: #3f426b !important;
       position: absolute;
       height: 0;
