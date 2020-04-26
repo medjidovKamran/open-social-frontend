@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Row, Col, Container } from 'react-bootstrap';
-import 'react-tabs/style/react-tabs.scss';
+import reactStyle from 'react-tabs/style/react-tabs.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBell, faCog } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
@@ -72,4 +72,4 @@ const TabsComponent = () => {
 };
 
 TabsComponent.whyDidYouRender = true;
-export default withStyles(styles)(React.memo(TabsComponent));
+export default withStyles(styles, reactStyle)(React.memo(TabsComponent));
