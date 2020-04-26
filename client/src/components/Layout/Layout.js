@@ -9,6 +9,7 @@ import Link from '../Link';
 import Menu from '../Menu';
 import logo from '../../assets/logo.png';
 import s from './Layout.scss';
+import ChatsMini from '../Chats/chats-mini/chats-mini';
 
 function Layout(props) {
   const { children } = props;
@@ -17,14 +18,19 @@ function Layout(props) {
       <Row>
         <Col lg={10}>
           <div className={s.header}>
-            <Link to="/">
-              <div className={s.logo}>
-                <div className={s.logoImg}>
-                  <img src={logo} alt="logo" />
+            <div className={s.linkHeader}>
+              <Link to="/">
+                <div className={s.logo}>
+                  <div className={s.logoImg}>
+                    <img src={logo} alt="logo" />
+                  </div>
+                  <div className={s.logoName}>Open Social Network</div>
                 </div>
-                <div className={s.logoName}>Open Social Network</div>
-              </div>
-            </Link>
+              </Link>
+            </div>
+            <div className={s.chatButton}>
+              <ChatsMini />
+            </div>
           </div>
         </Col>
       </Row>

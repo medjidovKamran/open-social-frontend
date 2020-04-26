@@ -24,7 +24,7 @@ const routes = [
       // Execute each child route until one of them return the result
       const route = await next();
       // Off auth
-      if (!isomorphicCookie.load('token') && !token) route.redirect = '/login';
+      if (!isomorphicCookie.load('token') && token) route.redirect = '/login';
       // Provide default values for title, description etc.
       route.title = `${route.title || 'Untitled Page'}`;
       route.description = route.description || '';

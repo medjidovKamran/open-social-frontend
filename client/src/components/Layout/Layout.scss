@@ -231,7 +231,7 @@ textarea {
   height: 60px;
   display: flex;
   justify-content: space-between;
-  flex-direction: column;
+  flex-direction: row;
   align-items: left;
 }
 
@@ -253,4 +253,23 @@ textarea {
 .logoName {
   font-size: 30px;
   color: $color-header-text;
+}
+
+.linkHeader {
+  display: inline-block;
+}
+
+.chatButton {
+  margin-top: 10px;
+  width: 70px;
+  height: 40px;
+  background-color: whitesmoke;
+  text-align: center;
+  justify-content: center;
+  border-radius: 30px;
+
+  button:active,
+  button:focus {
+    outline: none;
+  }
 }

@@ -15,6 +15,6 @@ export default async function action({ store: { dispatch } }) {
         <Chats />
       </Layout>
     ),
-    title: 'About',
+    title: 'Chats',
   };
 }
