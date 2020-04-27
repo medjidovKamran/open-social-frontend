@@ -1,5 +1,5 @@
 import React from 'react';
-import cn from 'classnames';
+import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
@@ -20,7 +20,7 @@ const ProfilePhoto = ({
   );
 
   return (
-    <div className={cn(styles.ProfileBackgroundImages, 'card')}>
+    <div className={classNames(styles.ProfileBackgroundImages, 'card')}>
       {userPhoto}
       <div className="text-center">
         <label
@@ -30,8 +30,8 @@ const ProfilePhoto = ({
           <FontAwesomeIcon icon={faCamera} />
           <input
             type="file"
-            name="AddImage"
-            id="AddImage"
+            name="addImage"
+            id="addImage"
             accept="image/*"
             onChange={loadPhoto}
           />

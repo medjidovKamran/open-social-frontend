@@ -1,8 +1,43 @@
+@media (max-width: 500px) {
+  .UserProfile {
+    padding: 0.3em !important;
+    width: 24.8em;
+    margin-left: -4em !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .UserProfile {
+    padding: 0.3em !important;
+    width: 22.7em;
+    margin-left: -4em !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .UserProfile {
+    padding: 0.3em !important;
+    width: 21.7em;
+    margin-left: -4em !important;
+  }
+}
+
+@media (max-width: 330px) {
+  .UserProfile {
+    padding: 0.3em !important;
+    width: 19.3em;
+    margin-left: -4em !important;
+  }
+}
+
 .UserProfile {
   border-radius: 5px;
   box-shadow: 0 0 10px gray;
-  padding: 1em !important;
-  margin: 0 auto !important;
+  padding: 1em;
+  margin: 0 auto;
+
+
+
 
   .ProfileCard {
     margin: 0.5em 0.5em 0 0.5em;

@@ -42,11 +42,8 @@
 
   .IconsWrapper {
     position: absolute;
-    margin: 0 0 0 16em !important;
+    margin: 0 0 0 17em !important;
   }
-}
-
-@media (max-width: 400px) {
 }
 
 @media (max-width: 375px) {
@@ -111,7 +108,7 @@
   min-width: 20em;
   padding: 0 0.5em 0 -0.5em;
   margin: -2px;
-  margin-left: -1.8em;
+  margin-left: -1.85em;
 
   ul[class*=tab-list] {
     border: none;
@@ -130,15 +127,14 @@
 
 
     &::after {
-      border: medium solid transparent;
       content: '';
       top: 100%;
       left: 50%;
       position: absolute;
       height: 0;
       width: 0;
-      border-color: lightgray rgba(255, 212, 52, 0) rgba(255, 212, 52, 0);
-      border-width: 10px;
+      border: 10px solid rgba(255, 212, 52, 0);
+      border-top-color: lightgray;
       margin-left: -10px;
     }
   }

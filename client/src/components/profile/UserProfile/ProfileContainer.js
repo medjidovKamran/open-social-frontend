@@ -4,6 +4,7 @@ import { faEnvelope, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { Row, Col, Card, Container } from 'react-bootstrap';
 import styles from './ProfileContainer.scss';
+import stylesButton from './ProfileButton.scss';
 import { ProfileButton } from './ProfileButton/ProfileButton';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
@@ -50,14 +51,29 @@ class ProfileContainer extends Component {
                 loadPhoto={this.loadPhoto}
               />
               <div>
-                <ProfileButton name="Connect" />
                 <ProfileButton
-                  name="Message"
-                  iconLeft={<FontAwesomeIcon icon={faEnvelope} />}
+                  className={stylesButton.ProfileButton}
+                  name="Connect"
                 />
                 <ProfileButton
+                  className={stylesButton.ProfileButton}
+                  name="Message"
+                  iconLeft={
+                    <FontAwesomeIcon
+                      className={stylesButton.Icon}
+                      icon={faEnvelope}
+                    />
+                  }
+                />
+                <ProfileButton
+                  className={stylesButton.ProfileButton}
                   name="Review"
-                  iconRight={<FontAwesomeIcon icon={faCaretDown} />}
+                  iconRight={
+                    <FontAwesomeIcon
+                      className={stylesButton.Icon}
+                      icon={faCaretDown}
+                    />
+                  }
                 />
               </div>
             </Col>
@@ -93,4 +109,4 @@ class ProfileContainer extends Component {
 }
 
 ProfileContainer.whyDidYouRender = true;
-export default withStyles(styles)(React.memo(ProfileContainer));
+export default withStyles(styles, stylesButton)(React.memo(ProfileContainer));
