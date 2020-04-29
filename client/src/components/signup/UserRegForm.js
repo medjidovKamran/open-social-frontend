@@ -44,12 +44,11 @@ const UserForm = ({ handleSubmit, submitText }) => {
             <InputGroup.Prepend>
               <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
             </InputGroup.Prepend>
-            <Form.Control
-              type="text"
-              name="username"
-              placeholder="username"
+            <Field
+              name="userName"
               component={FieldInput}
-              aria-describedby="inputGroupPrepend"
+              type="text"
+              placeholder="user name"
               required
             />
           </InputGroup>
