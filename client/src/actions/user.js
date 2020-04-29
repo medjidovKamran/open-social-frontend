@@ -58,6 +58,7 @@ export const signup = ({
   firstName,
   lastName,
   birthdayDate,
+  userName,
   email,
   password,
 }) => dispatch => {
@@ -71,6 +72,7 @@ export const signup = ({
         firstName,
         lastName,
         password,
+        userName,
       }),
       {
         headers: {
