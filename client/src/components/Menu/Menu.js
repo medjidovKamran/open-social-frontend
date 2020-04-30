@@ -45,7 +45,7 @@ class Menu extends React.Component {
             [s.menuItemsActive]: isMenuOpen,
           })}
         >
-          {!isomorphicCookie.load('token')
+          {isomorphicCookie.load('token')
             ? this.menuItems.map(item => (
                 <MenuItem
                   key={item.text}
@@ -62,7 +62,7 @@ class Menu extends React.Component {
                   closeMenu={this.onMenuClick}
                 />
               ))}
-          {!isomorphicCookie.load('token') && (
+          {isomorphicCookie.load('token') && (
             <Button
               variant="outline-light"
               className={s.signout}

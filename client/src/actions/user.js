@@ -36,7 +36,7 @@ export const login = ({ email, password }) => dispatch => {
       },
     )
     .then(response => {
-      isomorphicCookie.save('token', response.data.Token, {
+      isomorphicCookie.save('token', response.data.token, {
         expires: moment()
           .add(cookieExpires, 'minute')
           .toDate(),
@@ -49,7 +49,6 @@ export const login = ({ email, password }) => dispatch => {
       if (response) {
         dispatch(setUserMessage(response.data.body));
       }
-
       return error.toJSON();
     });
 };
