@@ -30,7 +30,7 @@ export const maxBirthday = value => {
 };
 
 export const passwordsMatch = (value, allValues) => {
-  return value !== allValues.Password && "doesn't match";
+  return value !== allValues.password && "doesn't match";
 };
 
 export const symbolsName = value => {

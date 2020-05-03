@@ -14,7 +14,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
       <Form.Group>
         <Form.Label>Email address</Form.Label>
         <Field
-          name="Email"
+          name="email"
           component={FieldInput}
           type="email"
           placeholder="Enter email"
@@ -24,7 +24,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
       <Form.Group>
         <Form.Label>Password</Form.Label>
         <Field
-          name="Password"
+          name="password"
           component={FieldInput}
           type="password"
           placeholder="Enter password"

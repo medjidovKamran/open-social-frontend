@@ -16,7 +16,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
         </Form.Label>
         <Col sm={8}>
           <Field
-            name="First name"
+            name="firstName"
             component={FieldInput}
             type="text"
             placeholder="first name"
@@ -30,7 +30,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
         </Form.Label>
         <Col sm={8}>
           <Field
-            name="Last name"
+            name="lastName"
             component={FieldInput}
             type="text"
             placeholder="last name"
@@ -48,7 +48,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
               <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
             </InputGroup.Prepend>
             <Field
-              name="Username"
+              name="userName"
               component={FieldInput}
               type="text"
               placeholder="user name"
@@ -64,7 +64,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
         </Form.Label>
         <Col sm={8}>
           <Field
-            name="Email"
+            name="email"
             component={FieldInput}
             type="email"
             placeholder="Enter email"
@@ -78,7 +78,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
         </Form.Label>
         <Col sm={8}>
           <Field
-            name="Birthday date"
+            name="birthdayDate"
             component={FieldInput}
             type="date"
             placeholder="Enter birthdayDate"
@@ -92,7 +92,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
         </Form.Label>
         <Col sm={8}>
           <Field
-            name="Password"
+            name="password"
             component={FieldInput}
             type="password"
             placeholder="Enter password"
