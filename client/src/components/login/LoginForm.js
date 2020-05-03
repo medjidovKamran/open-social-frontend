@@ -18,6 +18,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
           component={FieldInput}
           type="email"
           placeholder="Enter email"
+          description="Email"
           validate={VALIDATION_RULES.EMAIL}
         />
       </Form.Group>
@@ -28,6 +29,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
           component={FieldInput}
           type="password"
           placeholder="Enter password"
+          description="Password"
           validate={VALIDATION_RULES.PASSWORD}
         />
       </Form.Group>

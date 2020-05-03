@@ -9,6 +9,7 @@ const FieldInput = ({
   input: { value, onChange, onBlur, name },
   meta: { touched, error },
   type,
+  description,
   placeholder,
   ...props
 }) => {
@@ -25,12 +26,13 @@ const FieldInput = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          props={props}
+          description={description}
+          props={props && ''}
         />
       </div>
       <>
         {showError ? (
-          <span className={styles.TextError}>{`${name} ${error}`}</span>
+          <span className={styles.TextError}>{`${description} ${error}`}</span>
         ) : (
           <span className={styles.TextHidden}>message</span>
         )}
@@ -40,6 +42,7 @@ const FieldInput = ({
 };
 
 FieldInput.propTypes = {
+  description: PropTypes.string.isRequired,
   input: PropTypes.shape({
     name: PropTypes.string.isRequired,
     onBlur: PropTypes.func.isRequired,

@@ -1,5 +1,5 @@
 .form {
-  width: 435px;
+  width: 400px;
   position: absolute;
   top: 60%;
   left: 50%;
@@ -19,4 +19,21 @@
 .wantLogin {
   font-size: 14px;
   color: #aeaeae;
+}
+
+div[class=input-group] {
+  width: 100%;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+div[class=input-group-prepend] {
+  width: 15%;
+  float: left;
+  display: inline;
+}
+
+input[name=userName] {
+  width: 85%;
+  display: inline;
 }
