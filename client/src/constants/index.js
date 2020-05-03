@@ -13,5 +13,6 @@ export const USERS_DATA_LOADING_DATA_SUCCESS =
 export const USERS_DATA_LOADING_DATA_FAILURE =
   'USERS_DATA_LOADING_DATA_FAILURE';
 export const SET_USERS = 'SET_USERS';
+export const SET_USER_AUTH = 'SET_USER_AUTH';
 
 export const apiURL = 'http://178.20.156.208:4000';

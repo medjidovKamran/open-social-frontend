@@ -4,7 +4,7 @@ import axios from 'axios';
 import isomorphicCookie from 'isomorphic-cookie';
 import moment from 'moment';
 import history from '../history';
-import { SET_USER_MESSAGE, apiURL } from '../constants';
+import { SET_USER_MESSAGE, SET_USER_AUTH, apiURL } from '../constants';
 
 const setUserMessage = message => ({
   message,
@@ -16,6 +16,11 @@ const DELAY = 3000;
 const resetMessage = () => ({
   message: '',
   type: SET_USER_MESSAGE,
+});
+
+const setUserAuth = data => ({
+  data,
+  type: SET_USER_AUTH,
 });
 
 export const login = ({ email, password }) => dispatch => {
@@ -36,6 +41,7 @@ export const login = ({ email, password }) => dispatch => {
       },
     )
     .then(response => {
+      dispatch(setUserAuth(response.data.user));
       isomorphicCookie.save('token', response.data.token, {
         expires: moment()
           .add(cookieExpires, 'minute')
