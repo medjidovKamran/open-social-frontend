@@ -5,13 +5,14 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { Field, reduxForm } from 'redux-form';
 import { Button, InputGroup, Row, Col, Form } from 'react-bootstrap';
 import FieldInput from '../InputField/FieldInput';
+import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 
 const UserForm = ({ handleSubmit, submitText }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group as={Row}>
         <Form.Label column sm={4}>
-          Full name:
+          First name:
         </Form.Label>
         <Col sm={8}>
           <Field
@@ -19,6 +20,8 @@ const UserForm = ({ handleSubmit, submitText }) => {
             component={FieldInput}
             type="text"
             placeholder="first name"
+            description="First name"
+            validate={VALIDATION_RULES.FIRST_NAME}
           />
         </Col>
       </Form.Group>
@@ -32,6 +35,8 @@ const UserForm = ({ handleSubmit, submitText }) => {
             component={FieldInput}
             type="text"
             placeholder="last name"
+            description="Last name"
+            validate={VALIDATION_RULES.LAST_NAME}
           />
         </Col>
       </Form.Group>
@@ -49,7 +54,9 @@ const UserForm = ({ handleSubmit, submitText }) => {
               component={FieldInput}
               type="text"
               placeholder="user name"
+              description="Username"
               required
+              validate={VALIDATION_RULES.USERNAME}
             />
           </InputGroup>
         </Col>
@@ -64,6 +71,8 @@ const UserForm = ({ handleSubmit, submitText }) => {
             component={FieldInput}
             type="email"
             placeholder="Enter email"
+            description="Email"
+            validate={VALIDATION_RULES.EMAIL}
           />
         </Col>
       </Form.Group>
@@ -77,6 +86,8 @@ const UserForm = ({ handleSubmit, submitText }) => {
             component={FieldInput}
             type="date"
             placeholder="Enter birthdayDate"
+            description="Birthday date"
+            validate={VALIDATION_RULES.BIRTH_DAY}
           />
         </Col>
       </Form.Group>
@@ -90,6 +101,8 @@ const UserForm = ({ handleSubmit, submitText }) => {
             component={FieldInput}
             type="password"
             placeholder="Enter password"
+            description="Password"
+            validate={VALIDATION_RULES.PASSWORD}
           />
         </Col>
       </Form.Group>
@@ -99,10 +112,12 @@ const UserForm = ({ handleSubmit, submitText }) => {
         </Form.Label>
         <Col sm={8}>
           <Field
-            name="confpass"
+            name="Confirm password"
             component={FieldInput}
             type="password"
-            placeholder="Enter password"
+            placeholder="Confirm password"
+            description="Confirm password"
+            validate={VALIDATION_RULES.CONFIRM_PASSWORD}
           />
         </Col>
       </Form.Group>

@@ -1,0 +1,19 @@
+.InputError {
+  border: 2px solid #dd404e !important;
+  box-shadow: 0 0 5px #dd404e !important;
+  border-radius: 5px;
+}
+
+.TextError {
+  color: #dd404e;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.TextHidden {
+  visibility: hidden;
+}
+
+div[class*=form-group] {
+  margin-bottom: 0 !important;
+}

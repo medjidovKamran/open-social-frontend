@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FieldInput from '../InputField/FieldInput';
+import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 
 const UserForm = ({ handleSubmit, submitText }) => {
   return (
@@ -17,6 +18,8 @@ const UserForm = ({ handleSubmit, submitText }) => {
           component={FieldInput}
           type="email"
           placeholder="Enter email"
+          description="Email"
+          validate={VALIDATION_RULES.EMAIL}
         />
       </Form.Group>
       <Form.Group>
@@ -26,6 +29,8 @@ const UserForm = ({ handleSubmit, submitText }) => {
           component={FieldInput}
           type="password"
           placeholder="Enter password"
+          description="Password"
+          validate={VALIDATION_RULES.PASSWORD}
         />
       </Form.Group>
       <Button variant="danger" type="submit">
