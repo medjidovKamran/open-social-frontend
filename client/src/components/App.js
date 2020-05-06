@@ -60,5 +60,4 @@ class App extends React.PureComponent {
     return React.Children.only(children);
   }
 }
-
 export default memo(App);
