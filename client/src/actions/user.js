@@ -49,7 +49,6 @@ export const login = ({ email, password }) => dispatch => {
       if (response) {
         dispatch(setUserMessage(response.data));
       }
-
       return error.toJSON();
     });
 };
@@ -85,7 +84,8 @@ export const signup = ({
       return response;
     })
     .catch(error => {
-      dispatch(setUserMessage(error.response));
+      const { response } = error;
+      dispatch(setUserMessage(response.data));
       return error.toJSON();
     });
 };
