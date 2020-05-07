@@ -3,12 +3,10 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { Spinner } from 'react-bootstrap';
 import s from './Loader.scss';
 
-const spinnerStyle = { backgroundColor: '#eeeeee' };
-
 const Loader = () => (
   <div className={s.overlay}>
     <div className={s.spinner}>
-      <Spinner animation="grow" variant="primary" style={spinnerStyle} />
+      <Spinner animation="grow" variant="primary" className={s.spinnerStyle} />
     </div>
   </div>
 );

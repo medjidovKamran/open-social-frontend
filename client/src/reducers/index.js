@@ -4,6 +4,7 @@ import menu from './menu';
 import user from './user';
 import userChats from './chats';
 import userAuth from './user-auth';
+import userProfile from './profile';
 
 export default combineReducers({
   form: formReducer,
@@ -11,4 +12,5 @@ export default combineReducers({
   user,
   userAuth,
   userChats,
+  userProfile,
 });

@@ -12,6 +12,7 @@ const ProfilePhoto = ({
   imgSource,
   changeProfilePhotoHandler,
   loadPhoto,
+  role,
 }) => {
   const userPhoto = isDefaultPhotoDisplayed ? (
     <img src={defaultUserPhoto} alt="profile" className={styles.UserImg} />
@@ -23,19 +24,23 @@ const ProfilePhoto = ({
     <div className={classNames(styles.ProfileBackgroundImages, 'card')}>
       {userPhoto}
       <div className="text-center">
-        <label
-          className={styles.ChangePhoto}
-          onClick={changeProfilePhotoHandler}
-        >
-          <FontAwesomeIcon icon={faCamera} />
-          <input
-            type="file"
-            name="addImage"
-            id="addImage"
-            accept="image/*"
-            onChange={loadPhoto}
-          />
-        </label>
+        {role === 'user' ? (
+          <>
+            <label
+              className={styles.ChangePhoto}
+              onClick={changeProfilePhotoHandler}
+            >
+              <FontAwesomeIcon icon={faCamera} />
+              <input
+                type="file"
+                name="addImage"
+                id="addImage"
+                accept="image/*"
+                onChange={loadPhoto}
+              />
+            </label>
+          </>
+        ) : null}
       </div>
     </div>
   );
@@ -46,6 +51,7 @@ ProfilePhoto.propTypes = {
   imgSource: PropTypes.string.isRequired,
   isDefaultPhotoDisplayed: PropTypes.bool.isRequired,
   loadPhoto: PropTypes.func.isRequired,
+  role: PropTypes.string.isRequired,
 };
 
 ProfilePhoto.whyDidYouRender = true;

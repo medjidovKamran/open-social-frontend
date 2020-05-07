@@ -1,17 +1,19 @@
 import React from 'react';
 import Home from './Home';
 import Layout from '../Layout/Layout';
-import setCurrentTab from '../../actions/menu';
+import { getUserData } from '../../actions/profile';
+import ProfileContainer from './ProfileContainer';
 
 export default async function action({ store: { dispatch } }) {
-  dispatch(setCurrentTab('Profile'));
-  // await dispatch(getInfo());
+  dispatch(getUserData());
+
   await dispatch;
 
   return {
     chunks: ['profile'],
     component: (
       <Layout>
+        <ProfileContainer />
         <Home />
       </Layout>
     ),

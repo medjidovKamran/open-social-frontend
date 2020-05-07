@@ -23,6 +23,10 @@ const setUserAuth = data => ({
   type: SET_USER_AUTH,
 });
 
+const setLocalStorageUserId = data => {
+  localStorage.setItem('userId', JSON.stringify(data));
+};
+
 export const login = ({ email, password }) => dispatch => {
   setTimeout(() => dispatch(resetMessage()), DELAY);
   const cookieExpires = 60;
@@ -42,6 +46,7 @@ export const login = ({ email, password }) => dispatch => {
     )
     .then(response => {
       dispatch(setUserAuth(response.data.user));
+      setLocalStorageUserId(response.data.user.id);
       isomorphicCookie.save('token', response.data.token, {
         expires: moment()
           .add(cookieExpires, 'minute')
