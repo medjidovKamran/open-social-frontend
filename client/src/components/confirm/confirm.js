@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -29,7 +30,12 @@ class Confirm extends Component {
 
   render() {
     const { confirmation } = this.props;
-    const text = confirmation === 0 ? 'wait for confirmation' : (confirmation === 1 ? 'Success Confirm' : 'Not Confirmed')
+    const text =
+      confirmation === 0
+        ? 'wait for confirmation'
+        : (confirmation === 1
+        ? 'Success Confirm'
+        : 'Not Confirmed');
     if (confirmation === 1 || confirmation === 2) this.redirectLogin();
     return (
       <div className={s.confirm}>
