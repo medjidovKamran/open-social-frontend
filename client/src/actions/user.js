@@ -95,7 +95,8 @@ export const signup = ({
       return response;
     })
     .catch(error => {
-      dispatch(setUserMessage(error.response));
+      const { response } = error;
+      dispatch(setUserMessage(response.data));
       return error.toJSON();
     });
 };
