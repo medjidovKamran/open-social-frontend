@@ -20,20 +20,10 @@ const profileDataLoading = () => ({
   type: PROFILE_DATA_LOADING,
 });
 
-export const getUserId = () => {
-  const value = JSON.parse(localStorage.getItem('userId'));
-  if (!value) {
-    return null;
-  }
-  return value;
-};
-
-export const getUserData = () => async dispatch => {
+export const getUserData = id => async dispatch => {
   dispatch(profileDataLoading());
   try {
-    const { data } = await apiClient.get(
-      `${apiURL}/api/v1/users/${getUserId()}`,
-    );
+    const { data } = await apiClient.get(`${apiURL}/api/v1/users/${id}`);
     dispatch(profileDataSuccess(data));
   } catch (error) {
     dispatch(profileDataFailure(error.message));

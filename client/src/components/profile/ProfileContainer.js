@@ -7,9 +7,9 @@ import Loader from '../Loader';
 import Profile from './UserProfile/Profile';
 
 const ProfileContainer = props => {
-  const { isLoading, error } = props.profile;
+  const { isLoading, error } = props;
 
-  if (isLoading || error) {
+  if (isLoading) {
     return (
       <div>
         <Loader />
@@ -21,7 +21,7 @@ const ProfileContainer = props => {
     return <p className="mb-0">{error}</p>;
   }
 
-  return <Profile {...props} />;
+  return <Profile />;
 };
 
 ProfileContainer.defaultProps = {
@@ -34,13 +34,9 @@ ProfileContainer.propTypes = {
   isLoading: PropTypes.bool,
 };
 
-const mapStateToProps = state => ({
-  profile: state.userProfile,
-});
-
 ProfileContainer.whyDidYouRender = true;
 
-export default connect(
-  mapStateToProps,
-  null,
-)(withStyles()(React.memo(ProfileContainer)));
+export default connect(({ userProfile: { error, isLoading } }) => ({
+  error,
+  isLoading,
+}))(withStyles()(React.memo(ProfileContainer)));

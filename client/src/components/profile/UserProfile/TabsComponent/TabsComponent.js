@@ -7,6 +7,7 @@ import { faBell, faCog } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import moment from 'moment';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styles from './TabsComponent.scss';
 
 const TabsComponent = ({
@@ -100,4 +101,15 @@ TabsComponent.propTypes = {
 };
 
 TabsComponent.whyDidYouRender = true;
-export default withStyles(styles, reactStyle)(React.memo(TabsComponent));
+export default connect(
+  ({
+    userProfile: { firstName, lastName, userName, email, birthdayDate, role },
+  }) => ({
+    birthdayDate,
+    email,
+    firstName,
+    lastName,
+    role,
+    userName,
+  }),
+)(withStyles(styles, reactStyle)(React.memo(TabsComponent)));

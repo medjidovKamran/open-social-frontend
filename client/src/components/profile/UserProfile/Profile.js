@@ -38,7 +38,6 @@ class Profile extends Component {
   };
 
   render() {
-    const { ...data } = this.props.profile;
     const { isDefaultPhotoDisplayed, photo } = this.state;
     return (
       <Container className={styles.UserProfile}>
@@ -50,7 +49,6 @@ class Profile extends Component {
                 imgSource={photo}
                 changeProfilePhotoHandler={this.changeProfilePhotoHandler}
                 loadPhoto={this.loadPhoto}
-                {...data}
               />
               <div>
                 <ProfileButton
@@ -80,7 +78,7 @@ class Profile extends Component {
               </div>
             </Col>
             <Col lg={7} md={7} sm={12}>
-              <TabsComponent {...data} />
+              <TabsComponent />
             </Col>
           </Row>
         </Card>

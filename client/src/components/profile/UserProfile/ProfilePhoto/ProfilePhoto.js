@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styles from './ProfilePhoto.scss';
 import defaultUserPhoto from '../../../../assets/default_user_profile.jpg';
 
@@ -55,4 +56,7 @@ ProfilePhoto.propTypes = {
 };
 
 ProfilePhoto.whyDidYouRender = true;
-export default withStyles(styles)(React.memo(ProfilePhoto));
+
+export default connect(({ userProfile: { role } }) => ({
+  role,
+}))(withStyles(styles)(React.memo(ProfilePhoto)));

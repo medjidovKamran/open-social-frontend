@@ -1,5 +1,6 @@
 import axios from 'axios';
 import isomorphicCookie from 'isomorphic-cookie';
+import * as JWT from 'jwt-decode';
 import history from '../history';
 
 const authHeader = {
@@ -36,5 +37,12 @@ export default {
     });
     authorize(response.data);
     return response;
+  },
+  userId() {
+    const token = isomorphicCookie.load('token');
+    if (token) {
+      return JWT(token).user.id;
+    }
+    return null;
   },
 };
