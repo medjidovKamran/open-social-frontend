@@ -6,7 +6,7 @@ class About extends PureComponent {
   render() {
     return (
       <div className={s.root}>
-        <div className={s.container}>Chats Page</div>
+        <div className={s.container}>Hello World</div>
       </div>
     );
   }
