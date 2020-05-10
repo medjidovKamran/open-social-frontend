@@ -35,7 +35,7 @@ class ChatsBlockUserAdmin extends React.Component {
         <div>
           <Avatar className={style.avatar} alt={userName} src={avatarAdmin} />
           <div>
-            {lastName} {firstName}
+            {firstName} {lastName}
           </div>
         </div>
       </div>
