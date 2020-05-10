@@ -11,7 +11,7 @@ const setUserMessage = message => ({
   type: SET_USER_MESSAGE,
 });
 
-const DELAY = 3000;
+const DELAY = 4500;
 
 const resetMessage = () => ({
   message: '',
