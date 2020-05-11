@@ -1,0 +1,23 @@
+
+.container {
+  display: grid;
+  grid-template-areas: 'header header' 'nav article';
+  grid-column-gap: 20px;
+  grid-template-rows: 80px 1fr;
+  grid-template-columns: 20% 1fr;
+  margin-right: 20px;
+}
+
+.chatsHeader {
+  grid-area: header;
+  background-color: white;
+  text-align: center;
+  color: grey;
+}
+
+.mainNav {
+  grid-area: nav;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
+}

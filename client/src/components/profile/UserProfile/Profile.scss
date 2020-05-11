@@ -1,0 +1,72 @@
+@media (max-width: 500px) {
+  .UserProfile {
+    padding: 0.3em !important;
+    width: 24.8em;
+    margin-left: -4em !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .UserProfile {
+    padding: 0.3em !important;
+    width: 22.7em;
+    margin-left: -4em !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .UserProfile {
+    padding: 0.3em !important;
+    width: 21.7em;
+    margin-left: -4em !important;
+  }
+}
+
+@media (max-width: 330px) {
+  .UserProfile {
+    padding: 0.3em !important;
+    width: 19.3em;
+    margin-left: -4em !important;
+  }
+}
+
+.UserProfile {
+  border-radius: 5px;
+  box-shadow: 0 0 10px gray;
+  padding: 1em;
+  margin: 0 auto;
+
+  .ProfileCard {
+    margin: 0.5em 0.5em 0 0.5em;
+    border-radius: 0;
+  }
+
+  .CardBody {
+    margin: 1em 0 1em 0;
+    border-radius: 0;
+    border: none;
+  }
+
+  .RowContainer {
+    border: 0;
+  }
+
+  .FollowersContainer {
+    padding: 0 0.5em 0 0.5em;
+  }
+
+  .FollowersCard {
+    border: 0;
+  }
+
+  .FollowersRow {
+    padding: 0;
+    margin: 0;
+  }
+
+  .Followers {
+    border: 1px solid lightgray;
+    padding: 0.5em 0.5em 0 0.5em;
+    text-align: center;
+  }
+}

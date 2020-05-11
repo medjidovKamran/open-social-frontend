@@ -1,0 +1,195 @@
+@media (max-width: 1024px) {
+  ul[class*=tab-list] {
+    width: 22em;
+    font-size: 18px;
+  }
+
+  .Bell,
+  .Cog {
+    float: right;
+    font-size: 18px !important;
+  }
+
+  .IconsWrapper {
+    position: absolute;
+    margin: 0 0 0 22em !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .TabsWrapper {
+    padding-top: 0.5em;
+    margin-left: 0.5em !important;
+  }
+
+  ul[class*=tab-list] {
+    width: 22em;
+    font-size: 14px;
+  }
+
+  .IconsWrapper {
+    position: absolute;
+    margin: 0 0 0 19em !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .TabsWrapper {
+    padding-top: 0.5em;
+    margin-left: 0 !important;
+  }
+
+  ul[class*=tab-list] {
+    width: 22em;
+    font-size: 13px;
+    margin-left: 1em;
+  }
+
+  .IconsWrapper {
+    position: absolute;
+    margin: 0 0 0 17em !important;
+  }
+}
+
+@media (max-width: 375px) {
+  .TabsWrapper {
+    padding-top: 0.5em;
+  }
+
+  ul[class*=tab-list] {
+    width: 22em;
+    font-size: 12px;
+    margin-left: 1em;
+  }
+
+  .IconsWrapper {
+    position: absolute;
+    margin: 0.1em 0 0 16em !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .TabsWrapper {
+    padding-top: 0.5em;
+    margin-left: 0 !important;
+  }
+
+  ul[class*=tab-list] {
+    width: 22em;
+    font-size: 11px;
+    margin-left: 1em;
+  }
+
+  .IconsWrapper {
+    position: absolute;
+    margin: 0.2em 0 0 16em !important;
+  }
+}
+
+@media (max-width: 330px) {
+  .TabsWrapper {
+    padding-top: 0.5em;
+  }
+
+  ul[class*=tab-list] {
+    width: 23em;
+    font-size: 9px;
+    margin-left: 1em;
+  }
+
+  .Bell,
+  .Cog {
+    float: right;
+    font-size: 16px !important;
+  }
+
+  .IconsWrapper {
+    position: absolute;
+    margin: 0.2em 0 0 16em !important;
+  }
+}
+
+.TabsWrapper {
+  min-width: 20em;
+  padding: 0 0.5em 0 -0.5em;
+  margin: -2px;
+  margin-left: -1.85em;
+
+  ul[class*=tab-list] {
+    border: none;
+  }
+
+  li[class*=react-tabs] {
+    border: 1px solid lightgray;
+    border-radius: 0;
+    margin: 0.3em 0 0 0 !important;
+    box-shadow: none;
+    top: -0.2em;
+  }
+
+  li[aria-selected*=true] {
+    background-color: lightgray;
+
+    &::after {
+      content: '';
+      top: 100%;
+      left: 50%;
+      position: absolute;
+      height: 0;
+      width: 0;
+      border: 10px solid rgba(255, 212, 52, 0);
+      border-top-color: lightgray;
+      margin-left: -10px;
+    }
+  }
+
+  .IconsWrapper {
+    float: right;
+    margin-top: 2.6em;
+  }
+
+  .Bell {
+    margin-right: 2em !important;
+  }
+
+  .Bell,
+  .Cog {
+    float: right;
+    border: 0 !important;
+    margin: -1.7em 0 0 1em;
+    padding-right: 1.2em;
+    list-style-type: none;
+    font-size: 20px;
+    color: gray !important;
+
+    &:hover {
+      color: #3f426b !important;
+    }
+
+    &:active {
+    }
+
+    &::after {
+      color: #3f426b !important;
+      position: absolute;
+      height: 0;
+      width: 0;
+      border-width: 0 !important;
+      margin-left: 0 !important;
+      padding-left: 2em;
+    }
+  }
+
+  .TabPanel {
+    margin-left: 1.5em;
+    width: 85%;
+  }
+
+  .TabsItemRow {
+    padding: 0.3em 0 0.3em 0;
+  }
+
+  .TabsItemCol {
+    color: gray;
+  }
+}
