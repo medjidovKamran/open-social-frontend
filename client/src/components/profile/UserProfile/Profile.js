@@ -3,19 +3,45 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { Row, Col, Card, Container } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import styles from './Profile.scss';
 import stylesButton from './ProfileButton.scss';
 import { ProfileButton } from './ProfileButton/ProfileButton';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
+import apiClient from '../../../utils/axios-with-auth';
 
 class Profile extends Component {
+  static propTypes = {
+    avatar: PropTypes.shape({
+      avatar: PropTypes.shape({
+        url: PropTypes.string,
+      }),
+    }).isRequired,
+  };
+
   state = {
     isDefaultPhotoDisplayed: true,
     isPhotoLoaded: false,
     photo: '',
   };
+
+  componentDidMount() {
+    //todo
+    const { avatar } = this.props.avatar;
+    const avatarUrl = `http://178.20.156.208${avatar.url.replace(
+      'undefined',
+      '',
+    )}`;
+    this.setState(previousState => ({
+      isDefaultPhotoDisplayed: false,
+      isDisplayed: !previousState.isDisplayed,
+      isPhotoLoaded: !previousState.isPhotoLoaded,
+      photo: avatarUrl,
+    }));
+  }
 
   changeProfilePhotoHandler = () => {
     this.setState(previousState => ({
@@ -24,16 +50,22 @@ class Profile extends Component {
   };
 
   loadPhoto = event => {
-    const fileReader = new FileReader();
     const photo = event.target.files[0];
+
+    apiClient.saveUserProfilePhoto(photo);
+
+    const fileReader = new FileReader();
     fileReader.readAsDataURL(photo);
     fileReader.addEventListener('load', () => {
-      this.setState(previousState => ({
-        isDefaultPhotoDisplayed: false,
-        isDisplayed: !previousState.isDisplayed,
-        isPhotoLoaded: !previousState.isPhotoLoaded,
-        photo: fileReader.result,
-      }));
+      const { result } = fileReader;
+      if (result) {
+        this.setState(previousState => ({
+          isDefaultPhotoDisplayed: false,
+          isDisplayed: !previousState.isDisplayed,
+          isPhotoLoaded: !previousState.isPhotoLoaded,
+          photo: result,
+        }));
+      }
     });
   };
 
@@ -110,4 +142,6 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default withStyles(styles, stylesButton)(React.memo(Profile));
+export default connect(({ userProfile: avatar }) => ({
+  avatar,
+}))(withStyles(styles, stylesButton)(React.memo(Profile)));

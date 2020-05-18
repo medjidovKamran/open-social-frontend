@@ -15,6 +15,7 @@ const ProfilePhoto = ({
   loadPhoto,
   role,
 }) => {
+
   const userPhoto = isDefaultPhotoDisplayed ? (
     <img src={defaultUserPhoto} alt="profile" className={styles.UserImg} />
   ) : (

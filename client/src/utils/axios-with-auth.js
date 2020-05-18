@@ -2,6 +2,7 @@ import axios from 'axios';
 import isomorphicCookie from 'isomorphic-cookie';
 import * as JWT from 'jwt-decode';
 import history from '../history';
+import { apiURL } from '../constants';
 
 const authHeader = {
   Authorization: `Bearer ${isomorphicCookie.load('token')}`,
@@ -20,7 +21,6 @@ export default {
       headers: authHeader,
       params: data,
     });
-
     authorize(response.data);
     return response;
   },
@@ -31,9 +31,9 @@ export default {
     authorize(response.data);
     return response;
   },
-  async put(url, data) {
+  async put(url, data, contentType = { 'Content-Type': 'application/json' }) {
     const response = await axios.put(url, JSON.stringify(data), {
-      headers: { ...authHeader, 'Content-Type': 'application/json' },
+      headers: { ...authHeader, contentType },
     });
     authorize(response.data);
     return response;
@@ -44,5 +44,20 @@ export default {
       return JWT(token).user.id;
     }
     return null;
+  },
+  async saveUserProfilePhoto(profilePhoto) {
+    const formData = new FormData();
+    formData.append('file', profilePhoto);
+    try {
+      return await axios.put(
+        `${apiURL}/api/v1/users/${this.userId()}`,
+        formData,
+        {
+          headers: { ...authHeader, 'Content-Type': 'multipart/form-data' },
+        },
+      );
+    } catch (error) {
+      return error;
+    }
   },
 };
