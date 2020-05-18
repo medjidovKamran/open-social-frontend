@@ -31,19 +31,12 @@ export default {
     authorize(response.data);
     return response;
   },
-  async put(url, data, contentType = { 'Content-Type': 'application/json' }) {
+  async put(url, data) {
     const response = await axios.put(url, JSON.stringify(data), {
-      headers: { ...authHeader, contentType },
+      headers: { ...authHeader, 'Content-Type': 'application/json' },
     });
     authorize(response.data);
     return response;
-  },
-  userId() {
-    const token = isomorphicCookie.load('token');
-    if (token) {
-      return JWT(token).user.id;
-    }
-    return null;
   },
   async saveUserProfilePhoto(profilePhoto) {
     const formData = new FormData();
@@ -59,5 +52,12 @@ export default {
     } catch (error) {
       return error;
     }
+  },
+  userId() {
+    const token = isomorphicCookie.load('token');
+    if (token) {
+      return JWT(token).user.id;
+    }
+    return null;
   },
 };

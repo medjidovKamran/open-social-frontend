@@ -29,7 +29,7 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    //todo
+    // todo
     const { avatar } = this.props.avatar;
     const avatarUrl = `http://178.20.156.208${avatar.url.replace(
       'undefined',
