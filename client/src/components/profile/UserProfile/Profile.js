@@ -12,12 +12,13 @@ import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
 import apiClient from '../../../utils/axios-with-auth';
+import { apiURL } from '../../../constants';
 
 class Profile extends Component {
   static propTypes = {
     avatar: PropTypes.shape({
       avatar: PropTypes.shape({
-        url: PropTypes.string,
+        name: PropTypes.string,
       }),
     }).isRequired,
   };
@@ -29,9 +30,10 @@ class Profile extends Component {
   };
 
   componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
     const { avatar } = this.props.avatar;
     if (avatar) {
-      const avatarUrl = `http://${avatar.url}`;
+      const avatarUrl = `${apiURL}/${avatar.name.replace('undefined', '')}`;
       this.setState(previousState => ({
         isDefaultPhotoDisplayed: false,
         isDisplayed: !previousState.isDisplayed,
