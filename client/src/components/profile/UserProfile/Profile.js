@@ -31,16 +31,19 @@ class Profile extends Component {
   componentDidMount() {
     // todo
     const { avatar } = this.props.avatar;
-    const avatarUrl = `http://178.20.156.208${avatar.url.replace(
-      'undefined',
-      '',
-    )}`;
-    this.setState(previousState => ({
-      isDefaultPhotoDisplayed: false,
-      isDisplayed: !previousState.isDisplayed,
-      isPhotoLoaded: !previousState.isPhotoLoaded,
-      photo: avatarUrl,
-    }));
+    if (avatar) {
+      const avatarUrl = `http://178.20.156.208${avatar.url.replace(
+        'undefined',
+        '',
+      )}`;
+
+      this.setState(previousState => ({
+        isDefaultPhotoDisplayed: false,
+        isDisplayed: !previousState.isDisplayed,
+        isPhotoLoaded: !previousState.isPhotoLoaded,
+        photo: avatarUrl,
+      }));
+    }
   }
 
   changeProfilePhotoHandler = () => {
