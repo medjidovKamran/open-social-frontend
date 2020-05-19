@@ -9,6 +9,7 @@ import { ProfileButton } from './ProfileButton/ProfileButton';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
+import OwnChatButton from './OwnChat';
 
 class Profile extends Component {
   state = {
@@ -75,6 +76,7 @@ class Profile extends Component {
                     />
                   }
                 />
+                <OwnChatButton />
               </div>
             </Col>
             <Col lg={7} md={7} sm={12}>
