@@ -46,7 +46,7 @@ const TabsComponent = ({
             <Tab id="additionalInfo">Additional info</Tab>
             <Tab id="credits">Credits</Tab>
             <div className={styles.IconsWrapper}>
-              {role === 'user' ? (
+              {role === 'user' || role === 'admin' || role === 'superadmin' ? (
                 <>
                   <span className={styles.Bell}>
                     <FontAwesomeIcon icon={faBell} />
