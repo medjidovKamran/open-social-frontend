@@ -43,28 +43,33 @@ const clearChatState = () => ({
 //   }
 //   };
 
-export const getUsersChatData = (limit, offset) => dispatch => {
-  dispatch(userChatDataLoading());
+// export const getUsersChatData = (limit, offset) => dispatch => {
+//   dispatch(userChatDataLoading());
 
-  return apiClient
-    .get(`${apiURL}/api/v1/chats?limit=${limit}&offset=${offset}`)
-    .then(response => {
-      const { data } = response;
-      console.log('action data:', data);
-      dispatch(userChatDataSuccess({ data }));
-      // { data } === { data: data}
-      return data;
-    })
-    .catch(error => {
-      dispatch(userChatDataFailure(error.message));
-    });
-};
+//   return apiClient
+//     .get(`${apiURL}/api/v1/chats?limit=${limit}&offset=${offset}`)
+//     .then(response => {
+//       const { data } = response;
+//       console.log('action data:', data);
+//       dispatch(userChatDataSuccess({ data }));
+//       // { data } === { data: data}
+//       return data;
+//     })
+//     .catch(error => {
+//       dispatch(userChatDataFailure(error.message));
+//     });
+// };
 
-export const getUserChatData = id => async dispatch => {
+export const getUsersChatData = ({ limit, offset }) => async dispatch => {
   dispatch(userChatDataLoading());
   try {
-    const { data } = await apiClient.get(`${apiURL}/api/v1/chats/${id}`);
-    dispatch(userChatDataSuccess(data));
+    const { data: data } = await apiClient.get(`${apiURL}/api/v1/chats`, {
+      limit,
+      offset,
+    });
+    dispatch(userChatDataSuccess({ data }));
+
+    return data;
   } catch (error) {
     dispatch(userChatDataFailure(error.message));
   }

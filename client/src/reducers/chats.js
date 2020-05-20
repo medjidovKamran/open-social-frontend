@@ -13,14 +13,40 @@ const initialState = {
   userOption: { id: '' },
 };
 
+// export default (state = initialState, action) => {
+//   switch (action.type) {
+//     case USERS_CHAT_DATA_LOADING_DATA_SUCCESS:
+//       // console.log('state.data: ', [...state.data]);
+//       // console.log('action.payload.data: ', [...action.payload.data]);
+//       return {
+//         ...state,
+//         data: state.data.concat(...action.payload.data).slice(),
+//         error: '',
+//         isLoading: false,
+//       };
+//     case USERS_CHAT_DATA_LOADING:
+//       return { ...state };
+//     case USERS_CHAT_ADD_OWN_CHAT:
+//       return {
+//         ...state,
+//         data: [...state.data, action.payload],
+//         isLoading: false,
+//       };
+//     case USERS_CHAT_DATA_LOADING_DATA_FAILURE:
+//       return { ...state, error: action.error, isLoading: false };
+//     case USERS_CHAT_RESET_STATE:
+//       return { ...state, data: [] };
+//     default:
+//       return state;
+//   }
+// };
+
 export default (state = initialState, action) => {
   switch (action.type) {
     case USERS_CHAT_DATA_LOADING_DATA_SUCCESS:
-      // console.log('state.data: ', [...state.data]);
-      // console.log('action.payload.data: ', [...action.payload.data]);
       return {
         ...state,
-        data: state.data.concat(...action.payload.data).slice(),
+        ...action.payload,
         error: '',
         isLoading: false,
       };

@@ -202,6 +202,30 @@ textarea {
   }
 }
 
+@media (max-width: 670px) {
+  .logoName {
+    font-size: 22px !important;
+    color: $color-header-text;
+    padding: 0 1em 0 1em;
+  }
+}
+
+@media (max-width: 515px) {
+  .logoName {
+    font-size: 16px !important;
+    color: $color-header-text;
+    padding: 0 1em 0 1em;
+  }
+}
+
+@media (max-width: 470px) {
+  .logoName {
+    font-size: 14px !important;
+    color: $color-header-text;
+    padding: 0 3em 0 1em;
+  }
+}
+
 .container {
   padding: 0;
 }

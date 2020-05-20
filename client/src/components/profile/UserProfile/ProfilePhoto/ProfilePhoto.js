@@ -25,7 +25,7 @@ const ProfilePhoto = ({
     <div className={classNames(styles.ProfileBackgroundImages, 'card')}>
       {userPhoto}
       <div className="text-center">
-        {role === 'user' ? (
+        {role === 'user' || role === 'admin' || role === 'superadmin' ? (
           <>
             <label
               className={styles.ChangePhoto}
