@@ -45,7 +45,7 @@ const clearChatState = () => ({
 
 export const getUsersChatData = (limit, offset) => dispatch => {
   dispatch(userChatDataLoading());
-
+  console.log('123');
   return apiClient
     .get(`${apiURL}/api/v1/chats?limit=${limit}&offset=${offset}`)
     .then(response => {

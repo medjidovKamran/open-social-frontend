@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
@@ -12,11 +12,25 @@ import ChatsDialogs from '../chats-dialogs/chats-dialogs';
 import ChatsBlockUsers from '../chats-block-users/chats-block-users';
 import ChatsSearch from '../chats-search/chats-search';
 
-const ChatsMini = () => {
+function ChatsMini() {
+
   const [openChat, setOpen] = React.useState(false);
   const [openDialogs, setOpenDialogs] = React.useState(false);
   const [X, setX] = useState('');
   const [Y, setY] = useState('');
+  // const [shiftX, setShiftX] = useState('');
+  // const [shiftY, setShiftY] = useState('');
+
+  const miniChat = useRef();
+
+  useEffect(
+    () => {
+      isChecked
+        ? window.addEventListener("beforeunload", handler)
+        : window.removeEventListener("beforeunload", handler);
+    },
+    [isChecked]
+  );
 
   // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
   const handleOpenChat = () => {
@@ -35,27 +49,26 @@ const ChatsMini = () => {
     setOpenDialogs(false);
   };
 
-  const getXY = e => {
-    const element = e.target.getBoundingClientRect();
+  let shiftX;
+  let shiftY;
+  let refernce;
 
-    const x = element.left;
-    const y = element.top;
-
-    // setX(x+'px');
-    // setY(y+'px');
-    console.log(X, Y);
-    console.log(x, y);
+  const handleMouseDown = function(e) {
+    shiftX = e.clientX - miniChat.current.getBoundingClientRect().left;
+    shiftY = e.clientY - miniChat.current.getBoundingClientRect().top;
+    refernce = window.addEventListener('mousemove', handleMouseMove, true);
+  };
+  
+  const handleMouseMove = function(e) {
+    setX(e.pageX - shiftX + 'px');
+    setY(e.pageY - shiftY + 'px');
   };
 
-  const getNewXY = e => {
-    const element = e.target.getBoundingClientRect();
-    const x = element.left;
-    const y = element.top;
-  };
-
-  const setNewXY = e => {
+  const handleMouseUp  = function() {
     console.log('Finish');
+    please.removeEventListener('mousemove', handleMouseMove, true);
   };
+
   return (
     <div className={s.miniDialogs}>
       {!openChat ? (
@@ -64,11 +77,12 @@ const ChatsMini = () => {
         <div>
           <Button onClick={handleCloseChat}>Chats</Button>
           <div
+            ref={miniChat}
             className={s.miniDialogsWindow}
-            onMouseDown={getXY}
-            onMouseMove={getNewXY}
-            onMouseUp={setNewXY}
-            style={{ right: X, top: Y }}
+            onMouseDown={handleMouseDown}
+            // onMouseMove={this.getNewXY}
+            onMouseUp={handleMouseUp}
+            style={{ left: X, top: Y, cursor:'pointer' }}
           >
             {openDialogs && (
               <div
@@ -97,5 +111,6 @@ const ChatsMini = () => {
     </div>
   );
 };
+const please = document;
 ChatsMini.whyDidYouRender = true;
 export default withStyles(s)(React.memo(ChatsMini));
