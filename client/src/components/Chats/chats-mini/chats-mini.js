@@ -23,14 +23,14 @@ function ChatsMini() {
 
   const miniChat = useRef();
 
-  useEffect(
-    () => {
-      isChecked
-        ? window.addEventListener("beforeunload", handler)
-        : window.removeEventListener("beforeunload", handler);
-    },
-    [isChecked]
-  );
+  // useEffect(
+  //   () => {
+  //     isChecked
+  //       ? window.addEventListener("beforeunload", handler)
+  //       : window.removeEventListener("beforeunload", handler);
+  //   },
+  //   [isChecked]
+  // );
 
   // eslint-disable-next-line react-perf/jsx-no-new-function-as-prop
   const handleOpenChat = () => {
@@ -56,7 +56,7 @@ function ChatsMini() {
   const handleMouseDown = function(e) {
     shiftX = e.clientX - miniChat.current.getBoundingClientRect().left;
     shiftY = e.clientY - miniChat.current.getBoundingClientRect().top;
-    refernce = window.addEventListener('mousemove', handleMouseMove, true);
+    document.addEventListener('mousemove', handleMouseMove, true);
   };
   
   const handleMouseMove = function(e) {
@@ -66,7 +66,7 @@ function ChatsMini() {
 
   const handleMouseUp  = function() {
     console.log('Finish');
-    please.removeEventListener('mousemove', handleMouseMove, true);
+    document.removeEventListener('mousemove', handleMouseMove, true);
   };
 
   return (
@@ -111,6 +111,5 @@ function ChatsMini() {
     </div>
   );
 };
-const please = document;
 ChatsMini.whyDidYouRender = true;
 export default withStyles(s)(React.memo(ChatsMini));
