@@ -20,14 +20,6 @@ const TabsComponent = ({
 }) => {
   const dataObject = {
     userInformation: [
-      {
-        column: 'Description',
-        value:
-          ' Many people think that Lorem Ipsum is a ' +
-          'pseudo-Latin set of words taken from the ceiling, but this is not entirely true. ' +
-          'Its roots go back to one fragment of classical latin 45 years BC, that' +
-          'is, more than two millennia ago.',
-      },
       { column: 'Username', value: `${userName}` },
       { column: 'Email', value: `${email}` },
       {
