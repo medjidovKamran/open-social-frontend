@@ -31,40 +31,17 @@ const clearChatState = () => ({
   type: USERS_CHAT_RESET_STATE,
 });
 
-// export const getUsersChatData = (limit, offset) => async dispatch => {
-//   dispatch(userChatDataLoading());
-//   try {
-//     const { data } = await apiClient.get(`${apiURL}/api/v1/chats?limit=${limit}&offset=${offset}`);
-//     // /api/photos?count=${count}&start=${start}
-//     // http://localhost:4000/api/v1/chats?limit=10&offset=0&isGlobal=false
-//     dispatch(userChatDataSuccess({ data }));
-//   } catch (error) {
-//     dispatch(userChatDataFailure(error.message));
-//   }
-//   };
-
-export const getUsersChatData = (limit, offset) => dispatch => {
-  dispatch(userChatDataLoading());
-  console.log('123');
-  return apiClient
-    .get(`${apiURL}/api/v1/chats?limit=${limit}&offset=${offset}`)
-    .then(response => {
-      const { data } = response;
-      console.log('action data:', data);
-      dispatch(userChatDataSuccess({ data }));
-      // { data } === { data: data}
-      return data;
-    })
-    .catch(error => {
-      dispatch(userChatDataFailure(error.message));
-    });
-};
-
-export const getUserChatData = id => async dispatch => {
+// eslint-disable-next-line consistent-return
+export const getUsersChatData = ({ limit, offset }) => async dispatch => {
   dispatch(userChatDataLoading());
   try {
-    const { data } = await apiClient.get(`${apiURL}/api/v1/chats/${id}`);
-    dispatch(userChatDataSuccess(data));
+    const { data } = await apiClient.get(`${apiURL}/api/v1/chats`, {
+      limit,
+      offset,
+    });
+    dispatch(userChatDataSuccess({ data }));
+
+    return data;
   } catch (error) {
     dispatch(userChatDataFailure(error.message));
   }
@@ -80,6 +57,7 @@ export const createChat = parameters => async dispatch => {
   }
 };
 
+// eslint-disable-next-line unicorn/consistent-function-scoping
 export const resetChatState = () => dispatch => {
   dispatch(clearChatState());
 };

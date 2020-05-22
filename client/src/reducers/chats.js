@@ -16,11 +16,9 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case USERS_CHAT_DATA_LOADING_DATA_SUCCESS:
-      // console.log('state.data: ', [...state.data]);
-      // console.log('action.payload.data: ', [...action.payload.data]);
       return {
         ...state,
-        data: state.data.concat(...action.payload.data).slice(),
+        data: [...state.data, ...action.payload.data],
         error: '',
         isLoading: false,
       };
