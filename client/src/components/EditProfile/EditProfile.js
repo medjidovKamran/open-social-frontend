@@ -6,9 +6,9 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import Alert from 'react-bootstrap/Alert';
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import history from '../../history';
-import { editProfile } from '../../actions/user';
 import s from './EditProfile.scss';
 import EditProfileForm from '../EditProfileForm/EditProfileForm';
+import { editProfile } from '../../actions/profile';
 
 class EditProfilePage extends React.Component {
   static propTypes = {

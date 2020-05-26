@@ -29,3 +29,22 @@ export const getUserData = id => async dispatch => {
     dispatch(profileDataFailure(error.message));
   }
 };
+
+export const editProfile = ({
+  firstName,
+  lastName,
+  birthdayDate,
+  userName,
+  email,
+}) => async dispatch => {
+  dispatch(profileDataLoading());
+  try {
+    const { data } = await apiClient.put(
+      `${apiURL}/api/v1/users/${apiClient.userId()}`,
+      { birthdayDate, email, firstName, lastName, userName },
+    );
+    dispatch(profileDataSuccess(data));
+  } catch (error) {
+    dispatch(profileDataFailure(error.message));
+  }
+};

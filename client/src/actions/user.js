@@ -6,7 +6,6 @@ import isomorphicCookie from 'isomorphic-cookie';
 import moment from 'moment';
 import history from '../history';
 import { SET_USER_MESSAGE, SET_USER_AUTH, apiURL } from '../constants';
-import apiClient from '../utils/axios-with-auth';
 
 const setUserMessage = message => ({
   message,
@@ -93,39 +92,6 @@ export const signup = ({
       dispatch(setUserMessage(response.data));
       return response;
     })
-    .catch(error => {
-      const { response } = error;
-      dispatch(setUserMessage(response.data));
-      return error.toJSON();
-    });
-};
-
-export const editProfile = ({
-  firstName,
-  lastName,
-  birthdayDate,
-  userName,
-  email,
-  password,
-}) => dispatch => {
-  setTimeout(() => dispatch(resetMessage()), DELAY);
-  return axios
-    .put(
-      `${apiURL}/api/v1/users/${apiClient.userId()}`,
-      JSON.stringify({
-        birthdayDate,
-        email,
-        firstName,
-        lastName,
-        password,
-        userName,
-      }),
-      {
-        headers: {
-          'content-type': contentType,
-        },
-      },
-    )
     .catch(error => {
       const { response } = error;
       dispatch(setUserMessage(response.data));
