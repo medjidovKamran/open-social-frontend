@@ -3,12 +3,13 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import { Row, Col, Container } from 'react-bootstrap';
 import reactStyle from 'react-tabs/style/react-tabs.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell, faCog } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faCog, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './TabsComponent.scss';
+import Link from '../../../Link';
 
 const TabsComponent = ({
   firstName,
@@ -48,6 +49,11 @@ const TabsComponent = ({
             <div className={styles.IconsWrapper}>
               {role === 'user' || role === 'admin' || role === 'superadmin' ? (
                 <>
+                  <span className={styles.Edit}>
+                    <Link to="/edit-profile">
+                      <FontAwesomeIcon icon={faUserEdit} />
+                    </Link>
+                  </span>
                   <span className={styles.Bell}>
                     <FontAwesomeIcon icon={faBell} />
                   </span>
