@@ -115,9 +115,7 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
       </Form.Group> */}
       <div className={s.buttonClose}>
         <Link to="/">
-          <Button variant="secondary" type="submit">
-            Cancel
-          </Button>
+          <Button variant="secondary">Cancel</Button>
         </Link>
       </div>
       <div className={s.buttonSave}>

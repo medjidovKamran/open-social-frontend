@@ -61,7 +61,9 @@ const routes = [
       },
       {
         load: () =>
-          import(/* webpackChunkName: 'edit' */ '../components/EditProfile'),
+          import(
+            /* webpackChunkName: 'edit-profile' */ '../components/EditProfile'
+          ),
         path: '/edit-profile',
       },
       {
@@ -142,6 +144,13 @@ export default routes;
 //         load: () =>
 //           import(/* webpackChunkName: 'about' */ '../components/Chats'),
 //         path: '/chats',
+//       },
+//         {
+//        load: () =>
+//        import(
+//          /* webpackChunkName: 'edit-profile' */ '../components/EditProfile'
+//        ),
+//      path: '/edit-profile',
 //       },
 //       {
 //         load: () =>
