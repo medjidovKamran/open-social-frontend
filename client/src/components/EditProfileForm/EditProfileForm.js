@@ -106,8 +106,10 @@ export default withStyles(bootstrap, s)(
   reduxForm({
     form: 'edit-profile-form',
     initialValues: {
+      email: 'tkd.movchan@gmail.com',
       firstName: 'Aleksandr',
       lastName: 'Movchan',
+      userName: 'Movchan94',
     },
   })(EditProfileForm),
 );

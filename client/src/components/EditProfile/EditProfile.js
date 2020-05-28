@@ -41,14 +41,13 @@ class EditProfilePage extends React.Component {
     );
   }
 }
+EditProfilePage.whyDidYouRender = true;
 
-export default withStyles(bootstrap, s)(
-  connect(
-    ({ user: { firstName, lastName, userName } }) => ({
-      firstName,
-      lastName,
-      userName,
-    }),
-    { editProfile },
-  )(EditProfilePage),
-);
+export default connect(
+  ({ user: { firstName, lastName, userName } }) => ({
+    firstName,
+    lastName,
+    userName,
+  }),
+  { editProfile },
+)(withStyles(bootstrap, s)(React.memo(EditProfilePage)));
