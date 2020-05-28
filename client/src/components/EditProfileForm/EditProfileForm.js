@@ -83,36 +83,6 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
           />
         </Col>
       </Form.Group>
-      {/* <Form.Group as={Row}>
-        <Form.Label column sm={4}>
-          New password
-        </Form.Label>
-        <Col sm={8}>
-          <Field
-            name="password"
-            component={FieldInput}
-            type="password"
-            placeholder="Enter new password"
-            description="Password"
-            validate={VALIDATION_RULES.PASSWORD}
-          />
-        </Col>
-      </Form.Group>
-      <Form.Group as={Row}>
-        <Form.Label column sm={4}>
-          Confirm password
-        </Form.Label>
-        <Col sm={8}>
-          <Field
-            name="Confirm password"
-            component={FieldInput}
-            type="password"
-            placeholder="Confirm new password"
-            description="Confirm password"
-            validate={VALIDATION_RULES.CONFIRM_PASSWORD}
-          />
-        </Col>
-      </Form.Group> */}
       <div className={s.buttonClose}>
         <Link to="/">
           <Button variant="secondary">Cancel</Button>
@@ -133,5 +103,11 @@ EditProfileForm.propTypes = {
 };
 
 export default withStyles(bootstrap, s)(
-  reduxForm({ form: 'edit-profile-form' })(EditProfileForm),
+  reduxForm({
+    form: 'edit-profile-form',
+    initialValues: {
+      firstName: 'Aleksandr',
+      lastName: 'Movchan',
+    },
+  })(EditProfileForm),
 );
