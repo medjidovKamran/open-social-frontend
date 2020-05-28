@@ -9,17 +9,17 @@ import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import s from './EditProfileForm.scss';
 import Link from '../Link';
 
-const EditProfileForm = ({ handleSubmit, submitText }) => {
+const EditProfileForm = ({ firstName, lastName, userName, email, birthdayDate, handleSubmit, submitText }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group as={Row}>
         <Form.Label column={4}>First name:</Form.Label>
         <Col sm={8}>
           <Field
-            name="firstName"
+            name="fi1rstName"
             component={FieldInput}
             type="text"
-            placeholder="Enter your new first name"
+            placeholder={firstName}
             description="First name"
             validate={VALIDATION_RULES.FIRST_NAME}
           />
@@ -32,7 +32,7 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
             name="lastName"
             component={FieldInput}
             type="text"
-            placeholder="Enter your new last name"
+            placeholder={lastName}
             description="Last name"
             validate={VALIDATION_RULES.LAST_NAME}
           />
@@ -49,7 +49,7 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
               name="userName"
               component={FieldInput}
               type="text"
-              placeholder="user name"
+              placeholder={userName}
               description="Username"
               required
               validate={VALIDATION_RULES.USERNAME}
@@ -64,7 +64,7 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
             name="email"
             component={FieldInput}
             type="email"
-            placeholder="Enter email"
+            placeholder={email}
             description="Email"
             validate={VALIDATION_RULES.EMAIL}
           />
@@ -77,7 +77,7 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
             name="birthdayDate"
             component={FieldInput}
             type="date"
-            placeholder="Enter birthdayDate"
+            placeholder={birthdayDate}
             description="Birthday date"
             validate={VALIDATION_RULES.BIRTH_DAY}
           />
@@ -100,16 +100,20 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
 EditProfileForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   submitText: PropTypes.string.isRequired,
+  firstName: PropTypes.string.isRequired,
+  lastName: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  birthdayDate: PropTypes.string.isRequired,
 };
 
 export default withStyles(bootstrap, s)(
   reduxForm({
     form: 'edit-profile-form',
-    initialValues: {
-      email: 'tkd.movchan@gmail.com',
-      firstName: 'Aleksandr',
-      lastName: 'Movchan',
-      userName: 'Movchan94',
-    },
+    // initialValues: {
+    //   firstName: 'Aleksandr',
+    //   lastName: 'Movchan',
+    //   userName: 'Movchan94',
+    // },
   })(EditProfileForm),
 );

@@ -15,6 +15,8 @@ class EditProfilePage extends React.Component {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    birthDate: PropTypes.string.isRequired,
   };
 
   handleSubmit = async data => {
@@ -24,17 +26,19 @@ class EditProfilePage extends React.Component {
   };
 
   render() {
-    const { firstName, lastName, userName } = this.props;
+    const { firstName, lastName, userName, email, birthdayDate } = this.props;
     return (
-      <div className={s.form}>
-        <h3 className={s.heading}>Edit profile page</h3>
+      <div className = {s.form}>
+        <h3 className = {s.heading}>Edit profile page</h3>
         {process.env.BROWSER && (
           <EditProfileForm
-            firstName={firstName}
-            lastName={lastName}
-            userName={userName}
-            onSubmit={this.handleSubmit}
-            submitText="Save"
+            firstName = {firstName}
+            lastName = {lastName}
+            userName = {userName}
+            email = {email}
+            birthdayDate = {birthdayDate}
+            onSubmit = {this.handleSubmit}
+            submitText = "Save"
           />
         )}
       </div>
@@ -44,10 +48,12 @@ class EditProfilePage extends React.Component {
 EditProfilePage.whyDidYouRender = true;
 
 export default connect(
-  ({ user: { firstName, lastName, userName } }) => ({
+  ({ userProfile: { firstName, lastName, userName, email, birthdayDate } }) => ({
     firstName,
     lastName,
     userName,
+    email,
+    birthdayDate
   }),
   { editProfile },
 )(withStyles(bootstrap, s)(React.memo(EditProfilePage)));
