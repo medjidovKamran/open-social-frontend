@@ -4,22 +4,24 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import { Field, reduxForm } from 'redux-form';
 import { Button, InputGroup, Row, Col, Form } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import moment from 'moment';
 import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import s from './EditProfileForm.scss';
 import Link from '../Link';
 
-const EditProfileForm = ({ firstName, lastName, userName, email, birthdayDate, handleSubmit, submitText }) => {
+const EditProfileForm = ({ handleSubmit, submitText }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group as={Row}>
         <Form.Label column={4}>First name:</Form.Label>
         <Col sm={8}>
           <Field
-            name="fi1rstName"
+            name="firstName"
             component={FieldInput}
             type="text"
-            placeholder={firstName}
+            placeholder="Enter your new first name"
             description="First name"
             validate={VALIDATION_RULES.FIRST_NAME}
           />
@@ -32,7 +34,7 @@ const EditProfileForm = ({ firstName, lastName, userName, email, birthdayDate, h
             name="lastName"
             component={FieldInput}
             type="text"
-            placeholder={lastName}
+            placeholder="Enter your new last name"
             description="Last name"
             validate={VALIDATION_RULES.LAST_NAME}
           />
@@ -49,7 +51,7 @@ const EditProfileForm = ({ firstName, lastName, userName, email, birthdayDate, h
               name="userName"
               component={FieldInput}
               type="text"
-              placeholder={userName}
+              placeholder="Enter your new userName"
               description="Username"
               required
               validate={VALIDATION_RULES.USERNAME}
@@ -64,7 +66,7 @@ const EditProfileForm = ({ firstName, lastName, userName, email, birthdayDate, h
             name="email"
             component={FieldInput}
             type="email"
-            placeholder={email}
+            placeholder="Enter your new email"
             description="Email"
             validate={VALIDATION_RULES.EMAIL}
           />
@@ -77,7 +79,7 @@ const EditProfileForm = ({ firstName, lastName, userName, email, birthdayDate, h
             name="birthdayDate"
             component={FieldInput}
             type="date"
-            placeholder={birthdayDate}
+            placeholder="Enter your birthdayDate"
             description="Birthday date"
             validate={VALIDATION_RULES.BIRTH_DAY}
           />
@@ -98,22 +100,29 @@ const EditProfileForm = ({ firstName, lastName, userName, email, birthdayDate, h
 };
 
 EditProfileForm.propTypes = {
+  // birthdayDate: PropTypes.string.isRequired,
+  // email: PropTypes.string.isRequired,
+  // firstName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  // lastName: PropTypes.string.isRequired,
   submitText: PropTypes.string.isRequired,
-  firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  birthdayDate: PropTypes.string.isRequired,
+  // userName: PropTypes.string.isRequired,
 };
+// "1994-05-22T00:00:00.000Z"
 
-export default withStyles(bootstrap, s)(
-  reduxForm({
-    form: 'edit-profile-form',
-    // initialValues: {
-    //   firstName: 'Aleksandr',
-    //   lastName: 'Movchan',
-    //   userName: 'Movchan94',
-    // },
-  })(EditProfileForm),
+const mapStateToProps = state => {
+  return {
+    initialValues: {
+      birthdayDate: moment(state.userProfile.birthdayDate).format('DD MM YYYY'),
+      email: state.userProfile.email,
+      firstName: state.userProfile.firstName,
+      lastName: state.userProfile.lastName,
+      userName: state.userProfile.userName,
+    },
+  };
+};
+export default connect(mapStateToProps)(
+  reduxForm({ enableReinitialize: true, form: 'edit-profile-form' })(
+    withStyles(bootstrap, s)(React.memo(EditProfileForm)),
+  ),
 );
