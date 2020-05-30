@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-identical-functions */
 /* eslint-disable promise/prefer-await-to-then */
 /* eslint-disable unicorn/consistent-function-scoping */
 import axios from 'axios';
@@ -12,9 +11,7 @@ const setUserMessage = message => ({
   type: SET_USER_MESSAGE,
 });
 
-const DELAY = 6500;
-
-const contentType = 'application/json';
+const DELAY = 4500;
 
 const resetMessage = () => ({
   message: '',
@@ -39,7 +36,7 @@ export const login = ({ email, password }) => dispatch => {
       {
         headers: {
           Authorization: '',
-          'content-type': contentType,
+          'content-type': 'application/json',
         },
       },
     )
@@ -50,7 +47,8 @@ export const login = ({ email, password }) => dispatch => {
           .toDate(),
         secure: false,
       });
-      //const token = await isomorphicCookie.load('token');
+
+      const token = await isomorphicCookie.load('token');
       dispatch(setUserAuth(response.data.user));
 
       return dispatch(setUserMessage('You are logged in.'));
@@ -86,7 +84,7 @@ export const signup = ({
       }),
       {
         headers: {
-          'content-type': contentType,
+          'content-type': 'application/json',
         },
       },
     )
