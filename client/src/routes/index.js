@@ -68,6 +68,13 @@ const routes = [
       },
       {
         load: () =>
+          import(
+            /* webpackChunkName: 'users' */ '../components/UsersPage'
+            ),
+        path: '/users',
+      },
+      {
+        load: () =>
           import(/* webpackChunkName: 'not-found' */ '../components/not-found'),
         path: '(.+)',
       },
