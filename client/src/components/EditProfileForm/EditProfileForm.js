@@ -100,20 +100,14 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
 };
 
 EditProfileForm.propTypes = {
-  // birthdayDate: PropTypes.string.isRequired,
-  // email: PropTypes.string.isRequired,
-  // firstName: PropTypes.string.isRequired,
   handleSubmit: PropTypes.func.isRequired,
-  // lastName: PropTypes.string.isRequired,
   submitText: PropTypes.string.isRequired,
-  // userName: PropTypes.string.isRequired,
 };
-// "1994-05-22T00:00:00.000Z"
 
 const mapStateToProps = state => {
   return {
     initialValues: {
-      birthdayDate: moment(state.userProfile.birthdayDate).format('DD MM YYYY'),
+      birthdayDate: moment(state.userProfile.birthdayDate).format('YYYY-MM-DD'),
       email: state.userProfile.email,
       firstName: state.userProfile.firstName,
       lastName: state.userProfile.lastName,
