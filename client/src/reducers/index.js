@@ -6,12 +6,14 @@ import confirm from './confirm';
 import userChats from './chats';
 import userAuth from './user-auth';
 import userProfile from './profile';
+import users from "./users";
 
 export default combineReducers({
   confirm,
   form: formReducer,
   menu,
   user,
+  users,
   userAuth,
   userChats,
   userProfile,
