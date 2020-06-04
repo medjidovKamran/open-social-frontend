@@ -23,7 +23,7 @@ const userDataLoading = () => ({
 export const getUsersData = () => async dispatch => {
   dispatch(userDataLoading());
   try {
-    const { data } = await apiClient.get(`${apiURL}/api/v1/users`);
+    const {data} = await apiClient.get(`${apiURL}/api/v1/users`);
     dispatch(userDataSuccess(data));
   } catch (error) {
     dispatch(userDataFailure(error.message));
