@@ -7,9 +7,22 @@ import {getUsersData} from '../../actions/users';
 import User from './User';
 import Loader from '../Loader/Loader';
 import ReactPaginate from 'react-paginate';
+import PropTypes from "prop-types";
 
 
 class UsersPage extends React.Component {
+  static propTypes = {
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        firstName: PropTypes.string.isRequired,
+        id: PropTypes.number.isRequired,
+        lastName: PropTypes.string.isRequired,
+      }),
+    ).isRequired,
+    getUsersData: PropTypes.func.isRequired,
+    error: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -41,8 +54,8 @@ class UsersPage extends React.Component {
     const offset = selectedPage * this.state.perPage;
 
     this.setState({
-      currentPage: selectedPage,
-      offset: offset
+      selectedPage,
+      offset
     }, () => {
       this.receivedData()
     });
@@ -87,9 +100,8 @@ class UsersPage extends React.Component {
 
 UsersPage.whyDidYouRender = true;
 export default connect(
-  ({users: {data, events, error, isLoading}}) => ({
+  ({users: {data, error, isLoading}}) => ({
     data,
-    events,
     error,
     isLoading
   }),
