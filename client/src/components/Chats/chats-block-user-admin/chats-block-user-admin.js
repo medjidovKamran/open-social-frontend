@@ -31,7 +31,7 @@ const ChatsBlockUserAdmin = ({
         <Avatar
           className={style.avatar}
           alt={userName}
-          src={`http://${avatar.url}`}
+          // src={`http://${avatar.url}`}
         />
         <div>
           <h4>{` ${firstName} ${lastName}`}</h4>
