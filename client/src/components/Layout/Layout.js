@@ -10,6 +10,7 @@ import Menu from '../Menu';
 import logo from '../../assets/logo.png';
 import s from './Layout.scss';
 import ChatsMini from '../Chats/chats-mini/chats-mini';
+import Banner from '../Banner/Banner';
 
 function Layout(props) {
   const { children } = props;
@@ -38,8 +39,11 @@ function Layout(props) {
         <Col lg={1}>
           <Menu />
         </Col>
-        <Col lg={11}>
+        <Col lg={8}>
           <div className={s.rightContainer}>{children}</div>
+        </Col>
+        <Col lg={2} className={s.banner}>
+          <Banner />
         </Col>
       </Row>
     </Container>
