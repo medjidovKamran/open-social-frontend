@@ -65,11 +65,12 @@ class ChatsBlockUsers extends Component {
     }
 
     return (
-      <div>
+      <div className={style.scrollMax}>
         <InfiniteScroll
           dataLength={data.length}
           next={this.getChats}
           hasMore={hasMore}
+          className={style.scrollMax}
           loader={<h4 className={style.center}>Loading...</h4>}
           endMessage={
             <p className={style.center}>
