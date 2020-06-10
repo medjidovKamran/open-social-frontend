@@ -6,64 +6,49 @@ import { connect } from 'react-redux';
 import Loader from '../../Loader/Loader';
 import style from './chats-block-user-admin.module.scss';
 
-const ChatsBlockUserAdmin = ({
-  firstName,
-  lastName,
-  userName,
-  avatar,
-  error,
-  isLoading,
-}) => {
-  if (error) {
-    return <p className="mb-0">{error}</p>;
-  }
+const ChatsBlockUserAdmin = ({ firstName, lastName, userName, avatar, error, isLoading }) => {
+	if (error) {
+		return <p className="mb-0">{error}</p>;
+	}
 
-  if (isLoading) {
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
-  }
-  return (
-    <div className={style.blockUserAdmin}>
-      <div>
-        <Avatar
-          className={style.avatar}
-          alt={userName}
-          // src={`http://${avatar.url}`}
-        />
-        <div>
-          <h4>{` ${firstName} ${lastName}`}</h4>
-        </div>
-      </div>
-    </div>
-  );
+	if (isLoading) {
+		return (
+			<div>
+				<Loader />
+			</div>
+		);
+	}
+	return (
+		<div className={style.blockUserAdmin}>
+			<div>
+				<Avatar className={style.avatar} alt={userName} src={`http://${avatar.url}`} />
+				<div>
+					<h4>{` ${firstName} ${lastName}`}</h4>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 ChatsBlockUserAdmin.propTypes = {
-  // eslint-disable-next-line react/require-default-props
-  avatar: PropTypes.shape({
-    url: PropTypes.string,
-  }),
-  error: PropTypes.string.isRequired,
-  firstName: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  lastName: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
+	// eslint-disable-next-line react/require-default-props
+	avatar: PropTypes.shape({
+		url: PropTypes.string
+	}),
+	error: PropTypes.string.isRequired,
+	firstName: PropTypes.string.isRequired,
+	isLoading: PropTypes.bool.isRequired,
+	lastName: PropTypes.string.isRequired,
+	userName: PropTypes.string.isRequired
 };
 
 ChatsBlockUserAdmin.whyDidYouRender = true;
 
-export default connect(
-  ({
-    userProfile: { firstName, lastName, userName, avatar, error, isLoading },
-  }) => ({
-    avatar,
-    error,
-    firstName,
-    isLoading,
-    lastName,
-    userName,
-  }),
-)(withStyles(style)(React.memo(ChatsBlockUserAdmin)));
+export default connect(({ userProfile: { firstName, lastName, userName, avatar, error, isLoading } }) => ({
+	avatar,
+	error,
+	firstName,
+	isLoading,
+	lastName,
+	userName
+}))(withStyles(style)(React.memo(ChatsBlockUserAdmin)));
