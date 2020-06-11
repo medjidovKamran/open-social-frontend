@@ -1,0 +1,49 @@
+.heading {
+  height: 70px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 80% 280px;
+}
+
+.pagination {
+  margin: 15px auto;
+  display: flex;
+  list-style: none;
+  outline: none;
+  justify-content: center;
+}
+
+.pagination > li > a {
+  border: 1px solid grey;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.pagination > li > a,
+.pagination > li > span {
+  color: grey;
+}
+
+.pagination > .active > a {
+  background-color: grey;
+  border-color: grey;
+  color: #fff;
+}
+
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: #3f426b;
+  border-color: #3f426b;
+  outline: none;
+}
+
+.line {
+  color: lightgrey;
+  height: 1px;
+  margin: 10px;
+}

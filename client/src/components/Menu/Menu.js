@@ -15,6 +15,7 @@ import about from '../../assets/about.svg';
 import login from '../../assets/login.svg';
 import signup from '../../assets/signup.svg';
 import chats from '../../assets/chats.svg';
+import users from '../../assets/users.svg';
 
 class Menu extends React.Component {
   static propTypes = {
@@ -96,6 +97,11 @@ class Menu extends React.Component {
       icon: chats,
       path: 'chats',
       text: 'Chats',
+    },
+    {
+      icon: users,
+      path: 'users',
+      text: 'Users',
     },
   ];
 

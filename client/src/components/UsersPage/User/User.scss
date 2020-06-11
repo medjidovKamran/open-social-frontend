@@ -1,0 +1,43 @@
+.UsersAvatar {
+  height: 76px;
+  border-radius: 100px;
+}
+
+.userConatainer {
+  display: grid;
+  grid-template-columns: 80% 180px;
+}
+
+.buttonAdd {
+  color: lightgrey;
+  background-color: #3f426b;
+  height: 35px;
+  width: 90px;
+  font-size: 12pt;
+  padding-top: 4px;
+}
+
+.buttonAddWrite {
+  padding-top: 23px;
+  text-align: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.buttonAdd:active {
+  background: lightgrey;
+  color: #000;
+}
+
+.line {
+  width: 100%;
+  color: lightgrey;
+  height: 1px;
+  margin: 10px;
+}
+
+.buttonMessage {
+  cursor: pointer;
+  color: black;
+}

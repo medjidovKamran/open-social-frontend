@@ -5,7 +5,7 @@ import history from '../history';
 import { apiURL } from '../constants';
 
 const authHeader = {
-  Authorization: `Bearer ${isomorphicCookie.load('token')}`,
+  Authorization: isomorphicCookie.load('token') ? `Bearer ${isomorphicCookie.load('token')}` : null,
 };
 
 const authorize = response => {
@@ -16,7 +16,14 @@ const authorize = response => {
 };
 
 export default {
+  setHeader () {
+    if (!authHeader.Authorization) {
+      authHeader.Authorization = `Bearer ${isomorphicCookie.load('token')}`;
+    }
+  },
+
   async get(url, data) {
+    this.setHeader();
     const response = await axios.get(url, {
       headers: authHeader,
       params: data,
@@ -24,21 +31,27 @@ export default {
     authorize(response.data);
     return response;
   },
+
   async post(url, data) {
+    this.setHeader();
     const response = await axios.post(url, JSON.stringify(data), {
       headers: { ...authHeader, 'Content-Type': 'application/json' },
     });
     authorize(response.data);
     return response;
   },
+
   async put(url, data) {
+    this.setHeader();
     const response = await axios.put(url, JSON.stringify(data), {
       headers: { ...authHeader, 'Content-Type': 'application/json' },
     });
     authorize(response.data);
     return response;
   },
+
   async saveUserProfilePhoto(profilePhoto) {
+    this.setHeader();
     const formData = new FormData();
     formData.append('file', profilePhoto);
     try {
@@ -53,6 +66,7 @@ export default {
       return error;
     }
   },
+
   userId() {
     const token = isomorphicCookie.load('token');
     if (token) {

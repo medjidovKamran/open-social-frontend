@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 import isomorphicCookie from 'isomorphic-cookie';
 import React from 'react';
 
-const Confirm = import(
-  /* webpackChunkName: 'confirm' */ '../components/confirm'
-);
+/* const Confirm = import(
+  /!* webpackChunkName: 'confirm' *!/ '../components/confirm'
+); */
 const routes = [
   {
     action({ next }) {
@@ -57,6 +58,20 @@ const routes = [
         load: () =>
           import(/* webpackChunkName: 'chats' */ '../components/Chats'),
         path: '/chats',
+      },
+      {
+        load: () =>
+          import(
+            /* webpackChunkName: 'edit-profile' */ '../components/EditProfile'
+          ),
+        path: '/edit-profile',
+      },
+      {
+        load: () =>
+          import(
+            /* webpackChunkName: 'users' */ '../components/UsersPage'
+            ),
+        path: '/users',
       },
       {
         load: () =>
@@ -136,6 +151,13 @@ export default routes;
 //         load: () =>
 //           import(/* webpackChunkName: 'about' */ '../components/Chats'),
 //         path: '/chats',
+//       },
+//         {
+//        load: () =>
+//        import(
+//          /* webpackChunkName: 'edit-profile' */ '../components/EditProfile'
+//        ),
+//      path: '/edit-profile',
 //       },
 //       {
 //         load: () =>

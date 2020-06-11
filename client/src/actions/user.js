@@ -40,14 +40,17 @@ export const login = ({ email, password }) => dispatch => {
         },
       },
     )
-    .then(response => {
-      dispatch(setUserAuth(response.data.user));
-      isomorphicCookie.save('token', response.data.token, {
+    .then(async response => {
+      await isomorphicCookie.save('token', response.data.token, {
         expires: moment()
           .add(cookieExpires, 'minute')
           .toDate(),
         secure: false,
       });
+
+      const token = await isomorphicCookie.load('token');
+      dispatch(setUserAuth(response.data.user));
+
       return dispatch(setUserMessage('You are logged in.'));
     })
     .catch(error => {

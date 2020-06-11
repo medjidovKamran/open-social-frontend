@@ -3,7 +3,7 @@
   display: grid;
   grid-template-areas: 'header header' 'nav article';
   grid-column-gap: 20px;
-  grid-template-rows: 80px 1fr;
+  grid-template-rows: auto;
   grid-template-columns: 20% 1fr;
   margin-right: 20px;
 }

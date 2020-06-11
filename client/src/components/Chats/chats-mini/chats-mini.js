@@ -9,7 +9,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import s from './chats-mini.module.scss';
 import ChatsDialogs from '../chats-dialogs/chats-dialogs';
-import ChatsBlockUsers from '../chats-block-users/chats-block-users';
 import ChatsSearch from '../chats-search/chats-search';
 
 function ChatsMini() {

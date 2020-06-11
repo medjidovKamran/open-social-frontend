@@ -11,7 +11,7 @@ import {
 
 export const BOUNDARY = {
   MAX_LENGTH: 100,
-  MIN_LENGTH: 6,
+  MIN_LENGTH: 4,
   MIN_LENGTH_NAME: 2,
 };
 

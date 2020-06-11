@@ -4,6 +4,7 @@
     font-size: 18px;
   }
 
+  .Edit,
   .Bell,
   .Cog {
     float: right;
@@ -97,6 +98,7 @@
     margin-left: 1em;
   }
 
+  .Edit,
   .Bell,
   .Cog {
     float: right;
@@ -152,6 +154,11 @@
     margin-right: 2em !important;
   }
 
+  .Edit {
+    margin-right: 4em !important;
+  }
+
+  .Edit,
   .Bell,
   .Cog {
     float: right;
@@ -164,9 +171,6 @@
 
     &:hover {
       color: #3f426b !important;
-    }
-
-    &:active {
     }
 
     &::after {
