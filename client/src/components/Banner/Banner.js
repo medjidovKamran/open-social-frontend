@@ -41,6 +41,7 @@ class Banner extends Component {
                   rel="noopener noreferrer"
                 >
                   <img
+                    className={s.visit}
                     src={visitus}
                     width="107"
                     height="31"
@@ -50,12 +51,24 @@ class Banner extends Component {
                 </a>
               </td>
               <td rowSpan="2">
-                <img src={title4} width="28" height="383" alt="" />
+                <img
+                  className={s.right}
+                  src={title4}
+                  width="28"
+                  height="383"
+                  alt=""
+                />
               </td>
             </tr>
             <tr>
               <td>
-                <img src={title5} width="107" height="352" alt="" />
+                <img
+                  className={s.middle}
+                  src={title5}
+                  width="107"
+                  height="352"
+                  alt=""
+                />
               </td>
             </tr>
           </tbody>

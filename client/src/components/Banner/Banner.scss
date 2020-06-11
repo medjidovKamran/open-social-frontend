@@ -1,8 +1,21 @@
+.banner {
+  margin-top: 60px;
+  margin-left: 10px;
+}
+
 .top {
   vertical-align: bottom;
 }
 
-.banner {
-  margin-top: 60px;
-  margin-left: 10px;
+.visit,
+.middle,
+.right {
+  margin-left: -1px;
+}
+
+@-moz-document url-prefix() {
+  .middle,
+  .visit {
+    margin-left: -2px;
+  }
 }
