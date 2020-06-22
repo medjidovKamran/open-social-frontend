@@ -23,7 +23,7 @@ class UserSearchPanel extends Component {
 		}
 	};
 	fetchSearchResults = (query) => {
-		const searchUrl = `localhost:4000/api/v1/users=${query}`;
+		const searchUrl = `http://localhost:4000/api/v1/users=${query}allow-cors', {mode:'cors'}`;
 		if (this.cancel) {
 			this.cancel.cancel();
 		}
