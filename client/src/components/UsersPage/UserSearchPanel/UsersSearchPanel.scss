@@ -1,17 +1,24 @@
+.searchPanel {
+  margin-left: -60px;
+}
 
 .searchPanelDiv {
-  display: inline-block;
-  float: left;
+  // display: inline-block;
+  // float: left;
   width: 265px;
   height: 33px;
 }
 
-.searchPanelIcon {
-  width: 36px;
-  height: 33px;
-  background-color: #3f426b;
-}
-
 .searchPanelInput {
   height: 32px;
+  margin-right: 12px;
 }
+
+.searchPanelInput:focus {
+  background-color: #ccc;
+}
+// .searchPanelIcon {
+// 	width: 36px;
+// 	height: 33px;
+// 	background-color: #3f426b;
+// }
