@@ -1,8 +1,62 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './UsersSearchPanel.scss';
 import axios from 'axios';
+// import { apiURL } from '../constants';
 class UserSearchPanel extends Component {
+	state = {
+		query: '',
+		results: [],
+		loading: false
+	};
+	handleOnInputChange = (event) => {
+		const query = event.target.value;
+		if (!query) {
+			this.setState({ query, results: [] });
+		} else {
+			this.setState({ query, loading: true }, () => {
+				this.fetchSearchResults(query);
+			});
+		}
+	};
+	fetchSearchResults = (query) => {
+		const url = `http://localhost:4000/api/v1/users=${query}allow-cors', {mode:'cors'}`;
+		const response = axios
+			.get(url, {
+				headers: authHeader,
+				params: data
+			})
+			.then((response) => {
+				this.setState({ results: response.data });
+			});
+	};
+	render() {
+		const results = this.state.results.map((result) => {
+			return (
+				<a key={result.id} href={result.previewURL}>
+					<h6>{result.user}</h6>
+					<div>
+						<img src={result.previewURL} alt={result.user} />
+					</div>
+				</a>
+			);
+		});
+		return (
+			<div>
+				<label>
+					<input
+						type="text"
+						value={this.state.query}
+						placeholder="Search..."
+						onChange={this.handleOnInputChange}
+					/>
+				</label>
+				{results}
+			</div>
+		);
+	}
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -23,7 +77,7 @@ class UserSearchPanel extends Component {
 		}
 	};
 	fetchSearchResults = (query) => {
-		const searchUrl = `http://localhost:4000/api/v1/users=${query}allow-cors', {mode:'cors'}`;
+		const searchUrl = `${apiURL}/api/v1/users=${query}allow-cors', {mode:'cors'}`;
 		if (this.cancel) {
 			this.cancel.cancel();
 		}
@@ -70,8 +124,13 @@ class UserSearchPanel extends Component {
 		);
 	}
 }
+
+UserSearchPanel.propTypes = {
+	onChange: PropTypes.func.isRequired
+};
+
 UserSearchPanel.whyDidYouRender = true;
-export default withStyles(s)(React.memo(UserSearchPanel));
+export default withStyles(s)(UserSearchPanel);
 
 // import React from 'react';
 // import withStyles from 'isomorphic-style-loader/withStyles';
