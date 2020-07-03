@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './UsersSearchPanel.scss';
-import axios from 'axios';
 // import { apiURL } from '../constants';
+
 class UserSearchPanel extends Component {
-	state = {
-		query: '',
-		results: [],
-		loading: false
+	static propTypes = {
+		onChange: PropTypes.func.isRequired
 	};
+	
+	constructor(props) {
+		super(props);
+		this.state = {
+			query: ''
+		};
+
 	handleOnInputChange = (event) => {
 		const query = event.target.value;
 		if (!query) {
@@ -20,6 +26,7 @@ class UserSearchPanel extends Component {
 			});
 		}
 	};
+
 	fetchSearchResults = (query) => {
 		const url = `http://localhost:4000/api/v1/users=${query}allow-cors', {mode:'cors'}`;
 		const response = axios
@@ -31,6 +38,7 @@ class UserSearchPanel extends Component {
 				this.setState({ results: response.data });
 			});
 	};
+
 	render() {
 		const results = this.state.results.map((result) => {
 			return (
@@ -56,82 +64,114 @@ class UserSearchPanel extends Component {
 			</div>
 		);
 	}
-
-	constructor(props) {
-		super(props);
-		this.state = {
-			query: '',
-			results: {},
-			loading: false
+	
+	const mapStateToProps = state => {
+		return {
+			results: state.data,
+			loading: state.isLoading
 		};
-		this.cancel = '';
-	}
-	handleOnInputChange = (event) => {
-		const query = event.target.value;
-		if (!query) {
-			this.setState({ query, results: {} });
-		} else {
-			this.setState({ query, loading: true }, () => {
-				this.fetchSearchResults(query);
-			});
-		}
-	};
-	fetchSearchResults = (query) => {
-		const searchUrl = `${apiURL}/api/v1/users=${query}allow-cors', {mode:'cors'}`;
-		if (this.cancel) {
-			this.cancel.cancel();
-		}
-		this.cancel = axios.CancelToken.source();
-		axios.get(searchUrl, {
-			cancelToken: this.cancel.token
-		});
-	};
-	renderSearchResults = () => {
-		const { results } = this.state;
-		if (Object.keys(results).length && results.length) {
-			return (
-				<div className="results-container">
-					{results.map((result) => {
-						return (
-							<a key={result.id} href={result.previewURL} className="result-items">
-								<h6 className="username">{result.user}</h6>
-								<div className="wrapper">
-									<img className="user" src={result.previewURL} alt={result.user} />
-								</div>
-							</a>
-						);
-					})}
-				</div>
-			);
-		}
 	};
 
-	render() {
-		const { query } = this.state;
-		return (
-			<div className={s.searchPanel}>
-				<label className={s.searchPanelDiv}>
-					<input
-						className={s.searchPanelInput}
-						type="text"
-						value={query}
-						placeholder="Search..."
-						onChange={this.handleOnInputChange}
-					/>
-				</label>
-				{this.renderSearchResults()}
-			</div>
-		);
-	}
-}
+	UserSearchPanel.whyDidYouRender = true;
+	export default connect(mapStateToProps)(withStyles(s)(UserSearchPanel));
 
-UserSearchPanel.propTypes = {
-	onChange: PropTypes.func.isRequired
-};
 
-UserSearchPanel.whyDidYouRender = true;
-export default withStyles(s)(UserSearchPanel);
+	// state = {
+	// 	query: '',
+	// 	results: [],
+	// 	loading: false
+	// };
 
+
+
+
+
+
+
+	
+
+
+
+
+
+
+//----------------------------------------------------------------------------------------
+// 	constructor(props) {
+// 		super(props);
+// 		this.state = {
+// 			query: '',
+// 			results: {},
+// 			loading: false
+// 		};
+// 		this.cancel = '';
+// 	}
+// 	handleOnInputChange = (event) => {
+// 		const query = event.target.value;
+// 		if (!query) {
+// 			this.setState({ query, results: {} });
+// 		} else {
+// 			this.setState({ query, loading: true }, () => {
+// 				this.fetchSearchResults(query);
+// 			});
+// 		}
+// 	};
+// 	fetchSearchResults = (query) => {
+// 		const searchUrl = `${apiURL}/api/v1/users=${query}allow-cors', {mode:'cors'}`;
+// 		if (this.cancel) {
+// 			this.cancel.cancel();
+// 		}
+// 		this.cancel = axios.CancelToken.source();
+// 		axios.get(searchUrl, {
+// 			cancelToken: this.cancel.token
+// 		});
+// 	};
+// 	renderSearchResults = () => {
+// 		const { results } = this.state;
+// 		if (Object.keys(results).length && results.length) {
+// 			return (
+// 				<div className="results-container">
+// 					{results.map((result) => {
+// 						return (
+// 							<a key={result.id} href={result.previewURL} className="result-items">
+// 								<h6 className="username">{result.user}</h6>
+// 								<div className="wrapper">
+// 									<img className="user" src={result.previewURL} alt={result.user} />
+// 								</div>
+// 							</a>
+// 						);
+// 					})}
+// 				</div>
+// 			);
+// 		}
+// 	};
+
+// 	render() {
+// 		const { query } = this.state;
+// 		return (
+// 			<div className={s.searchPanel}>
+// 				<label className={s.searchPanelDiv}>
+// 					<input
+// 						className={s.searchPanelInput}
+// 						type="text"
+// 						value={query}
+// 						placeholder="Search..."
+// 						onChange={this.handleOnInputChange}
+// 					/>
+// 				</label>
+// 				{this.renderSearchResults()}
+// 			</div>
+// 		);
+// 	}
+// }
+
+// UserSearchPanel.propTypes = {
+// 	onChange: PropTypes.func.isRequired
+// };
+
+// UserSearchPanel.whyDidYouRender = true;
+// export default withStyles(s)(UserSearchPanel);
+
+//------------------------------------------------------------------------
 // import React from 'react';
 // import withStyles from 'isomorphic-style-loader/withStyles';
 // import s from './UsersSearchPanel.scss';
@@ -153,7 +193,7 @@ export default withStyles(s)(UserSearchPanel);
 // UserSearchPanel.whyDidYouRender = true;
 // export default withStyles(s)(React.memo(UserSearchPanel));
 
-//FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS
+//FORMS -------------------------------------------------------------------
 // import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 // import withStyles from 'isomorphic-style-loader/withStyles';
@@ -215,7 +255,7 @@ export default withStyles(s)(UserSearchPanel);
 // import FieldInput from '../InputField/FieldInput';
 // import { BOUNDARY } from '../../utils/validators/ValidationRules';
 
-//FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS_FORMS
+//FORMS ---------------------------------------------------------------------------------
 // const UserSearchPanel = ({ handleSubmit, submitText }) => {
 // 	return (
 // 		<div className={s.searchPanel}>
@@ -244,6 +284,7 @@ export default withStyles(s)(UserSearchPanel);
 // 	})(UserSearchPanel)
 // );
 
+//-----------------------------------------------------------------------------------------
 // import React, { Component } from 'react';
 // import axios from 'axios';
 // import withStyles from 'isomorphic-style-loader/withStyles';
