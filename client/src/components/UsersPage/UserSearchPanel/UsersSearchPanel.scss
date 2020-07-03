@@ -1,50 +1,60 @@
 .searchPanel {
-	margin-left: -60px;
+  margin-left: -60px;
 }
 
 .searchPanelDiv {
-	// display: inline-block;
-	// float: left;
-	width: 265px;
-	height: 33px;
+  display: inline-block;
+  //   float: left;
+  width: 265px;
+  height: 33px;
 }
 
 .searchPanelInput {
-	height: 32px;
-	margin-right: 12px;
+  height: 32px;
+  margin-right: 12px;
+  outline: none;
+  // border: 1px solid #ccc;
+  background-color: white;
+  // 	font: inherit;
+  // 	padding: 6px 10px;
+  // 	display: block;
+  // 	width: 100%;
+  // 	box-sizing: border-box;
 }
 
 .searchPanelInput:focus {
-	background-color: #ccc;
+  background-color: #ccc;
 }
-// .searchPanelIcon {
-// 	width: 36px;
-// 	height: 33px;
-// 	background-color: #3f426b;
-// }
+
+.searchPanelIcon {
+  width: 36px;
+  height: 33px;
+  background-color: #3f426b;
+}
 
 //----------------------------------------------
-// .Input {
-//   width: 100%;
-//   padding: 10px;
-//   box-sizing: border-box;
+// .searchPanel {
+// 	  width: 100%;
+// 	padding: 10px;
+// 	box-sizing: border-box;
+// 	margin-left: -60px;
 // }
-// .Label {
-//   font-weight: bold;
-//   display: block;
-//   margin-bottom: 8px;
+// .searchPanelDiv {
+// 	font-weight: bold;
+// 	display: inline-block;
+// 	margin-bottom: 8px;
 // }
-// .InputElement {
-//   outline: none;
-//   border: 1px solid #ccc;
-//   background-color: white;
-//   font: inherit;
-//   padding: 6px 10px;
-//   display: block;
-//   width: 100%;
-//   box-sizing: border-box;
+// .searchPanelInput {
+// 	outline: none;
+// 	border: 1px solid #ccc;
+// 	background-color: white;
+// 	font: inherit;
+// 	padding: 6px 10px;
+// 	display: block;
+// 	width: 100%;
+// 	box-sizing: border-box;
 // }
-// .InputElement:focus {
-//   outline: none;
-//   background-color: #ccc;
+// .searchPanelInput:focus {
+// 	outline: none;
+// 	background-color: #ccc;
 // }
