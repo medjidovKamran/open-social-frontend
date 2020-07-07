@@ -7,68 +7,80 @@ import s from './UsersSearchPanel.scss';
 import SearchIcon from '@material-ui/icons/Search';
 
 class UserSearchPanel extends Component {
-  static propTypes = {
-    onChange: PropTypes.func.isRequired,
-  };
+	static propTypes = {
+		handleOnInputChange: PropTypes.func.isRequired,
+		getUsersData: PropTypes.func.isRequired
+	};
+	state = {
+		query: ''
+	};
 
-  state = {
-    query: '',
-  };
+	handleOnInputChange = (event) => {
+		const query = event.target.value;
+		if (!query) {
+			this.setState({ query });
+		} else {
+			this.setState({ query: event.target.value });
+		}
+	};
+	fetchData = () => {
+		const { getUsersData } = this.props;
+		const { query } = this.state;
+		getUsersData({ query });
+	};
 
-  handleOnInputChange = event => {
-    const query = event.target.value;
-    if (!query) {
-      this.setState({ query });
-    } else {
-      this.setState({ query: event.target.value }),
-        () => {
-          this.props.getUsersData(this.state.query).then(response => {
-            this.props.data = response.data;
-          });
-        };
-    }
-  };
+	//axios returns response with params data
+	//getUsersData returns data array
 
-  render() {
-    const results = this.props.data.map(result => {
-      return (
-        <a key={result.id} href={result.previewURL}>
-          <h6>{result.user}</h6>
-          <div>
-            <img src={result.previewURL} alt={result.user} />
-          </div>
-        </a>
-      );
-    });
-    return (
-      <div className={s.searchPanel}>
-        <label className={s.searchPanelDiv}>
-          <input
-            className={s.searchPanelInput}
-            type="text"
-            value={this.state.query}
-            placeholder="Search..."
-            onChange={this.handleOnInputChange}
-          />
-          <button
-            className={s.searchPanelIcon}
-            // onClick={() => this.props.getUsersData(this.state.query)}
-          >
-            <SearchIcon style={{ color: 'white' }} />
-          </button>
-        </label>
-        {results}
-      </div>
-    );
-  }
+	render() {
+		const { data } = this.props;
+		const resultsArray = [];
+
+		for (let key in data) {
+			if ((data[key].firstName = this.state.query)) {
+				resultsArray.push({
+					id: key,
+					config: data[key]
+				});
+			}
+		}
+
+		const results = resultsArray.map((result) => {
+			return (
+				<a key={result.id} href={result.previewURL}>
+					<h6>{result.user}</h6>
+					<div>
+						<img src={result.previewURL} alt={result.user} />
+					</div>
+				</a>
+			);
+		});
+		return (
+			<div className={s.searchPanel}>
+				<label className={s.searchPanelDiv}>
+					<input
+						className={s.searchPanelInput}
+						type="text"
+						value={this.state.query}
+						placeholder="Search..."
+						onChange={this.handleOnInputChange}
+					/>
+					<button className={s.searchPanelIcon} onClick={this.fetchData}>
+						<SearchIcon style={{ color: 'white' }} />
+					</button>
+				</label>
+				{results}
+			</div>
+		);
+	}
 }
 
 UserSearchPanel.whyDidYouRender = true;
 export default connect(
-  ({ users: { data, error, isLoading } }) => ({
-    data,
-    error,
-    isLoading,
-  }),
-  { getUsersData },
+	({ users: { data, error, isLoading } }) => ({
+		data,
+		error,
+		isLoading
+	}),
+	{ getUsersData }
 )(withStyles(s)(React.memo(UserSearchPanel)));
