@@ -87,12 +87,12 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
       </Form.Group>
       <div className={s.buttonClose}>
         <Link to="/">
-          <Button variant="secondary">Cancel</Button>
+          <Button variant="cancel">Cancel</Button>
         </Link>
       </div>
       <div className={s.buttonSave}>
-        <Button variant="success" type="submit">
-          {submitText || 'Submit'}
+        <Button variant="save" type="submit">
+          <div className={s.textSave}>{submitText || 'Submit'}</div>
         </Button>
       </div>
     </Form>

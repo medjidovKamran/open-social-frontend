@@ -5,9 +5,9 @@ import ProfileContainer from './ProfileContainer';
 import apiClient from '../../utils/axios-with-auth';
 import setCurrentTab from '../../actions/menu';
 
-export default async function action({ store: { dispatch } }) {
+export default async function action({ store: { dispatch, getState } }) {
   dispatch(setCurrentTab('Profile'));
-  dispatch(getUserData(apiClient.userId()));
+  dispatch(getUserData(getState().users.userOption.id || apiClient.userId()));
 
   await dispatch;
 

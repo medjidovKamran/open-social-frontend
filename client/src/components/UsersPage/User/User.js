@@ -3,22 +3,26 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './User.scss';
 import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
 import AddIcon from '@material-ui/icons/Add';
+import OwnChatButton from "../../profile/UserProfile/OwnChat";
 
-const User = ({user}) => {
-  const {firstName, lastName} = user;
+const User = ({user, setUserData}) => {
+  const {firstName, lastName, id} = user;
+
+  const toUserProfile =(id)=>{
+    setUserData({id});
+  };
 
   return (
     <>
-    <div className={s.userConatainer}>
+    <div className={s.userContainer}>
       <div>
-        <Link to={'/' + user.id}>
+        <Link onClick={() => toUserProfile(id)} to={'/'}>
           <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
-        </Link>
         <span>
 					{firstName} {lastName}
 				</span>
+        </Link>
       </div>
       <div className={s.buttonAddWrite}>
         <div>
@@ -27,9 +31,7 @@ const User = ({user}) => {
         </button>
         </div>
         <div>
-        <Link to ='#'>
-					<BorderColorIcon className={s.buttonMessage}  fontSize='large'/>
-				</Link>
+          <OwnChatButton />
         </div>
       </div>
     </div>
@@ -40,3 +42,4 @@ const User = ({user}) => {
 
 User.whyDidYouRender = true;
 export default withStyles(s)(React.memo(User));
+

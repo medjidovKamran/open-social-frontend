@@ -15,6 +15,7 @@ const authorize = response => {
   }
 };
 
+
 export default {
   setHeader () {
     if (!authHeader.Authorization) {

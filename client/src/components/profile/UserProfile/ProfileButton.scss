@@ -69,3 +69,16 @@
     margin-top: -0.1em;
   }
 }
+
+.buttonMessage {
+  color: black;
+  cursor: pointer;
+  width: 40px;
+  margin-left: 15px;
+
+  &:hover {
+    background-color: #0d3349;
+    color: white;
+    transition: 0.3s;
+  }
+}

@@ -9,6 +9,8 @@ import Loader from '../Loader/Loader';
 import ReactPaginate from 'react-paginate';
 import PropTypes from "prop-types";
 import UserSearchPanel from "./UserSearchPanel/UserSearchPanel";
+import {setUserData} from "../../actions/profile";
+
 
 
 class UsersPage extends React.Component {
@@ -110,5 +112,5 @@ export default connect(
     error,
     isLoading
   }),
-  {getUsersData}
+  {getUsersData, setUserData}
 )(withStyles(bootstrap, s)(React.memo(UsersPage)));

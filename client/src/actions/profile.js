@@ -3,7 +3,7 @@ import {
   PROFILE_DATA_LOADING,
   PROFILE_DATA_LOADING_DATA_SUCCESS,
   PROFILE_DATA_LOADING_DATA_FAILURE,
-  apiURL,
+  apiURL, GET_USER_DATA,
 } from '../constants';
 
 const profileDataSuccess = payload => ({
@@ -20,6 +20,13 @@ const profileDataLoading = () => ({
   type: PROFILE_DATA_LOADING,
 });
 
+const userData = payload => ({
+  payload,
+  type: GET_USER_DATA,
+});
+
+
+
 export const getUserData = id => async dispatch => {
   dispatch(profileDataLoading());
   try {
@@ -28,6 +35,10 @@ export const getUserData = id => async dispatch => {
   } catch (error) {
     dispatch(profileDataFailure(error.message));
   }
+};
+
+export const setUserData = (data)=> dispatch =>{
+  dispatch(userData(data))
 };
 
 export const editProfile = ({
