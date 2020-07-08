@@ -59,7 +59,7 @@ function OwnChatButton({user: {id}, createChat}) {
   };
 
   return (
-    <>a
+    <>
       <BrowserRouter>
         <Switch>
           <Route exact path='/' component={ProfileOwnChatButton}/>

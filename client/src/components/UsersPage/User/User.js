@@ -5,19 +5,22 @@ import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
 import AddIcon from '@material-ui/icons/Add';
 import OwnChatButton from "../../profile/UserProfile/OwnChat";
+import { setUserData } from '../../../actions/profile';
+import { connect } from 'react-redux';
 
 const User = ({user, setUserData}) => {
   const {firstName, lastName, id} = user;
 
-  const toUserProfile =(id)=>{
+  const toUserProfile = (id) =>{
     setUserData({id});
   };
+
 
   return (
     <>
     <div className={s.userContainer}>
-      <div>
-        <Link onClick={() => toUserProfile(id)} to={'/'}>
+      <div onClick={() => toUserProfile(id)}>
+        <Link to={'/'}>
           <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
         <span>
 					{firstName} {lastName}
@@ -40,6 +43,7 @@ const User = ({user, setUserData}) => {
   );
 };
 
-User.whyDidYouRender = true;
-export default withStyles(s)(React.memo(User));
+ User.whyDidYouRender = true;
+ export default withStyles(s)(React.memo(User));
 
+// export default connect({setUserData})(withStyles(s)(React.memo(User)));
