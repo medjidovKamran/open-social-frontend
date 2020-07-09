@@ -8,42 +8,45 @@ import OwnChatButton from "../../profile/UserProfile/OwnChat";
 import { setUserData } from '../../../actions/profile';
 import { connect } from 'react-redux';
 
-const User = ({user, setUserData}) => {
-  const {firstName, lastName, id} = user;
+class User extends React.Component {
 
-  const toUserProfile = (id) =>{
-    setUserData({id});
+  toUserProfile = (id) =>{
+    this.props.setUserData({id});
   };
-
-
-  return (
-    <>
-    <div className={s.userContainer}>
-      <div onClick={() => toUserProfile(id)}>
-        <Link to={'/'}>
-          <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
-        <span>
-					{firstName} {lastName}
-				</span>
-        </Link>
-      </div>
-      <div className={s.buttonAddWrite}>
-        <div>
-        <button className={s.buttonAdd}>
-          Add <AddIcon className={s.buttonAddPlus} />
-        </button>
+ 
+  componentDidMount() {
+		this.toUserProfile()
+	}
+  render(){
+    const { firstName, lastName, id } = this.props.user;
+    return (
+      <>
+      <div className={s.userContainer}>
+        <div onClick={() => this.toUserProfile(id)}>
+          <Link to={'/'}>
+            <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
+          <span>
+            {firstName} {lastName}
+          </span>
+          </Link>
         </div>
-        <div>
-          <OwnChatButton />
+        <div className={s.buttonAddWrite}>
+          <div>
+          <button className={s.buttonAdd}>
+            Add <AddIcon className={s.buttonAddPlus} />
+          </button>
+          </div>
+          <div>
+            <OwnChatButton />
+          </div>
         </div>
       </div>
-    </div>
-      <hr className={s.line}/>
-      </>
-  );
-};
+        <hr className={s.line}/>
+        </>
+    );
+  };
+}; 
+ //User.whyDidYouRender = true;
+ //export default withStyles(s)(React.memo(User));
 
- User.whyDidYouRender = true;
- export default withStyles(s)(React.memo(User));
-
-// export default connect({setUserData})(withStyles(s)(React.memo(User)));
+ export default connect(null, {setUserData})(withStyles(s)(React.memo(User)));
