@@ -8,7 +8,6 @@ import SearchIcon from '@material-ui/icons/Search';
 
 class UserSearchPanel extends Component {
 	static propTypes = {
-		handleOnInputChange: PropTypes.func.isRequired,
 		getUsersData: PropTypes.func.isRequired
 	};
 	state = {
@@ -24,28 +23,22 @@ class UserSearchPanel extends Component {
 		}
 	};
 	fetchData = () => {
-		const { getUsersData } = this.props;
-		const { query } = this.state;
-		getUsersData({ query });
+		this.props.getUsersData(() => {
+			return {
+				payload: {
+					request: {
+						url: '/users',
+						params: {
+							query: userName
+						}
+					}
+				}
+			};
+		});
 	};
 
-	//axios returns response with params data
-	//getUsersData returns data array
-
 	render() {
-		const { data } = this.props;
-		const resultsArray = [];
-
-		for (let key in data) {
-			if ((data[key].firstName = this.state.query)) {
-				resultsArray.push({
-					id: key,
-					config: data[key]
-				});
-			}
-		}
-
-		const results = resultsArray.map((result) => {
+		const results = this.props.data.map((result) => {
 			return (
 				<a key={result.id} href={result.previewURL}>
 					<h6>{result.user}</h6>
@@ -84,3 +77,17 @@ export default connect(
 	}),
 	{ getUsersData }
 )(withStyles(s)(React.memo(UserSearchPanel)));
+
+// const resultsArray = [];
+
+// for (let key in data) {
+// 	if ((data[key].firstName = this.state.query)) {
+// 		resultsArray.push({
+// 			id: key,
+// 			config: data[key]
+// 		});
+// 	}
+// }
+
+//axios returns response with params data
+//getUsersData returns data array
