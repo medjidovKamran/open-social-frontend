@@ -23,18 +23,7 @@ class UserSearchPanel extends Component {
 		}
 	};
 	fetchData = () => {
-		this.props.getUsersData(() => {
-			return {
-				payload: {
-					request: {
-						url: '/users',
-						params: {
-							query: userName
-						}
-					}
-				}
-			};
-		});
+		this.props.getUsersData(this.state.query);
 	};
 
 	render() {
