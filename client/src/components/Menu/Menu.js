@@ -8,6 +8,7 @@ import Hamburger from 'react-hamburger-menu';
 import Button from 'react-bootstrap/Button';
 import MenuItem from './MenuItem/MenuItem';
 import { signout } from '../../actions/user';
+import apiClient from '../../utils/axios-with-auth';
 
 import s from './Menu.scss';
 import profile from '../../assets/profile.svg';
@@ -18,108 +19,103 @@ import chats from '../../assets/chats.svg';
 import users from '../../assets/users.svg';
 
 class Menu extends React.Component {
-  static propTypes = {
-    currentTab: PropTypes.string.isRequired,
-    signoutUser: PropTypes.func.isRequired,
-  };
+	static propTypes = {
+		currentTab: PropTypes.string.isRequired,
+		signoutUser: PropTypes.func.isRequired
+	};
 
-  state = {
-    isMenuOpen: false,
-  };
+	state = {
+		isMenuOpen: false
+	};
 
-  render() {
-    const { currentTab, signoutUser } = this.props;
-    const { isMenuOpen } = this.state;
-    return (
-      <div className={s.menu}>
-        <div className={s.menuHamburger}>
-          <Hamburger
-            isOpen={isMenuOpen}
-            menuClicked={this.onMenuClick}
-            width={25}
-            height={15}
-            color="#eeeeee"
-          />
-        </div>
-        <div
-          className={classNames(s.menuItems, {
-            [s.menuItemsActive]: isMenuOpen,
-          })}
-        >
-          {isomorphicCookie.load('token')
-            ? this.menuItems.map(item => (
-                <MenuItem
-                  key={item.text}
-                  item={item}
-                  isActive={currentTab === item.text}
-                  closeMenu={this.onMenuClick}
-                />
-              ))
-            : this.menuItemsOffline.map(item2 => (
-                <MenuItem
-                  key={item2.text}
-                  item={item2}
-                  isActive={currentTab === item2.text}
-                  closeMenu={this.onMenuClick}
-                />
-              ))}
-          {isomorphicCookie.load('token') && (
-            <Button
-              variant="outline-light"
-              className={s.signout}
-              onClick={signoutUser}
-            >
-              Sign out
-            </Button>
-          )}
-        </div>
-      </div>
-    );
-  }
+	render() {
+		const { currentTab, signoutUser } = this.props;
+		const { isMenuOpen } = this.state;
+		return (
+			<div className={s.menu}>
+				<div className={s.menuHamburger}>
+					<Hamburger
+						isOpen={isMenuOpen}
+						menuClicked={this.onMenuClick}
+						width={25}
+						height={15}
+						color="#eeeeee"
+					/>
+				</div>
+				<div
+					className={classNames(s.menuItems, {
+						[s.menuItemsActive]: isMenuOpen
+					})}
+				>
+					{isomorphicCookie.load('token') ? (
+						this.menuItems.map((item) => (
+							<MenuItem
+								key={item.text}
+								item={item}
+								isActive={currentTab === item.text}
+								closeMenu={this.onMenuClick}
+							/>
+						))
+					) : (
+						this.menuItemsOffline.map((item2) => (
+							<MenuItem
+								key={item2.text}
+								item={item2}
+								isActive={currentTab === item2.text}
+								closeMenu={this.onMenuClick}
+							/>
+						))
+					)}
+					{isomorphicCookie.load('token') && (
+						<Button variant="outline-light" className={s.signout} onClick={signoutUser}>
+							Sign out
+						</Button>
+					)}
+				</div>
+			</div>
+		);
+	}
 
-  onMenuClick = () => {
-    const { isMenuOpen } = this.state;
-    this.setState({ isMenuOpen: !isMenuOpen });
-  };
+	onMenuClick = () => {
+		const { isMenuOpen } = this.state;
+		this.setState({ isMenuOpen: !isMenuOpen });
+	};
 
-  menuItems = [
-    {
-      icon: profile,
-      path: '',
-      text: 'Profile',
-    },
-    {
-      icon: about,
-      path: 'about',
-      text: 'About',
-    },
-    {
-      icon: chats,
-      path: 'chats',
-      text: 'Chats',
-    },
-    {
-      icon: users,
-      path: 'users',
-      text: 'Users',
-    },
-  ];
+	menuItems = [
+		{
+			icon: profile,
+			path: `/profile${apiClient.userId()}`,
+			text: 'Profile'
+		},
+		{
+			icon: about,
+			path: 'about',
+			text: 'About'
+		},
+		{
+			icon: chats,
+			path: 'chats',
+			text: 'Chats'
+		},
+		{
+			icon: users,
+			path: 'users',
+			text: 'Users'
+		}
+	];
 
-  menuItemsOffline = [
-    {
-      icon: login,
-      path: 'login',
-      text: 'Login',
-    },
-    {
-      icon: signup,
-      path: 'signup',
-      text: 'SignUp',
-    },
-  ];
+	menuItemsOffline = [
+		{
+			icon: login,
+			path: 'login',
+			text: 'Login'
+		},
+		{
+			icon: signup,
+			path: 'signup',
+			text: 'SignUp'
+		}
+	];
 }
 
-export default connect(
-  ({ menu: { currentTab } }) => ({ currentTab }),
-  { signoutUser: signout },
-)(withStyles(s)(Menu));
+export default connect(({ menu: { currentTab } }) => ({ currentTab }), { signoutUser: signout })(withStyles(s)(Menu));

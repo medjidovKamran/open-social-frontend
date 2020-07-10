@@ -62,7 +62,7 @@ function OwnChatButton({user: {id}, createChat}) {
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path='/' component={ProfileOwnChatButton}/>
+          <Route exact path='/profile:id' component={ProfileOwnChatButton}/>
           <Route exact path='/users' component={UserOwnChatButton}/>
         </Switch>
       </BrowserRouter>

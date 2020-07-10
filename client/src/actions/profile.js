@@ -26,8 +26,8 @@ const userData = (payload) => ({
 	type: GET_USER_DATA
 });
 
-export const setUserData = (data) => (dispatch) => {
-	dispatch(userData(data));
+export const setUserData = (id) => (dispatch) => {
+	dispatch(userData(id));
 };
 
 export const getUserData = (id) => async (dispatch) => {

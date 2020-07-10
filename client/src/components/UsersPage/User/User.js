@@ -8,6 +8,7 @@ import OwnChatButton from "../../profile/UserProfile/OwnChat";
 import { setUserData } from '../../../actions/profile';
 import { connect } from 'react-redux';
 
+
 class User extends React.Component {
 
   toUserProfile = (id) =>{
@@ -16,14 +17,17 @@ class User extends React.Component {
  
   componentDidMount() {
 		this.toUserProfile()
-	}
+  }
+  componentWillUnMount() {
+ 		this.toUserProfile({id:null})
+ 	}
   render(){
     const { firstName, lastName, id } = this.props.user;
     return (
       <>
       <div className={s.userContainer}>
         <div onClick={() => this.toUserProfile(id)}>
-          <Link to={'/'}>
+          <Link to={'/profile'+ id}>
             <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
           <span>
             {firstName} {lastName}
