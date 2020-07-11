@@ -39,7 +39,7 @@ const TabsComponent = ({
             <Tab id="additionalInfo">Additional info</Tab>
             <Tab id="credits">Credits</Tab>
             <div className={styles.IconsWrapper}>
-              {role ===  'admin' || role ===  'superadmin'  ? (
+              {role ===  'admin'  &&
                 <>
                   <span className={styles.Edit}>
                     <Link to="/edit-profile">
@@ -53,7 +53,7 @@ const TabsComponent = ({
                     <FontAwesomeIcon icon={faCog} />
                   </span>
                 </>
-              ) : null}
+               }
             </div>
           </div>
         </TabList>
