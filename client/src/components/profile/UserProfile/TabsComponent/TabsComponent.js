@@ -39,7 +39,7 @@ const TabsComponent = ({
             <Tab id="additionalInfo">Additional info</Tab>
             <Tab id="credits">Credits</Tab>
             <div className={styles.IconsWrapper}>
-              {role === 'user' || role === 'admin' || role === 'superadmin' ? (
+              {role ===  'admin' || role ===  'superadmin'  ? (
                 <>
                   <span className={styles.Edit}>
                     <Link to="/edit-profile">

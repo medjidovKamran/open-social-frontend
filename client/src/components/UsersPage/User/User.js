@@ -13,7 +13,7 @@ class User extends React.Component {
   toUserProfile = (id) =>{
     this.props.setUserData({id});
   };
- 
+
   componentDidMount() {
 		this.toUserProfile()
 	}
@@ -23,7 +23,7 @@ class User extends React.Component {
       <>
       <div className={s.userContainer}>
         <div onClick={() => this.toUserProfile(id)}>
-          <Link to={'/'}>
+          <Link to={'/'+id}>
             <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
           <span>
             {firstName} {lastName}
@@ -45,8 +45,7 @@ class User extends React.Component {
         </>
     );
   };
-}; 
- //User.whyDidYouRender = true;
- //export default withStyles(s)(React.memo(User));
+};
 
+ User.whyDidYouRender = true;
  export default connect(null, {setUserData})(withStyles(s)(React.memo(User)));
