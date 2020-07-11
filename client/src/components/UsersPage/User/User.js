@@ -16,14 +16,17 @@ class User extends React.Component {
 
   componentDidMount() {
 		this.toUserProfile()
-	}
+  }
+  componentWillUnMount() {
+ 		this.toUserProfile({id:null})
+ 	}
   render(){
     const { firstName, lastName, id } = this.props.user;
     return (
       <>
       <div className={s.userContainer}>
         <div onClick={() => this.toUserProfile(id)}>
-          <Link to={'/'+id}>
+          <Link to={'/profile'+ id}>
             <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
           <span>
             {firstName} {lastName}
