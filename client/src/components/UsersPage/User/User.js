@@ -17,8 +17,8 @@ class User extends React.Component {
   componentDidMount() {
 		this.toUserProfile()
   }
-  componentWillUnMount() {
- 		this.toUserProfile({id:null})
+  componentWillUnmount() {
+    this.props.setUserData({id:null})
  	}
   render(){
     const { firstName, lastName, id } = this.props.user;

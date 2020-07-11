@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import React, {Component} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEnvelope, faCaretDown} from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import { Row, Col, Card, Container } from 'react-bootstrap';
+import {Row, Col, Card, Container} from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import styles from './Profile.scss';
 import stylesButton from './ProfileButton.scss';
-import { ProfileButton } from './ProfileButton/ProfileButton';
+import {ProfileButton} from './ProfileButton/ProfileButton';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
 import OwnChatButton from './OwnChat';
 import apiClient from '../../../utils/axios-with-auth';
-import { apiURL } from '../../../constants';
+import {apiURL} from '../../../constants';
 
 class Profile extends Component {
   static propTypes = {
@@ -22,6 +22,7 @@ class Profile extends Component {
         name: PropTypes.string,
       }),
     }).isRequired,
+    role:PropTypes.string,
   };
 
   state = {
@@ -32,7 +33,7 @@ class Profile extends Component {
 
   componentDidMount() {
     // eslint-disable-next-line react/destructuring-assignment
-    const { avatar } = this.props.avatar;
+    const {avatar} = this.props.avatar;
     if (avatar) {
       const avatarUrl = `${apiURL}/${avatar.name.replace('undefined', '')}`;
       this.setState(previousState => ({
@@ -58,7 +59,7 @@ class Profile extends Component {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(photo);
     fileReader.addEventListener('load', () => {
-      const { result } = fileReader;
+      const {result} = fileReader;
       if (result) {
         this.setState(previousState => ({
           isDefaultPhotoDisplayed: false,
@@ -71,7 +72,9 @@ class Profile extends Component {
   };
 
   render() {
-    const { isDefaultPhotoDisplayed, photo } = this.state;
+    const {isDefaultPhotoDisplayed, photo} = this.state;
+    const {role} = this.props.role;
+
     return (
       <Container className={styles.UserProfile}>
         <Card className={styles.ProfileCard}>
@@ -108,11 +111,11 @@ class Profile extends Component {
                     />
                   }
                 />
-                <OwnChatButton />
+                {role === 'admin' && <OwnChatButton/>}
               </div>
             </Col>
             <Col lg={7} md={7} sm={12}>
-              <TabsComponent />
+              <TabsComponent/>
             </Col>
           </Row>
         </Card>
@@ -144,6 +147,6 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default connect(({ userProfile: avatar }) => ({
-  avatar,
+export default connect(({userProfile: avatar, userProfile: role}) => ({
+  avatar, role
 }))(withStyles(styles, stylesButton)(React.memo(Profile)));
