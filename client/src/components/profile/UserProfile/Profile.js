@@ -23,7 +23,7 @@ class Profile extends Component {
         name: PropTypes.string,
       }),
     }).isRequired,
-    role: PropTypes.string,
+    id: PropTypes.string,
   };
 
   state = {
@@ -80,7 +80,7 @@ class Profile extends Component {
 
   render() {
     const {isDefaultPhotoDisplayed} = this.state;
-    const {role} = this.props.role;
+    const {id} = this.props.id;
 
     return (
       <Container className={styles.UserProfile}>
@@ -118,7 +118,7 @@ class Profile extends Component {
                     />
                   }
                 />
-                {role === 'admin' && <OwnChatButton/>}
+                {id === apiClient.userId() && <OwnChatButton/>}
               </div>
             </Col>
             <Col lg={7} md={7} sm={12}>
@@ -154,6 +154,6 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default connect(({userProfile: avatar, userProfile: role}) => ({
-  avatar, role
+export default connect(({userProfile: avatar, userProfile: id}) => ({
+  avatar, id
 }))(withStyles(styles, stylesButton)(React.memo(Profile)));

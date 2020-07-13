@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './TabsComponent.scss';
 import Link from '../../../Link';
+import apiClient from "../../../../utils/axios-with-auth";
 
 const TabsComponent = ({
   firstName,
@@ -17,7 +18,7 @@ const TabsComponent = ({
   userName,
   email,
   birthdayDate,
-  role,
+  id,
 }) => {
   const dataObject = {
     userInformation: [
@@ -39,7 +40,7 @@ const TabsComponent = ({
             <Tab id="additionalInfo">Additional info</Tab>
             <Tab id="credits">Credits</Tab>
             <div className={styles.IconsWrapper}>
-              {role ===  'admin'  &&
+              {id === apiClient.userId()  &&
                 <>
                   <span className={styles.Edit}>
                     <Link to="/edit-profile">
@@ -101,13 +102,13 @@ TabsComponent.propTypes = {
 TabsComponent.whyDidYouRender = true;
 export default connect(
   ({
-    userProfile: { firstName, lastName, userName, email, birthdayDate, role },
+    userProfile: { firstName, lastName, userName, email, birthdayDate, id },
   }) => ({
     birthdayDate,
     email,
     firstName,
     lastName,
-    role,
+    id,
     userName,
   }),
 )(withStyles(styles, reactStyle)(React.memo(TabsComponent)));
