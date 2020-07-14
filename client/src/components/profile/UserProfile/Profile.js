@@ -23,7 +23,7 @@ class Profile extends Component {
         name: PropTypes.string,
       }),
     }).isRequired,
-    id: PropTypes.string,
+    id: PropTypes.number,
   };
 
   state = {

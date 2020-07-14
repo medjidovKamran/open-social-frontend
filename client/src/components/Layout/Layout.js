@@ -21,7 +21,7 @@ function Layout(props) {
 				<Col lg={10}>
 					<div className={s.header}>
 						<div className={s.linkHeader}>
-							<Link to={`/profile${apiClient.userId()}`}>
+							<Link to={'/'}>
 								<div className={s.logo}>
 									<div className={s.logoImg}>
 										<img src={logo} alt="logo" />
