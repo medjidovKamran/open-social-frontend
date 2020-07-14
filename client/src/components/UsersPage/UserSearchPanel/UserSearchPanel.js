@@ -68,17 +68,3 @@ export default connect(
   }),
   { getUsersWithParams },
 )(withStyles(s)(React.memo(UserSearchPanel)));
-
-// const resultsArray = [];
-
-// for (let key in data) {
-// 	if ((data[key].firstName = this.state.query)) {
-// 		resultsArray.push({
-// 			id: key,
-// 			config: data[key]
-// 		});
-// 	}
-// }
-
-//axios returns response with params data
-//getUsersData returns data array

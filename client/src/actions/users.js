@@ -32,7 +32,7 @@ export const getUsersData = () => async dispatch => {
 export const getUsersWithParams = ({ query }) => async dispatch => {
   dispatch(userDataLoading({ query }));
   try {
-    const { data } = await apiClient.get('${apiURL}/api/v1/users', {
+    const { data } = await apiClient.get('${apiURL}/api/v1/users=%${search}%', {
       search: query,
     });
     dispatch(userDataSuccess({ data }));
