@@ -23,7 +23,10 @@ class Profile extends Component {
         name: PropTypes.string,
       }),
     }).isRequired,
-    id: PropTypes.number,
+    id: PropTypes.shape({
+      id: PropTypes.number
+    }).isRequired
+
   };
 
   state = {
@@ -79,7 +82,6 @@ class Profile extends Component {
   };
 
   render() {
-    const {isDefaultPhotoDisplayed} = this.state;
     const {id} = this.props.id;
 
     return (
@@ -88,7 +90,6 @@ class Profile extends Component {
           <Row>
             <Col lg={5} md={5} sm={12}>
               <ProfilePhoto
-                isDefaultPhotoDisplayed={isDefaultPhotoDisplayed}
                 imgSource={this.getUserAvatar()}
                 changeProfilePhotoHandler={this.changeProfilePhotoHandler}
                 loadPhoto={this.loadPhoto}
@@ -154,6 +155,6 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default connect(({userProfile: {avatar, id}}) => ({
+export default connect(({userProfile: avatar, userProfile: id}) => ({
   avatar, id
 }))(withStyles(styles, stylesButton)(React.memo(Profile)));
