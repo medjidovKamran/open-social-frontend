@@ -154,6 +154,6 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default connect(({userProfile: avatar, userProfile: id}) => ({
+export default connect(({userProfile: {avatar, id}}) => ({
   avatar, id
 }))(withStyles(styles, stylesButton)(React.memo(Profile)));

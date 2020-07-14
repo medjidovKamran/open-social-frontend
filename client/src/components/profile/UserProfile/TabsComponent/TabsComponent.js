@@ -95,7 +95,7 @@ TabsComponent.propTypes = {
   email: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   userName: PropTypes.string.isRequired,
 };
 

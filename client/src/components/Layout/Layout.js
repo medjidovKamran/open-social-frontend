@@ -6,7 +6,6 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import isomorphicCookie from 'isomorphic-cookie';
-import apiClient from '../../utils/axios-with-auth';
 import Link from '../Link';
 import Menu from '../Menu';
 import logo from '../../assets/logo.png';

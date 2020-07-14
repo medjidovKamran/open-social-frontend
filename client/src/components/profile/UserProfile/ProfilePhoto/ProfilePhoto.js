@@ -58,6 +58,6 @@ ProfilePhoto.propTypes = {
 
 ProfilePhoto.whyDidYouRender = true;
 
-export default connect(({ userProfile: { id } }) => ({
-  id,
-}))(withStyles(styles)(React.memo(ProfilePhoto)));
+export default connect(({userProfile:  id  }) => (
+  id
+))(withStyles(styles)(React.memo(ProfilePhoto)));
