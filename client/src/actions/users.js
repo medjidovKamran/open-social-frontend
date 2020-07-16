@@ -29,14 +29,17 @@ export const getUsersData = () => async (dispatch) => {
 		dispatch(userDataFailure(error.message));
 	}
 };
+
 export const getUsersWithParams = ({ query }) => async (dispatch) => {
-	dispatch(userDataLoading({ query }));
+	console.log({ query });
+	dispatch(userDataLoading());
 	try {
-		const data = await apiClient.get(`${apiURL}/api/v1/users=%${search}%`, {
+		const { data } = await apiClient.get(`${apiURL}/api/v1/users`, {
 			search: query
 		});
-		console.log(data);
-		dispatch(userDataSuccess(data));
+		dispatch(userDataSuccess({ data }));
+
+		return data;
 	} catch (error) {
 		dispatch(userDataFailure(error.message));
 	}

@@ -19,6 +19,7 @@ class UserSearchPanel extends Component {
 		this.setState({ query: query });
 	};
 	fetchData = (query) => {
+		console.log(query);
 		this.props.getUsersWithParams({
 			search: query
 		});
