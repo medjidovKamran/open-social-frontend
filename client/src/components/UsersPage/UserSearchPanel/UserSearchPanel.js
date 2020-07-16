@@ -16,12 +16,12 @@ class UserSearchPanel extends Component {
 
 	handleOnInputChange = (event) => {
 		const query = event.target.value;
-		this.setState({ query: query });
+		this.setState({ query });
 	};
 	fetchData = (query) => {
 		console.log(query);
 		this.props.getUsersWithParams({
-			search: query
+			query
 		});
 	};
 
