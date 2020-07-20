@@ -53,7 +53,7 @@ class UserSearchPanel extends Component {
     );
   }
 }
-//onChange=(searchUsers("yourText"));
+
 UserSearchPanel.whyDidYouRender = true;
 export default connect(
   ({ users: { data, error, isLoading } }) => ({
