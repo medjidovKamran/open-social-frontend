@@ -5,21 +5,30 @@
   z-index: 100;
   position: relative;
   padding: 5px 10px;
-  background-color: var(--color-test);
+  background-color: inherit;
   cursor: pointer;
 
   button,
   p {
+    font-size: 14px;
     margin-bottom: 0;
+    color: var(--color-header-text);
+    transition: 0.2s ease;
+  }
+
+  p {
+    :hover {
+      color: red;
+    }
   }
 }
 
 .langset {
   position: absolute;
   padding: 5px 10px;
-  top: -5px;
+  top: -60%;
   left: -10px;
-  background-color: green;
+  background-color: inherit;
 
   button {
     margin-bottom: 5px;

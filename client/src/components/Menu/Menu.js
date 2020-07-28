@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import MenuItem from "./MenuItem/MenuItem";
 import { signout } from "../../actions/user";
 import LangSelect from "../LangSelect/LangSelect";
+import textData from "../../utils/lib/languages.json";
 
 import s from "./Menu.scss";
 import profile from "../../assets/profile.svg";
@@ -29,8 +30,49 @@ class Menu extends React.Component {
   };
 
   render() {
-    const { currentTab, signoutUser } = this.props;
-    const { isMenuOpen } = this.state;
+    const {
+      props: { currentTab, signoutUser, lang },
+      state: { isMenuOpen },
+    } = this;
+
+    const { menuButtons } = textData;
+
+    const menuItems = [
+      {
+        icon: profile,
+        path: "",
+        text: menuButtons.profile.label[lang],
+      },
+      {
+        icon: about,
+        path: "about",
+        text: menuButtons.about.label[lang],
+      },
+      {
+        icon: chats,
+        path: "chats",
+        text: menuButtons.chats.label[lang],
+      },
+      {
+        icon: users,
+        path: "users",
+        text: menuButtons.users.label[lang],
+      },
+    ];
+
+    const menuItemsOffline = [
+      {
+        icon: login,
+        path: "login",
+        text: menuButtons.login.label[lang],
+      },
+      {
+        icon: signup,
+        path: "signUp",
+        text: menuButtons.signUp.label[lang],
+      },
+    ];
+
     return (
       <div className={s.menu}>
         <div className={s.menuHamburger}>
@@ -48,7 +90,7 @@ class Menu extends React.Component {
           })}
         >
           {isomorphicCookie.load("token")
-            ? this.menuItems.map((item) => (
+            ? menuItems.map(item => (
                 <MenuItem
                   key={item.text}
                   item={item}
@@ -56,7 +98,7 @@ class Menu extends React.Component {
                   closeMenu={this.onMenuClick}
                 />
               ))
-            : this.menuItemsOffline.map((item2) => (
+            : menuItemsOffline.map(item2 => (
                 <MenuItem
                   key={item2.text}
                   item={item2}
@@ -83,44 +125,11 @@ class Menu extends React.Component {
     const { isMenuOpen } = this.state;
     this.setState({ isMenuOpen: !isMenuOpen });
   };
-
-  menuItems = [
-    {
-      icon: profile,
-      path: "",
-      text: "Profile",
-    },
-    {
-      icon: about,
-      path: "about",
-      text: "About",
-    },
-    {
-      icon: chats,
-      path: "chats",
-      text: "Chats",
-    },
-    {
-      icon: users,
-      path: "users",
-      text: "Users",
-    },
-  ];
-
-  menuItemsOffline = [
-    {
-      icon: login,
-      path: "login",
-      text: "Login",
-    },
-    {
-      icon: signup,
-      path: "signup",
-      text: "SignUp",
-    },
-  ];
 }
 
-export default connect(({ menu: { currentTab } }) => ({ currentTab }), {
-  signoutUser: signout,
-})(withStyles(s)(Menu));
+export default connect(
+  ({ menu: { currentTab, lang } }) => ({ currentTab, lang }),
+  {
+    signoutUser: signout,
+  },
+)(withStyles(s)(Menu));
