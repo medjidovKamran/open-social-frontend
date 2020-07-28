@@ -1,0 +1,35 @@
+@import "../variables.scss";
+@import "../../style/index.scss";
+
+.langselect {
+  z-index: 100;
+  position: relative;
+  padding: 5px 10px;
+  background-color: var(--color-test);
+  cursor: pointer;
+
+  button,
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.langset {
+  position: absolute;
+  padding: 5px 10px;
+  top: -5px;
+  left: -10px;
+  background-color: green;
+
+  button {
+    margin-bottom: 5px;
+  }
+}
+
+.displaynone {
+  display: none;
+}
+
+.displayblock {
+  display: block;
+}

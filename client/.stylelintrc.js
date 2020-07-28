@@ -3,50 +3,50 @@
 module.exports = {
   // The standard config based on a handful of CSS style guides
   // https://github.com/stylelint/stylelint-config-standard
-  extends: 'stylelint-config-standard',
+  extends: "stylelint-config-standard",
 
   plugins: [
     // stylelint plugin to sort CSS rules content with specified order
     // https://github.com/hudochenkov/stylelint-order
-    'stylelint-order',
+    "stylelint-order",
   ],
 
   rules: {
-    'order/order': [
-      'custom-properties',
-      'dollar-variables',
-      'declarations',
-      'at-rules',
-      'rules',
+    "order/order": [
+      "custom-properties",
+      "dollar-variables",
+      "declarations",
+      "at-rules",
+      "rules",
     ],
 
     // Opinionated rule, you can disable it if you want
-    'order/properties-order': [],
-    'property-no-unknown': [
+    "order/properties-order": [],
+    "property-no-unknown": [
       true,
       {
         ignoreProperties: [
           // CSS Modules composition
           // https://github.com/css-modules/css-modules#composition
-          'composes',
+          "composes",
         ],
       },
     ],
 
     // https://github.com/hudochenkov/stylelint-order/blob/master/rules/order/README.md
-    'selector-pseudo-class-no-unknown': [
+    "selector-pseudo-class-no-unknown": [
       true,
       {
         ignorePseudoClasses: [
           // CSS Modules :global scope
           // https://github.com/css-modules/css-modules#exceptions
-          'global',
-          'local',
+          "global",
+          "local",
         ],
       },
     ],
 
     // https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-order/README.md
-    'string-quotes': 'single',
+    "string-quotes": "double",
   },
 };

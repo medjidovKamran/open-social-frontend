@@ -1,21 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import isomorphicCookie from 'isomorphic-cookie';
-import withStyles from 'isomorphic-style-loader/withStyles';
-import classNames from 'classnames';
-import Hamburger from 'react-hamburger-menu';
-import Button from 'react-bootstrap/Button';
-import MenuItem from './MenuItem/MenuItem';
-import { signout } from '../../actions/user';
+import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import isomorphicCookie from "isomorphic-cookie";
+import withStyles from "isomorphic-style-loader/withStyles";
+import classNames from "classnames";
+import Hamburger from "react-hamburger-menu";
+import Button from "react-bootstrap/Button";
+import MenuItem from "./MenuItem/MenuItem";
+import { signout } from "../../actions/user";
+import LangSelect from "../LangSelect/LangSelect";
 
-import s from './Menu.scss';
-import profile from '../../assets/profile.svg';
-import about from '../../assets/about.svg';
-import login from '../../assets/login.svg';
-import signup from '../../assets/signup.svg';
-import chats from '../../assets/chats.svg';
-import users from '../../assets/users.svg';
+import s from "./Menu.scss";
+import profile from "../../assets/profile.svg";
+import about from "../../assets/about.svg";
+import login from "../../assets/login.svg";
+import signup from "../../assets/signup.svg";
+import chats from "../../assets/chats.svg";
+import users from "../../assets/users.svg";
 
 class Menu extends React.Component {
   static propTypes = {
@@ -46,8 +47,8 @@ class Menu extends React.Component {
             [s.menuItemsActive]: isMenuOpen,
           })}
         >
-          {isomorphicCookie.load('token')
-            ? this.menuItems.map(item => (
+          {isomorphicCookie.load("token")
+            ? this.menuItems.map((item) => (
                 <MenuItem
                   key={item.text}
                   item={item}
@@ -55,7 +56,7 @@ class Menu extends React.Component {
                   closeMenu={this.onMenuClick}
                 />
               ))
-            : this.menuItemsOffline.map(item2 => (
+            : this.menuItemsOffline.map((item2) => (
                 <MenuItem
                   key={item2.text}
                   item={item2}
@@ -63,7 +64,7 @@ class Menu extends React.Component {
                   closeMenu={this.onMenuClick}
                 />
               ))}
-          {isomorphicCookie.load('token') && (
+          {isomorphicCookie.load("token") && (
             <Button
               variant="outline-light"
               className={s.signout}
@@ -73,6 +74,7 @@ class Menu extends React.Component {
             </Button>
           )}
         </div>
+        <LangSelect />
       </div>
     );
   }
@@ -85,41 +87,40 @@ class Menu extends React.Component {
   menuItems = [
     {
       icon: profile,
-      path: '',
-      text: 'Profile',
+      path: "",
+      text: "Profile",
     },
     {
       icon: about,
-      path: 'about',
-      text: 'About',
+      path: "about",
+      text: "About",
     },
     {
       icon: chats,
-      path: 'chats',
-      text: 'Chats',
+      path: "chats",
+      text: "Chats",
     },
     {
       icon: users,
-      path: 'users',
-      text: 'Users',
+      path: "users",
+      text: "Users",
     },
   ];
 
   menuItemsOffline = [
     {
       icon: login,
-      path: 'login',
-      text: 'Login',
+      path: "login",
+      text: "Login",
     },
     {
       icon: signup,
-      path: 'signup',
-      text: 'SignUp',
+      path: "signup",
+      text: "SignUp",
     },
   ];
 }
 
-export default connect(
-  ({ menu: { currentTab } }) => ({ currentTab }),
-  { signoutUser: signout },
-)(withStyles(s)(Menu));
+export default connect(({ menu: { currentTab } }) => ({ currentTab }), {
+  signoutUser: signout,
+})(withStyles(s)(Menu));
