@@ -16,10 +16,12 @@ const LangSelect = () => {
   };
   const setLang = lang => {
     dispatch({ lang, type: "SET_CURRENT_LANG" });
+    localStorage.setItem("chatLang", lang);
   };
 
   return (
-    <button type="button" className={styles.langselect} onClick={toggler}>
+    /* eslint-disable */
+    <div className={styles.langselect} onClick={toggler}>
       <p>{currentLang}</p>
       <div
         className={classNames(styles.langset, {
@@ -32,13 +34,14 @@ const LangSelect = () => {
             return null;
           }
           return (
-            <button type="button" key={string} onClick={() => setLang(string)}>
+            <p key={string} onClick={() => setLang(string)}>
               {string}
-            </button>
+            </p>
           );
         })}
       </div>
-    </button>
+    </div>
+    /* eslint-enable */
   );
 };
 

@@ -1,6 +1,7 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
-import { Provider as ReduxProvider } from 'react-redux';
+import React, { memo } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { Provider as ReduxProvider } from "react-redux";
 
 const ContextType = {
   // Universal HTTP client
@@ -44,6 +45,11 @@ class App extends React.PureComponent {
     context: PropTypes.shape(ContextType).isRequired,
   };
 
+  state = {
+    isShow: false,
+    isClient: false,
+  };
+
   static whyDidYouRender = true;
 
   static childContextTypes = ContextType;
@@ -53,11 +59,67 @@ class App extends React.PureComponent {
     return context;
   }
 
+  componentDidMount() {
+    const {
+      props: { dispatch },
+    } = this;
+
+    if (typeof window !== "undefined") {
+      const isHaveLang = localStorage.getItem("chatLang");
+      if (isHaveLang) {
+        dispatch({
+          type: "SET_CURRENT_LANG",
+          lang: isHaveLang,
+        });
+        this.setState({ isShow: true, isClient: true });
+      } else {
+        const userLang = navigator.language || navigator.userLanguage;
+        switch (userLang) {
+          case "uk":
+            dispatch({
+              type: "SET_CURRENT_LANG",
+              lang: "uk",
+            });
+            localStorage.setItem("chatLang", "uk");
+            break;
+          case "en":
+            dispatch({
+              type: "SET_CURRENT_LANG",
+              lang: "en",
+            });
+            localStorage.setItem("chatLang", "en");
+            break;
+          case "ru":
+            dispatch({
+              type: "SET_CURRENT_LANG",
+              lang: "ru",
+            });
+            localStorage.setItem("chatLang", "ru");
+            break;
+          default:
+            dispatch({
+              type: "SET_CURRENT_LANG",
+              lang: "en",
+            });
+            localStorage.setItem("chatLang", "en");
+        }
+        this.setState({ isShow: true, isClient: true });
+      }
+    } else {
+      this.setState({ isClient: false });
+    }
+  }
+
   render() {
     // NOTE: If you need to add or modify header, footer etc. of the app,
     // please do that inside the Layout component.
-    const { children } = this.props;
-    return React.Children.only(children);
+    const {
+      props: { children },
+      state: { isShow },
+    } = this;
+
+    return isShow && React.Children.only(children);
   }
 }
-export default memo(App);
+// export default memo(App);
+export default connect(null)(memo(App));
