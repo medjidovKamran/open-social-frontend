@@ -1,13 +1,13 @@
-import { SET_USER_MESSAGE } from '../constants';
+import { SET_USER_MESSAGE } from "../constants";
 
 const initialState = {
-  message: '',
+  message: "",
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case SET_USER_MESSAGE:
-      return { message: action.message };
+      return { ...state, message: action.message };
     default:
       return state;
   }

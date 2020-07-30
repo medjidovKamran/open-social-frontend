@@ -22,7 +22,7 @@ class SignupPage extends React.Component {
   handleSubmit = async data => {
     const { signupUser } = this.props;
     const response = await signupUser(data);
-    if (response.name !== "Error") history.push("/login");
+    // if (response.name !== "Error") history.push("/login");
   };
 
   render() {
