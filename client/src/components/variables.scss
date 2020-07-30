@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 @import url("https://use.fontawesome.com/releases/v5.3.1/css/all.css");
 
 :root {
@@ -6,7 +6,7 @@
    * Typography
    * ======================================================================== */
 
-  --font-family-base: 'Montserrat', 'HelveticaNeue-Light', sans-serif;
+  --font-family-base: "Montserrat", "HelveticaNeue-Light", sans-serif;
 
   /*
    * Layout
@@ -15,6 +15,7 @@
   --max-content-width: 1000px;
   --color-header-background: #3f426b;
   --color-header-text: #eee;
+  --color-test: #c82333;
 
   /*
    * Media queries breakpoints
