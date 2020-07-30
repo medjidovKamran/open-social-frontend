@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getUsersWithParams } from '../../../actions/users';
 import PropTypes from 'prop-types';
+import _ from 'lodash';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import s from './UsersSearchPanel.scss';
 import SearchIcon from '@material-ui/icons/Search';
@@ -14,26 +15,17 @@ class UserSearchPanel extends Component {
 		search: ''
 	};
 
-	handleOnInputChange = (event) => {
-		const search = event.target.value;
+	handleOnInputChange = _.debounce((search) => {
 		this.setState({ search: search });
-	};
+		this.props.getUsersWithParams({ search });
+	}, 700);
+
 	fetchData = () => {
 		const search = this.state.search;
 		this.props.getUsersWithParams({ search });
 	};
 
 	render() {
-		// const results = this.props.data.map(result => {
-		//   return (
-		//     <a key={result.id} href={result.previewURL}>
-		//       <h6>{result.user}</h6>
-		//       <div>
-		//         <img src={result.previewURL} alt={result.user} />
-		//       </div>
-		//     </a>
-		//   );
-		// });
 		return (
 			<div className={s.searchPanel}>
 				<label className={s.searchPanelDiv}>
@@ -42,13 +34,12 @@ class UserSearchPanel extends Component {
 						type="text"
 						value={this.state.query}
 						placeholder="Search..."
-						onChange={this.handleOnInputChange}
+						onChange={(e) => this.handleOnInputChange(e.target.value)}
 					/>
 					<button className={s.searchPanelIcon} onClick={this.fetchData}>
 						<SearchIcon style={{ color: 'white' }} />
 					</button>
 				</label>
-				{/* {results} */}
 			</div>
 		);
 	}
@@ -63,3 +54,17 @@ export default connect(
 	}),
 	{ getUsersWithParams }
 )(withStyles(s)(React.memo(UserSearchPanel)));
+
+// const results = this.props.data.map(result => {
+//   return (
+//     <a key={result.id} href={result.previewURL}>
+//       <h6>{result.user}</h6>
+//       <div>
+//         <img src={result.previewURL} alt={result.user} />
+//       </div>
+//     </a>
+//   );
+// });
+{
+	/* {results} */
+}

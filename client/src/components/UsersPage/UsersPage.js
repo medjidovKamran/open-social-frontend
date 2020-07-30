@@ -15,7 +15,7 @@ class UsersPage extends React.Component {
 		data: PropTypes.arrayOf(
 			PropTypes.shape({
 				firstName: PropTypes.string.isRequired,
-				id: PropTypes.string.isRequired,
+				// id: PropTypes.string.isRequired,
 				lastName: PropTypes.string.isRequired
 			})
 		).isRequired,
