@@ -47,6 +47,6 @@ module.exports = {
     ],
 
     // https://github.com/hudochenkov/stylelint-order/blob/master/rules/properties-order/README.md
-    "string-quotes": "double",
+    "string-quotes": "single",
   },
 };

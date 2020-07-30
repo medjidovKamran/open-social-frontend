@@ -2,6 +2,6 @@
 // https://prettier.io/docs/en/configuration.html
 module.exports = {
   printWidth: 80,
-  singleQuote: false,
+  singleQuote: true,
   trailingComma: "all",
 };
