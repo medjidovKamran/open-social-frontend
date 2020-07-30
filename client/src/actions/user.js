@@ -71,13 +71,6 @@ export const signup = ({
   password,
 }) => dispatch => {
   setTimeout(() => dispatch(resetMessage()), DELAY);
-  console.log("firstName", firstName);
-  console.log("lastName", lastName);
-  console.log("birthdayDate", birthdayDate);
-  console.log("userName", userName);
-  console.log("email", email);
-  console.log("password", password);
-
   return axios
     .post(
       `${apiURL}/api/v1/auth/register`,
