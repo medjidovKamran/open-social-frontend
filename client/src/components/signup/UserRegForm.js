@@ -1,13 +1,13 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
-import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
-import withStyles from "isomorphic-style-loader/withStyles";
-import { Field, reduxForm } from "redux-form";
-import { Button, InputGroup, Row, Col, Form } from "react-bootstrap";
-import FieldInput from "../InputField/FieldInput";
-import { VALIDATION_RULES } from "../../utils/validators/ValidationRules";
-import textData from "../../utils/lib/languages.json";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
+import withStyles from 'isomorphic-style-loader/withStyles';
+import { Field, reduxForm } from 'redux-form';
+import { Button, InputGroup, Row, Col, Form } from 'react-bootstrap';
+import FieldInput from '../InputField/FieldInput';
+import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
+import textData from '../../utils/lib/languages.json';
 
 const UserForm = ({ handleSubmit, submitText }) => {
   const lang = useSelector(store => store.menu.lang);
@@ -129,7 +129,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
         </Col>
       </Form.Group>
       <Button variant="danger" type="submit">
-        {submitText || "Submit"}
+        {submitText || 'Submit'}
       </Button>
     </Form>
   );
@@ -141,5 +141,5 @@ UserForm.propTypes = {
 };
 
 export default withStyles(bootstrap)(
-  reduxForm({ form: "user-form" })(UserForm),
+  reduxForm({ form: 'user-form' })(UserForm),
 );

@@ -3,8 +3,8 @@ import {
   apiURL,
   USERS_DATA_LOADING,
   USERS_DATA_LOADING_DATA_FAILURE,
-  USERS_DATA_LOADING_DATA_SUCCESS
-} from "../constants";
+  USERS_DATA_LOADING_DATA_SUCCESS,
+} from '../constants';
 
 const userDataSuccess = payload => ({
   payload,
@@ -23,12 +23,9 @@ const userDataLoading = () => ({
 export const getUsersData = () => async dispatch => {
   dispatch(userDataLoading());
   try {
-    const {data} = await apiClient.get(`${apiURL}/api/v1/users`);
+    const { data } = await apiClient.get(`${apiURL}/api/v1/users`);
     dispatch(userDataSuccess(data));
   } catch (error) {
     dispatch(userDataFailure(error.message));
   }
 };
-
-
-

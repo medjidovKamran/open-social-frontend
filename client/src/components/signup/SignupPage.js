@@ -1,20 +1,21 @@
-import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import withStyles from "isomorphic-style-loader/withStyles";
-import Button from "react-bootstrap/Button";
-import Alert from "react-bootstrap/Alert";
-import bootstrap from "bootstrap/dist/css/bootstrap.min.css";
-import Link from "../Link/Link";
-import UserRegForm from "./UserRegForm";
-import history from "../../history";
-import { signup } from "../../actions/user";
-import textData from "../../utils/lib/languages.json";
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import withStyles from 'isomorphic-style-loader/withStyles';
+import Button from 'react-bootstrap/Button';
+import Alert from 'react-bootstrap/Alert';
+import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
+import Link from '../Link/Link';
+import UserRegForm from './UserRegForm';
+import history from '../../history';
+import { signup } from '../../actions/user';
+import textData from '../../utils/lib/languages.json';
 
-import s from "./signup.scss";
+import s from './signup.scss';
 
 class SignupPage extends React.Component {
   static propTypes = {
+    lang: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
     signupUser: PropTypes.func.isRequired,
   };
@@ -22,7 +23,7 @@ class SignupPage extends React.Component {
   handleSubmit = async data => {
     const { signupUser } = this.props;
     const response = await signupUser(data);
-    if (response.name !== "Error") history.push("/login");
+    if (response.name !== 'Error') history.push('/login');
   };
 
   render() {
@@ -50,7 +51,7 @@ class SignupPage extends React.Component {
 
 export default withStyles(bootstrap, s)(
   connect(
-    ({ user: { message }, menu: { lang } }) => ({ message, lang }),
+    ({ user: { message }, menu: { lang } }) => ({ lang, message }),
     { signupUser: signup },
   )(SignupPage),
 );

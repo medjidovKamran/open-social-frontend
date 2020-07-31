@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import s from './Banner.scss';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import s from './Banner.scss';
 import title1 from '../../assets/images_banner/title3_01.jpg';
 import title2 from '../../assets/images_banner/title3_02.jpg';
 import title4 from '../../assets/images_banner/title3_04.jpg';
