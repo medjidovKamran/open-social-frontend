@@ -5,10 +5,15 @@
   align-items: center;
   text-align: center;
 }
-
 .SearchInputDialog {
-  border: 2px solid rgb(172, 172, 172);
+  border: 1px solid rgb(172, 172, 172);
   border-radius: 10px;
   height: 30px;
+  width: 125px;
+  outline: none;
+  padding: 6px 7px;
+}
+.SearchInputDialog:focus {
+  background-color: #ccc;
   outline: none;
 }
