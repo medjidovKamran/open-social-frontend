@@ -1,7 +1,7 @@
-import { SET_USER_MESSAGE } from "../constants";
+import { SET_USER_MESSAGE } from '../constants';
 
 const initialState = {
-  message: "",
+  message: '',
 };
 
 export default (state = initialState, action) => {

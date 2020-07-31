@@ -34,4 +34,4 @@ export const PROFILE_DATA_LOADING_DATA_FAILURE =
 
 export const apiURL = 'https://social.cloudns.cl';
 // export const apiURL = "http://178.20.156.208:4000";
-//export const apiURL = 'http://localhost:4000';
+// export const apiURL = 'http://localhost:4000';

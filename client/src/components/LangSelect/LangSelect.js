@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import withStyles from "isomorphic-style-loader/withStyles";
-import classNames from "classnames";
-import styles from "./LangSelect.scss";
-import textData from "../../utils/lib/languages.json";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import withStyles from 'isomorphic-style-loader/withStyles';
+import classNames from 'classnames';
+import styles from './LangSelect.scss';
+import textData from '../../utils/lib/languages.json';
 
 const LangSelect = () => {
   const currentLang = useSelector(store => store.menu.lang);
@@ -15,12 +15,11 @@ const LangSelect = () => {
     setIsShow(!isShow);
   };
   const setLang = lang => {
-    dispatch({ lang, type: "SET_CURRENT_LANG" });
-    localStorage.setItem("chatLang", lang);
+    dispatch({ lang, type: 'SET_CURRENT_LANG' });
+    localStorage.setItem('chatLang', lang);
   };
 
   return (
-    /* eslint-disable */
     <div className={styles.langselect} onClick={toggler}>
       <p>{currentLang}</p>
       <div
@@ -41,7 +40,6 @@ const LangSelect = () => {
         })}
       </div>
     </div>
-    /* eslint-enable */
   );
 };
 

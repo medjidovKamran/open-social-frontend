@@ -1,10 +1,10 @@
 /* eslint-disable promise/prefer-await-to-then */
 /* eslint-disable unicorn/consistent-function-scoping */
-import axios from "axios";
-import isomorphicCookie from "isomorphic-cookie";
-import moment from "moment";
-import history from "../history";
-import { SET_USER_MESSAGE, SET_USER_AUTH, apiURL } from "../constants";
+import axios from 'axios';
+import isomorphicCookie from 'isomorphic-cookie';
+import moment from 'moment';
+import history from '../history';
+import { SET_USER_MESSAGE, SET_USER_AUTH, apiURL } from '../constants';
 
 const setUserMessage = message => ({
   message,
@@ -14,7 +14,7 @@ const setUserMessage = message => ({
 const DELAY = 4500;
 
 const resetMessage = () => ({
-  message: "",
+  message: '',
   type: SET_USER_MESSAGE,
 });
 
@@ -35,23 +35,23 @@ export const login = ({ email, password }) => dispatch => {
       }),
       {
         headers: {
-          Authorization: "",
-          "content-type": "application/json",
+          Authorization: '',
+          'content-type': 'application/json',
         },
       },
     )
     .then(async response => {
-      await isomorphicCookie.save("token", response.data.token, {
+      await isomorphicCookie.save('token', response.data.token, {
         expires: moment()
-          .add(cookieExpires, "minute")
+          .add(cookieExpires, 'minute')
           .toDate(),
         secure: false,
       });
 
-      const token = await isomorphicCookie.load("token");
+      const token = await isomorphicCookie.load('token');
       dispatch(setUserAuth(response.data.user));
 
-      return dispatch(setUserMessage("You are logged in."));
+      return dispatch(setUserMessage('You are logged in.'));
     })
     .catch(error => {
       const { response } = error;
@@ -84,7 +84,7 @@ export const signup = ({
       },
       {
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
       },
     )
@@ -100,8 +100,8 @@ export const signup = ({
 };
 
 export const signout = () => dispatch => {
-  isomorphicCookie.remove("token");
-  history.push("/login");
-  dispatch(setUserMessage("Signed out!"));
+  isomorphicCookie.remove('token');
+  history.push('/login');
+  dispatch(setUserMessage('Signed out!'));
   setTimeout(() => dispatch(resetMessage()), DELAY);
 };

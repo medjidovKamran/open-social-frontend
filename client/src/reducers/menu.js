@@ -1,9 +1,9 @@
-import { SET_CURRENT_TAB, SET_CURRENT_LANG } from "../constants";
+import { SET_CURRENT_TAB, SET_CURRENT_LANG } from '../constants';
 
 const initialState = {
-  currentTab: "",
+  currentTab: '',
   isLoading: true,
-  lang: "en",
+  lang: 'en',
 };
 
 export default (state = initialState, action = {}) => {

@@ -5,7 +5,9 @@ import history from '../history';
 import { apiURL } from '../constants';
 
 const authHeader = {
-  Authorization: isomorphicCookie.load('token') ? `Bearer ${isomorphicCookie.load('token')}` : null,
+  Authorization: isomorphicCookie.load('token')
+    ? `Bearer ${isomorphicCookie.load('token')}`
+    : null,
 };
 
 const authorize = response => {
@@ -16,12 +18,6 @@ const authorize = response => {
 };
 
 export default {
-  setHeader () {
-    if (!authHeader.Authorization) {
-      authHeader.Authorization = `Bearer ${isomorphicCookie.load('token')}`;
-    }
-  },
-
   async get(url, data) {
     this.setHeader();
     const response = await axios.get(url, {
@@ -64,6 +60,12 @@ export default {
       );
     } catch (error) {
       return error;
+    }
+  },
+
+  setHeader() {
+    if (!authHeader.Authorization) {
+      authHeader.Authorization = `Bearer ${isomorphicCookie.load('token')}`;
     }
   },
 
