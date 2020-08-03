@@ -1,0 +1,39 @@
+@import '../variables.scss';
+@import '../../style/index.scss';
+
+.langselect {
+  z-index: 100;
+  position: relative;
+  padding: 5px 10px;
+  background-color: inherit;
+  border: 1px solid var(--color-header-text);
+  border-radius: 3px;
+  cursor: pointer;
+
+  p {
+    font-size: 16px;
+    margin-bottom: 0;
+    color: var(--color-header-text);
+    transition: 0.2s ease;
+  }
+}
+
+.langset {
+  position: absolute;
+  padding: 5px 11px;
+  top: -40%;
+  left: -1px;
+  background-color: inherit;
+
+  button {
+    margin-bottom: 5px;
+  }
+}
+
+.displaynone {
+  display: none;
+}
+
+.displayblock {
+  display: block;
+}

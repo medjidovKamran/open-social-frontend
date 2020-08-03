@@ -4,7 +4,7 @@ import * as JWT from 'jwt-decode';
 import history from '../history';
 import { apiURL } from '../constants';
 
-export const authHeader = {
+const authHeader = {
   Authorization: isomorphicCookie.load('token')
     ? `Bearer ${isomorphicCookie.load('token')}`
     : null,

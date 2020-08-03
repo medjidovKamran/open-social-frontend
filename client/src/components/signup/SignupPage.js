@@ -8,10 +8,12 @@ import Link from '../Link/Link';
 import UserRegForm from './UserRegForm';
 import history from '../../history';
 import { signup } from '../../actions/user';
+import textData from '../../utils/lib/languages.json';
 import styles from './SignupPage.scss';
 
 class SignupPage extends React.Component {
   static propTypes = {
+    lang: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
     signupUser: PropTypes.func.isRequired,
   };
@@ -23,20 +25,23 @@ class SignupPage extends React.Component {
   };
 
   render() {
-    const { message } = this.props;
+    const { message, lang } = this.props;
+    const { signupPage } = textData;
     return (
       <div className={styles.form}>
         {message && <Alert variant="info">{message}</Alert>}
-        <h3 className={styles.Heading}>Registration</h3>
+        <h3 className={styles.Heading}>{signupPage.title[lang]}</h3>
         {process.env.BROWSER && (
           <UserRegForm onSubmit={this.handleSubmit} submitText="Go →" />
         )}
         {process.env.BROWSER && (
           <div className={styles.Link}>
-            <span className={styles.wantLogin}>Already signed up?</span>
+            <span className={styles.wantLogin}>
+              {signupPage.isRegistred[lang]}
+            </span>
             <span className={styles.VerticalLine}>|</span>
             <Link to="/login" className={styles.LogIn}>
-              Log in
+              {signupPage.login[lang]}
             </Link>
           </div>
         )}
@@ -47,7 +52,7 @@ class SignupPage extends React.Component {
 
 export default withStyles(bootstrap, styles)(
   connect(
-    ({ user: { message } }) => ({ message }),
+    ({ user: { message }, menu: { lang } }) => ({ lang, message }),
     { signupUser: signup },
   )(SignupPage),
 );

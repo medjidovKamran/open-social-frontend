@@ -56,7 +56,7 @@ export const login = ({ email, password }) => dispatch => {
     .catch(error => {
       const { response } = error;
       if (response) {
-        dispatch(setUserMessage(response.data));
+        dispatch(setUserMessage(response.data.message));
       }
       return error.toJSON();
     });
@@ -74,14 +74,14 @@ export const signup = ({
   return axios
     .post(
       `${apiURL}/api/v1/auth/register`,
-      JSON.stringify({
+      {
         birthdayDate,
         email,
         firstName,
         lastName,
         password,
         userName,
-      }),
+      },
       {
         headers: {
           'content-type': 'application/json',
@@ -89,12 +89,12 @@ export const signup = ({
       },
     )
     .then(response => {
-      dispatch(setUserMessage(response.data));
+      dispatch(setUserMessage(response.data.message));
       return response;
     })
     .catch(error => {
       const { response } = error;
-      dispatch(setUserMessage(response.data));
+      dispatch(setUserMessage(response.data.message));
       return error.toJSON();
     });
 };

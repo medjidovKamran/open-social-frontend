@@ -1,40 +1,44 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
+import AddIcon from '@material-ui/icons/Add';
 import s from './User.scss';
 import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
-import BorderColorIcon from '@material-ui/icons/BorderColor';
-import AddIcon from '@material-ui/icons/Add';
 
-const User = ({user}) => {
-  const {firstName, lastName} = user;
+const User = ({ user }) => {
+  const { firstName, lastName } = user;
 
   return (
     <>
-    <div className={s.userConatainer}>
-      <div>
-        <Link to={'/' + user.id}>
-          <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
-        </Link>
-        <span>
-					{firstName} {lastName}
-				</span>
-      </div>
-      <div className={s.buttonAddWrite}>
+      <div className={s.userConatainer}>
         <div>
-        <button className={s.buttonAdd}>
-          Add <AddIcon className={s.buttonAddPlus} />
-        </button>
+          <Link to={`/${user.id}`}>
+            <img
+              className={s.UsersAvatar}
+              src={UsersAvatar}
+              alt={UsersAvatar}
+            />
+          </Link>
+          <span>
+            {firstName} {lastName}
+          </span>
         </div>
-        <div>
-        <Link to ='#'>
-					<BorderColorIcon className={s.buttonMessage}  fontSize='large'/>
-				</Link>
+        <div className={s.buttonAddWrite}>
+          <div>
+            <button className={s.buttonAdd}>
+              Add <AddIcon className={s.buttonAddPlus} />
+            </button>
+          </div>
+          <div>
+            <Link to="#">
+              <BorderColorIcon className={s.buttonMessage} fontSize="large" />
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-      <hr className={s.line}/>
-      </>
+      <hr className={s.line} />
+    </>
   );
 };
 
