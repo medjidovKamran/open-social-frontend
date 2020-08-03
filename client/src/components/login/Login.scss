@@ -1,22 +1,56 @@
-.form {
-  width: 400px;
+.FormContainer {
+  right: 10%;
+  top: 30%;
+  background-color: white;
+  min-height: 22em;
+  padding-bottom: 2em;
+  width: 30em;
+  opacity: 0.9;
+  //float: right;
+  display: block;
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
-.heading {
+.form {
+  width: 500px;
+  position: relative;
+  top: 30px;
+  left: 7%;
+  //transform: translate(-50%, -50%);
+}
+
+.Login {
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+  margin-left: 6em;
+
+  //position: absolute;
+  width: 74px;
+  height: 32px;
+  left: 372px;
+  //top: 317px;
+
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 27px;
+  line-height: 32px;
+
+  /* identical to box height */
+  color: #3f426b;
 }
 
-.links {
+.Link {
   margin-top: 30px;
+  width: 26em;
   border-top: 1px solid #e2e2e2;
 }
 
 .notSignedUp {
   font-size: 14px;
   color: #aeaeae;
+}
+
+div[class*=alert-info] {
+  width: 26em;
 }

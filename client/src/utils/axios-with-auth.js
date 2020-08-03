@@ -4,8 +4,10 @@ import * as JWT from 'jwt-decode';
 import history from '../history';
 import { apiURL } from '../constants';
 
-const authHeader = {
-  Authorization: isomorphicCookie.load('token') ? `Bearer ${isomorphicCookie.load('token')}` : null,
+export const authHeader = {
+  Authorization: isomorphicCookie.load('token')
+    ? `Bearer ${isomorphicCookie.load('token')}`
+    : null,
 };
 
 const authorize = response => {
@@ -16,7 +18,7 @@ const authorize = response => {
 };
 
 export default {
-  setHeader () {
+  setHeader() {
     if (!authHeader.Authorization) {
       authHeader.Authorization = `Bearer ${isomorphicCookie.load('token')}`;
     }

@@ -1,19 +1,44 @@
 .form {
   width: 400px;
   position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  right: 10%;
+  padding: 0.8em;
+  background-color: white;
 }
 
-.heading {
+.Login {
   text-align: center;
   margin-bottom: 50px;
 }
 
-.links {
+.Heading {
+  margin-bottom: 1em;
+  color: #3f426b;
+  text-align: center;
+}
+
+.Link {
   margin-top: 30px;
   border-top: 1px solid #e2e2e2;
+}
+
+.LogIn {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 16px;
+  color: #8d8888;
+
+  &:hover {
+    color: #3f426b;
+  }
+}
+
+.VerticalLine {
+  color: #3f426b;
+  font-size: 23px;
+  margin: 0 0.8em 0 0.8em;
 }
 
 .wantLogin {

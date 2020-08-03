@@ -2,15 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Link from '../Link/Link';
 import UserRegForm from './UserRegForm';
 import history from '../../history';
 import { signup } from '../../actions/user';
-
-import s from './signup.scss';
+import styles from './SignupPage.scss';
 
 class SignupPage extends React.Component {
   static propTypes = {
@@ -27,18 +25,19 @@ class SignupPage extends React.Component {
   render() {
     const { message } = this.props;
     return (
-      <div className={s.form}>
+      <div className={styles.form}>
         {message && <Alert variant="info">{message}</Alert>}
-        <h3 className={s.heading}>Registration</h3>
+        <h3 className={styles.Heading}>Registration</h3>
         {process.env.BROWSER && (
-          <UserRegForm onSubmit={this.handleSubmit} submitText="Sign up" />
+          <UserRegForm onSubmit={this.handleSubmit} submitText="Go →" />
         )}
         {process.env.BROWSER && (
-          <div className={s.links}>
-            <span className={s.wantLogin}>Already signed up?</span>
-            <Button variant="link">
-              <Link to="/login">Log in</Link>
-            </Button>
+          <div className={styles.Link}>
+            <span className={styles.wantLogin}>Already signed up?</span>
+            <span className={styles.VerticalLine}>|</span>
+            <Link to="/login" className={styles.LogIn}>
+              Log in
+            </Link>
           </div>
         )}
       </div>
@@ -46,7 +45,7 @@ class SignupPage extends React.Component {
   }
 }
 
-export default withStyles(bootstrap, s)(
+export default withStyles(bootstrap, styles)(
   connect(
     ({ user: { message } }) => ({ message }),
     { signupUser: signup },

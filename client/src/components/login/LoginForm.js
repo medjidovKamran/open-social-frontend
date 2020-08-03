@@ -7,33 +7,41 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
+import styles from './LoginForm.scss';
 
 const UserForm = ({ handleSubmit, submitText }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <Form.Group>
-        <Form.Label>Email address</Form.Label>
-        <Field
-          name="email"
-          component={FieldInput}
-          type="email"
-          placeholder="Enter email"
-          description="Email"
-          validate={VALIDATION_RULES.EMAIL}
-        />
+        <div className={styles.EmailWrapper}>
+          <Form.Label style={{ marginRight: '2em' }}>Email address</Form.Label>
+          <Field
+            name="email"
+            component={FieldInput}
+            type="email"
+            placeholder="Enter email"
+            description="Email"
+            validate={VALIDATION_RULES.EMAIL}
+          />
+        </div>
       </Form.Group>
       <Form.Group>
-        <Form.Label>Password</Form.Label>
-        <Field
-          name="password"
-          component={FieldInput}
-          type="password"
-          placeholder="Enter password"
-          description="Password"
-          validate={VALIDATION_RULES.PASSWORD}
-        />
+        <div className={styles.PasswordWrapper}>
+          <Form.Label style={{ marginRight: '4.21em' }}>Password</Form.Label>
+          <Field
+            name="password"
+            component={FieldInput}
+            type="password"
+            placeholder="Enter password"
+            description="Password"
+            validate={VALIDATION_RULES.PASSWORD}
+          />
+        </div>
       </Form.Group>
-      <Button variant="danger" type="submit">
+      <Form.Group controlId="formHorizontalCheck">
+        <Form.Check label="Remember me" />
+      </Form.Group>
+      <Button className={styles.LoginButton} variant="danger" type="submit">
         {submitText || 'Submit'}
       </Button>
     </Form>
@@ -45,6 +53,6 @@ UserForm.propTypes = {
   submitText: PropTypes.string.isRequired,
 };
 
-export default withStyles(bootstrap)(
+export default withStyles(bootstrap, styles)(
   reduxForm({ form: 'user-form' })(UserForm),
 );

@@ -6,6 +6,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Button, InputGroup, Row, Col, Form } from 'react-bootstrap';
 import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
+import styles from './UserRegForm.scss';
 
 const UserForm = ({ handleSubmit, submitText }) => {
   return (
@@ -121,7 +122,11 @@ const UserForm = ({ handleSubmit, submitText }) => {
           />
         </Col>
       </Form.Group>
-      <Button variant="danger" type="submit">
+      <Button
+        variant="danger"
+        className={styles.RegistrationButton}
+        type="submit"
+      >
         {submitText || 'Submit'}
       </Button>
     </Form>
@@ -133,6 +138,6 @@ UserForm.propTypes = {
   submitText: PropTypes.string.isRequired,
 };
 
-export default withStyles(bootstrap)(
+export default withStyles(bootstrap, styles)(
   reduxForm({ form: 'user-form' })(UserForm),
 );

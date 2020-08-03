@@ -1,0 +1,29 @@
+.EmailWrapper {
+  display: flex;
+  margin-bottom: 1.5em;
+  align-items: center;
+}
+
+.PasswordWrapper {
+  display: flex;
+  margin-bottom: 2.5em;
+  align-items: center;
+}
+
+input[class=form-control] {
+  min-width: 17em;
+  border-radius: 0;
+  border: 1px solid  #3f426b;
+}
+
+.LoginButton {
+  background-color: #3f426b;
+  margin: -3em 0 0 19em;
+  border-radius: 0;
+  border: none;
+  width: 7em;
+}
+
+div[class=form-check] {
+  width: 280px;
+}

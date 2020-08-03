@@ -1,0 +1,18 @@
+
+input[class*=form-control] {
+  border-radius: 0;
+  border: 1px solid #3f426b;
+}
+
+.RegistrationButton {
+  border-radius: 0;
+  border: none;
+  background-color: #3f426b;
+  float: right;
+  margin-top: -0.5em;
+  width: 7em;
+}
+
+.RegistrationButton:hover .RegistrationButton:active {
+  background-color: #3f426b;
+}

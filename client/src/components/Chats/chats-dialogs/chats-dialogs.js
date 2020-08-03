@@ -5,6 +5,9 @@ import avatar from '../../../assets/avatar.png';
 import Messages from './messages';
 import emojii from 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
+import iconFile from '../../../assets/chat/icon-file.png';
+import iconPhoto from '../../../assets/chat/icon-photo.png';
+import iconVideo from '../../../assets/chat/icon-video.png';
 
 const ChatsDialogs = () => {
 	const [ emojiPickerState, SetEmojiPicker ] = useState(false);
@@ -66,9 +69,9 @@ const ChatsDialogs = () => {
 				</form>
 
 				<div className="dropUp">
-					<img src="./img/Icon File.png" alt="" />
-					<img src="./img/Icon Photo.png" alt="" />
-					<img src="./img/Icon Video.png" alt="" />
+					<img src={iconFile} alt="" />
+					<img src={iconPhoto} alt="" />
+					<img src={iconVideo} alt="" />
 				</div>
 			</div>
 		</div>

@@ -231,7 +231,7 @@ textarea {
 }
 
 .containerRow {
-  min-height: 100vh;
+  max-height: 82vh;
   overflow-x: hidden;
 }
 
@@ -250,7 +250,7 @@ textarea {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0 105px;
+  padding: 0 50px;
   background-color: #3f426b;
   height: 60px;
   display: flex;
@@ -259,24 +259,48 @@ textarea {
   align-items: left;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
-  z-index: 50;
+.MainImage {
+  position: absolute;
+  min-height: 90vh;
+  min-width: 90vh;
+  max-height: 90vh;
+  max-width: 90em;
+  margin-top: 3.5em;
 }
 
-.logoImg {
-  display: flex;
-  align-items: center;
+//.logo {
+//  display: flex;
+//  align-items: center;
+//  z-index: 50;
+//}
+//
+//.logoImg {
+//  display: flex;
+//  align-items: center;
+//
+//  img {
+//    margin: 0.7em 2em 0 -5em;
+//  }
+//}
 
-  img {
-    height: 60px;
-  }
+.BigWavesLogo {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 398px;
+  height: 218px;
 }
 
-.logoName {
-  font-size: 30px;
-  color: $color-header-text;
+.HeaderLogoWave {
+  margin: 0.6em 0 0 0.5em;
+}
+
+.PlusCircleImg {
+  margin: 0.7em 0 0 1em;
+  float: right;
 }
 
 .linkHeader {
@@ -296,4 +320,40 @@ textarea {
   button:focus {
     outline: none;
   }
+}
+
+.Footer {
+  background-color: #3f426b;
+  height: 140px;
+  //text-align: center;
+  color: #fff;
+}
+
+.FooterImage {
+  margin: 1.5em;
+}
+
+.FooterLine {
+  margin: 2.7em 0 0 2em;
+}
+
+.SloganFooter {
+  margin: -3em 0 0 6em;
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+
+  /* identical to box height */
+
+  letter-spacing: 0.05em;
+  color: #fff;
+  text-align: left;
+}
+
+.SocialIconFooter {
+  margin: 2.8em 0 0 1.5em;
+  height: 17px;
+  font-size: 24px;
 }
