@@ -4,7 +4,8 @@
 /* eslint-disable react/button-has-type */
 import React, { useState, useRef } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import Button from '@material-ui/core/Button';
+// import Button from '@material-ui/core/Button';
+import Button from 'react-bootstrap/Button';
 import CloseIcon from '@material-ui/icons/Close';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import s from './chats-mini.module.scss';
@@ -57,10 +58,22 @@ function ChatsMini() {
   return (
     <div className={s.miniDialogs}>
       {!openChat ? (
-        <Button onClick={handleOpenChat}>Chats</Button>
+        <Button
+          variant="outline-light"
+          className={s.chatButton}
+          onClick={handleOpenChat}
+        >
+          Chats
+        </Button>
       ) : (
         <div>
-          <Button onClick={handleCloseChat}>Chats</Button>
+          <Button
+            variant="outline-light"
+            className={s.chatButton}
+            onClick={handleCloseChat}
+          >
+            Chats
+          </Button>
           <div
             ref={miniChat}
             className={s.miniDialogsWindow}

@@ -26,18 +26,19 @@ const ChatsBlockUserAdmin = ({
       </div>
     );
   }
-  const avatarImg = avatar && avatar.url ? avatar.url : dumpImg;
+
   return (
     <div className={style.blockUserAdmin}>
-      <div>
-        <div
-          className={style.avatar}
-          style={{ backgroundImage: `url( http://${avatarImg})` }}
-        />
-        <div>
-          <h4>{` ${firstName} ${lastName}`}</h4>
-        </div>
-      </div>
+      <div
+        className={style.avatar}
+        style={{
+          backgroundImage:
+            avatar && avatar.url
+              ? `url( http://${avatar.url})`
+              : `url( ${dumpImg})`,
+        }}
+      />
+      <h4>{` ${firstName} ${lastName}`}</h4>
     </div>
   );
 };
