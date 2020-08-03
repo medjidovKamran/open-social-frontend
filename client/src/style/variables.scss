@@ -1,2 +1,28 @@
+//base colors and backgrounds
+$color-default-text: #292b2c;
+$bg-default-select: #b3d4fc;
+$color-default-border: #ccc;
+$color-default-link: #13a6e1;
 $color-header-background: #3f426b;
 $color-header-text: #eee;
+//font-sizes
+$logo-size: 3rem;
+$title-size: 2rem;
+$menu-tap-size: 0.8rem;
+
+// other
+$font-family-base: "Montserrat", "HelveticaNeue-Light", "sans-serif";
+$border-radius-smoll: 3px;
+$border-radius-midle: 5px;
+$border-radius-big: 10px;
+
+//media screen width
+$media-width-1: 360px;
+$media-width-2: 576px;
+$media-width-3: 768px;
+$media-width-4: 1024px;
+$media-width-5: 1280px;
+$media-width-6: 1440px;
+$media-width-7: 1920px;
+$media-width-8: 2560px;
+$media-width-9: 3840px;

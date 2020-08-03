@@ -11,6 +11,13 @@ import { signout } from '../../actions/user';
 import LangSelect from '../LangSelect/LangSelect';
 import textData from '../../utils/lib/languages.json';
 
+// import isomorphicCookie from "isomorphic-cookie";
+// {isomorphicCookie.load("token") && (
+//   <div>
+//     <ChatsMini />
+//   </div>
+// )}
+
 import s from './Menu.scss';
 import profile from '../../assets/profile.svg';
 import about from '../../assets/about.svg';
