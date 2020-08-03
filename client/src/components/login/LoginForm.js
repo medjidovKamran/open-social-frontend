@@ -21,47 +21,29 @@ const UserForm = ({ handleSubmit, submitText }) => {
     <Form onSubmit={handleSubmit}>
       <Form.Group>
         <div className={styles.EmailWrapper}>
-          <Form.Label style={{ marginRight: '2em' }}>Email address</Form.Label>
+          <Form.Label style={{ marginRight: '2em' }}>{inputs.email.label[lang]}</Form.Label>
           <Field
             name="email"
             component={FieldInput}
             type="email"
-            placeholder="Enter email"
+            placeholder={inputs.email.placeholder[lang]}
             description="Email"
             validate={VALIDATION_RULES.EMAIL}
           />
         </div>
-        <Form.Label>{inputs.email.label[lang]}</Form.Label>
-        <Field
-          name="email"
-          component={FieldInput}
-          type="email"
-          placeholder={inputs.email.placeholder[lang]}
-          description="Email"
-          validate={VALIDATION_RULES.EMAIL}
-        />
       </Form.Group>
       <Form.Group>
         <div className={styles.PasswordWrapper}>
-          <Form.Label style={{ marginRight: '4.21em' }}>Password</Form.Label>
+          <Form.Label style={{ marginRight: '4.21em' }}>{inputs.password.label[lang]}</Form.Label>
           <Field
             name="password"
             component={FieldInput}
             type="password"
-            placeholder="Enter password"
+            placeholder={inputs.password.placeholder[lang]}
             description="Password"
             validate={VALIDATION_RULES.PASSWORD}
           />
         </div>
-        <Form.Label>{inputs.password.label[lang]}</Form.Label>
-        <Field
-          name="password"
-          component={FieldInput}
-          type="password"
-          placeholder={inputs.password.placeholder[lang]}
-          description="Password"
-          validate={VALIDATION_RULES.PASSWORD}
-        />
       </Form.Group>
       <Form.Group controlId="formHorizontalCheck">
         <Form.Check label="Remember me" />
