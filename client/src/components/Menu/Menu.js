@@ -22,6 +22,7 @@ import users from '../../assets/users.svg';
 class Menu extends React.Component {
   static propTypes = {
     currentTab: PropTypes.string.isRequired,
+    lang: PropTypes.string.isRequired,
     signoutUser: PropTypes.func.isRequired,
   };
 

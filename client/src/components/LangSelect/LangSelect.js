@@ -18,7 +18,6 @@ const LangSelect = () => {
     dispatch({ lang, type: 'SET_CURRENT_LANG' });
     localStorage.setItem('chatLang', lang);
   };
-
   return (
     <div className={styles.langselect} onClick={toggler}>
       <p>{currentLang}</p>

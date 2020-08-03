@@ -1,22 +1,31 @@
 .miniDialogsWindow {
-  color: black;
-  width: 400px;
-  border: 2px solid skyblue;
-  background-color: whitesmoke;
-  border-radius: 30px;
-  padding: 10px;
-  box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
-  position: absolute;
-  right: 10px;
-  top: 250%;
+  background-color: red;
+  // color: black;
+  // width: 400px;
+  // border: 2px solid skyblue;
+  // background-color: whitesmoke;
+  // border-radius: 30px;
+  // padding: 10px;
+  // box-shadow: 0 3px 5px 5px rgba(0, 0, 0, 0.2);
+  // position: absolute;
+  // right: 10px;
+  // top: 250%;
 }
 
 .miniDialogs {
   height: 40px;
 }
 
+.chatButton {
+  margin: 0 auto;
+  max-width: 90%;
+  position: flex;
+  bottom: 20px;
+  font-size: 14px;
+}
+
 .buttonCloseWindowMiniChat {
-  display: inline-block;
+  display: block;
   float: right;
   cursor: pointer;
   margin: 10px;
@@ -31,7 +40,7 @@
 }
 
 .buttonBackToChatUsers {
-  display: inline-block;
+  display: block;
   cursor: pointer;
   margin: 10px;
   float: left;
