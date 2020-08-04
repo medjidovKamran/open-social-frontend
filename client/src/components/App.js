@@ -1,7 +1,6 @@
-import React, { memo } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { Provider as ReduxProvider } from "react-redux";
+import React, { memo } from 'react';
+import { connect, Provider as ReduxProvider } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const ContextType = {
   // Universal HTTP client
@@ -46,8 +45,8 @@ class App extends React.PureComponent {
   };
 
   state = {
-    isShow: false,
     isClient: false,
+    isShow: false,
   };
 
   static whyDidYouRender = true;
@@ -64,46 +63,46 @@ class App extends React.PureComponent {
       props: { dispatch },
     } = this;
 
-    if (typeof window !== "undefined") {
-      const isHaveLang = localStorage.getItem("chatLang");
+    if (typeof window !== 'undefined') {
+      const isHaveLang = localStorage.getItem('chatLang');
       if (isHaveLang) {
         dispatch({
-          type: "SET_CURRENT_LANG",
           lang: isHaveLang,
+          type: 'SET_CURRENT_LANG',
         });
-        this.setState({ isShow: true, isClient: true });
+        this.setState({ isClient: true, isShow: true });
       } else {
         const userLang = navigator.language || navigator.userLanguage;
         switch (userLang) {
-          case "uk":
+          case 'uk':
             dispatch({
-              type: "SET_CURRENT_LANG",
-              lang: "uk",
+              lang: 'uk',
+              type: 'SET_CURRENT_LANG',
             });
-            localStorage.setItem("chatLang", "uk");
+            localStorage.setItem('chatLang', 'uk');
             break;
-          case "en":
+          case 'en':
             dispatch({
-              type: "SET_CURRENT_LANG",
-              lang: "en",
+              lang: 'en',
+              type: 'SET_CURRENT_LANG',
             });
-            localStorage.setItem("chatLang", "en");
+            localStorage.setItem('chatLang', 'en');
             break;
-          case "ru":
+          case 'ru':
             dispatch({
-              type: "SET_CURRENT_LANG",
-              lang: "ru",
+              lang: 'ru',
+              type: 'SET_CURRENT_LANG',
             });
-            localStorage.setItem("chatLang", "ru");
+            localStorage.setItem('chatLang', 'ru');
             break;
           default:
             dispatch({
-              type: "SET_CURRENT_LANG",
-              lang: "en",
+              lang: 'en',
+              type: 'SET_CURRENT_LANG',
             });
-            localStorage.setItem("chatLang", "en");
+            localStorage.setItem('chatLang', 'en');
         }
-        this.setState({ isShow: true, isClient: true });
+        this.setState({ isClient: true, isShow: true });
       }
     } else {
       this.setState({ isClient: false });

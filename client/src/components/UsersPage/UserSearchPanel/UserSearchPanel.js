@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getUsersWithParams } from "../../../actions/users";
-import PropTypes from "prop-types";
-import _ from "lodash";
-import withStyles from "isomorphic-style-loader/withStyles";
-import s from "./UsersSearchPanel.scss";
-import SearchIcon from "@material-ui/icons/Search";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getUsersWithParams } from '../../../actions/users';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
+import withStyles from 'isomorphic-style-loader/withStyles';
+import s from './UsersSearchPanel.scss';
+import SearchIcon from '@material-ui/icons/Search';
 
 class UserSearchPanel extends Component {
   static propTypes = {
     getUsersWithParams: PropTypes.func.isRequired,
   };
   state = {
-    search: "",
+    search: '',
   };
 
   handleOnInputChange = _.debounce(search => {

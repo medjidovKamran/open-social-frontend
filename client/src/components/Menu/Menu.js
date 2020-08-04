@@ -1,27 +1,28 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import isomorphicCookie from "isomorphic-cookie";
-import withStyles from "isomorphic-style-loader/withStyles";
-import classNames from "classnames";
-import Hamburger from "react-hamburger-menu";
-import Button from "react-bootstrap/Button";
-import MenuItem from "./MenuItem/MenuItem";
-import { signout } from "../../actions/user";
-import LangSelect from "../LangSelect/LangSelect";
-import textData from "../../utils/lib/languages.json";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import isomorphicCookie from 'isomorphic-cookie';
+import withStyles from 'isomorphic-style-loader/withStyles';
+import classNames from 'classnames';
+import Hamburger from 'react-hamburger-menu';
+import Button from 'react-bootstrap/Button';
+import MenuItem from './MenuItem/MenuItem';
+import { signout } from '../../actions/user';
+import LangSelect from '../LangSelect/LangSelect';
+import textData from '../../utils/lib/languages.json';
 
-import s from "./Menu.scss";
-import profile from "../../assets/profile.svg";
-import about from "../../assets/about.svg";
-import login from "../../assets/login.svg";
-import signup from "../../assets/signup.svg";
-import chats from "../../assets/chats.svg";
-import users from "../../assets/users.svg";
+import s from './Menu.scss';
+import profile from '../../assets/profile.svg';
+import about from '../../assets/about.svg';
+import login from '../../assets/login.svg';
+import signup from '../../assets/signup.svg';
+import chats from '../../assets/chats.svg';
+import users from '../../assets/users.svg';
 
 class Menu extends React.Component {
   static propTypes = {
     currentTab: PropTypes.string.isRequired,
+    lang: PropTypes.string.isRequired,
     signoutUser: PropTypes.func.isRequired,
   };
 
@@ -40,22 +41,22 @@ class Menu extends React.Component {
     const menuItems = [
       {
         icon: profile,
-        path: "",
+        path: '',
         text: menuButtons.profile.label[lang],
       },
       {
         icon: about,
-        path: "about",
+        path: 'about',
         text: menuButtons.about.label[lang],
       },
       {
         icon: chats,
-        path: "chats",
+        path: 'chats',
         text: menuButtons.chats.label[lang],
       },
       {
         icon: users,
-        path: "users",
+        path: 'users',
         text: menuButtons.users.label[lang],
       },
     ];
@@ -63,12 +64,12 @@ class Menu extends React.Component {
     const menuItemsOffline = [
       {
         icon: login,
-        path: "login",
+        path: 'login',
         text: menuButtons.login.label[lang],
       },
       {
         icon: signup,
-        path: "signUp",
+        path: 'signUp',
         text: menuButtons.signUp.label[lang],
       },
     ];
@@ -89,7 +90,7 @@ class Menu extends React.Component {
             [s.menuItemsActive]: isMenuOpen,
           })}
         >
-          {isomorphicCookie.load("token")
+          {isomorphicCookie.load('token')
             ? menuItems.map(item => (
                 <MenuItem
                   key={item.text}
@@ -106,7 +107,7 @@ class Menu extends React.Component {
                   closeMenu={this.onMenuClick}
                 />
               ))}
-          {isomorphicCookie.load("token") && (
+          {isomorphicCookie.load('token') && (
             <Button
               variant="outline-light"
               className={s.signout}

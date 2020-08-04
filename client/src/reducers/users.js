@@ -17,6 +17,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
+        data: Array.from(action.payload),
         error: '',
         isLoading: false,
       };

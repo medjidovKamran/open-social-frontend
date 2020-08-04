@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import withStyles from "isomorphic-style-loader/withStyles";
 import PropTypes from "prop-types";
@@ -5,11 +6,25 @@ import Avatar from "@material-ui/core/Avatar";
 import { connect } from "react-redux";
 import Loader from "../../Loader/Loader";
 import style from "./chats-block-user-admin.module.scss";
+=======
+import React from 'react';
+import withStyles from 'isomorphic-style-loader/withStyles';
+import PropTypes from 'prop-types';
+// import Avatar from '@material-ui/core/Avatar';
+import { connect } from 'react-redux';
+import Loader from '../../Loader/Loader';
+import style from './chats-block-user-admin.module.scss';
+import dumpImg from '../../../assets/chat/noImg.png';
+>>>>>>> dev
 
 const ChatsBlockUserAdmin = ({
   firstName,
   lastName,
+<<<<<<< HEAD
   userName,
+=======
+  //   userName,
+>>>>>>> dev
   avatar,
   error,
   isLoading,
@@ -25,17 +40,24 @@ const ChatsBlockUserAdmin = ({
       </div>
     );
   }
+
   return (
     <div className={style.blockUserAdmin}>
-      <div>
-        <Avatar className={style.avatar} alt={userName} />
-        <div>
-          <h4>{` ${firstName} ${lastName}`}</h4>
-        </div>
-      </div>
+      <div
+        className={style.avatar}
+        style={{
+          backgroundImage:
+            avatar && avatar.url
+              ? `url( http://${avatar.url})`
+              : `url( ${dumpImg})`,
+        }}
+      />
+      <h4>{` ${firstName} ${lastName}`}</h4>
     </div>
   );
 };
+
+//   userName: PropTypes.string.isRequired,
 
 ChatsBlockUserAdmin.propTypes = {
   // eslint-disable-next-line react/require-default-props
@@ -46,7 +68,6 @@ ChatsBlockUserAdmin.propTypes = {
   firstName: PropTypes.string.isRequired,
   isLoading: PropTypes.bool.isRequired,
   lastName: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
 };
 
 ChatsBlockUserAdmin.whyDidYouRender = true;
@@ -63,5 +84,8 @@ export default connect(
     userName,
   }),
 )(withStyles(style)(React.memo(ChatsBlockUserAdmin)));
+<<<<<<< HEAD
 
 //src={`http://${avatar.url}`}
+=======
+>>>>>>> dev

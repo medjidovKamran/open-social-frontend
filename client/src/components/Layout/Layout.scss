@@ -148,11 +148,11 @@ textarea {
   }
 
   a[href]::after {
-    content: ' ('attr(href) ')';
+    content: ' (' attr(href) ')';
   }
 
   abbr[title]::after {
-    content: ' ('attr(title) ')';
+    content: ' (' attr(title) ')';
   }
 
   /*
@@ -284,13 +284,13 @@ textarea {
 }
 
 .chatButton {
-  margin-top: 10px;
-  width: 70px;
-  height: 40px;
-  background-color: whitesmoke;
-  text-align: center;
-  justify-content: center;
-  border-radius: 30px;
+  margin-top: 12px;
+  // width: 70px;
+  // height: 40px;
+  // background-color: whitesmoke;
+  // text-align: center;
+  // justify-content: center;
+  // border-radius: 30px;
 
   button:active,
   button:focus {

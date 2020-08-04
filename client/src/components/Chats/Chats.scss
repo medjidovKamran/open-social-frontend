@@ -1,4 +1,3 @@
-
 .container {
   display: grid;
   grid-template-areas: 'header header' 'nav article';
@@ -16,6 +15,7 @@
 }
 
 .mainNav {
+  height: 80%;
   grid-area: nav;
   background-color: white;
   border-radius: 30px;
