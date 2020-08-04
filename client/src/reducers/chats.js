@@ -4,13 +4,13 @@ import {
   USERS_CHAT_DATA_LOADING_DATA_FAILURE,
   USERS_CHAT_ADD_OWN_CHAT,
   USERS_CHAT_RESET_STATE,
-} from "../constants";
+} from '../constants';
 
 const initialState = {
   data: [],
-  error: "",
+  error: '',
   isLoading: true,
-  userOption: { id: "" },
+  userOption: { id: '' },
 };
 
 export default (state = initialState, action) => {
@@ -19,7 +19,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         data: [...state.data, ...action.payload.data],
-        error: "",
+        error: '',
         isLoading: false,
       };
     case USERS_CHAT_DATA_LOADING:

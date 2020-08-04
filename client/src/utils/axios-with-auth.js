@@ -1,24 +1,19 @@
-import axios from "axios";
-import isomorphicCookie from "isomorphic-cookie";
-import * as JWT from "jwt-decode";
-import history from "../history";
-import { apiURL } from "../constants";
+import axios from 'axios';
+import isomorphicCookie from 'isomorphic-cookie';
+import * as JWT from 'jwt-decode';
+import history from '../history';
+import { apiURL } from '../constants';
 
 const authHeader = {
-<<<<<<< HEAD
-  Authorization: isomorphicCookie.load("token")
-    ? `Bearer ${isomorphicCookie.load("token")}`
-=======
   Authorization: isomorphicCookie.load('token')
     ? `Bearer ${isomorphicCookie.load('token')}`
->>>>>>> dev
     : null,
 };
 
 const authorize = response => {
   if (response.Message) {
-    isomorphicCookie.remove("token");
-    history.push("/login");
+    isomorphicCookie.remove('token');
+    history.push('/login');
   }
 };
 
@@ -36,7 +31,7 @@ export default {
   async post(url, data) {
     this.setHeader();
     const response = await axios.post(url, JSON.stringify(data), {
-      headers: { ...authHeader, "Content-Type": "application/json" },
+      headers: { ...authHeader, 'Content-Type': 'application/json' },
     });
     authorize(response.data);
     return response;
@@ -45,7 +40,7 @@ export default {
   async put(url, data) {
     this.setHeader();
     const response = await axios.put(url, JSON.stringify(data), {
-      headers: { ...authHeader, "Content-Type": "application/json" },
+      headers: { ...authHeader, 'Content-Type': 'application/json' },
     });
     authorize(response.data);
     return response;
@@ -54,13 +49,13 @@ export default {
   async saveUserProfilePhoto(profilePhoto) {
     this.setHeader();
     const formData = new FormData();
-    formData.append("file", profilePhoto);
+    formData.append('file', profilePhoto);
     try {
       return await axios.put(
         `${apiURL}/api/v1/users/${this.userId()}`,
         formData,
         {
-          headers: { ...authHeader, "Content-Type": "multipart/form-data" },
+          headers: { ...authHeader, 'Content-Type': 'multipart/form-data' },
         },
       );
     } catch (error) {
@@ -75,7 +70,7 @@ export default {
   },
 
   userId() {
-    const token = isomorphicCookie.load("token");
+    const token = isomorphicCookie.load('token');
     if (token) {
       return JWT(token).user.id;
     }

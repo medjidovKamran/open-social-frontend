@@ -80,11 +80,11 @@ class ChatsBlockUsers extends Component {
         >
           <hr className={style.line} />
           <List dense className={style.root}>
-            {data.map(value => {
+            {data.map((value, index) => {
               return (
                 <div
                   className={style.LinkToDialogs}
-                  key={value.id}
+                  key={index}
                   to="./dialogsUser1"
                 >
                   <ListItem button>

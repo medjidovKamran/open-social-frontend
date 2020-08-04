@@ -62,51 +62,11 @@ class UsersPage extends React.Component {
     );
   };
 
-	componentDidMount() {
-		this.receivedData();
-		this.pageCount();
-	}
+  componentDidMount() {
+    this.receivedData();
+    this.pageCount();
+  }
 
-<<<<<<< HEAD
-	render() {
-		const { error, isLoading } = this.props;
-		if (error) {
-			return <p className="mb-0">{error}</p>;
-		}
-		if (isLoading) {
-			return (
-				<div>
-					<Loader />
-				</div>
-			);
-		}
-		return (
-			<div>
-				<div className={s.heading}>
-					<div>
-						<h3>Users</h3>
-					</div>
-					<div>
-						<UserSearchPanel />
-					</div>
-				</div>
-				<hr className={s.line} />
-				{this.receivedData()}
-				<ReactPaginate
-					previousLabel={'<'}
-					nextLabel={'>'}
-					breakLabel={'...'}
-					pageCount={this.pageCount()}
-					marginPagesDisplayed={2}
-					pageRangeDisplayed={3}
-					onPageChange={this.handlePageClick}
-					containerClassName={s.pagination}
-					activeClassName={s.active}
-				/>
-			</div>
-		);
-	}
-=======
   render() {
     const { error, isLoading } = this.props;
     if (error) {
@@ -145,24 +105,14 @@ class UsersPage extends React.Component {
       </div>
     );
   }
->>>>>>> dev
 }
 
 UsersPage.whyDidYouRender = true;
 export default connect(
-<<<<<<< HEAD
-	({ users: { data, error, isLoading } }) => ({
-		data,
-		error,
-		isLoading
-	}),
-	{ getUsersData }
-=======
   ({ users: { data, error, isLoading } }) => ({
     data,
     error,
     isLoading,
   }),
   { getUsersData },
->>>>>>> dev
 )(withStyles(bootstrap, s)(React.memo(UsersPage)));

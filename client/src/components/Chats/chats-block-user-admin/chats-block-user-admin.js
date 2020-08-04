@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-import withStyles from "isomorphic-style-loader/withStyles";
-import PropTypes from "prop-types";
-import Avatar from "@material-ui/core/Avatar";
-import { connect } from "react-redux";
-import Loader from "../../Loader/Loader";
-import style from "./chats-block-user-admin.module.scss";
-=======
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import PropTypes from 'prop-types';
@@ -15,16 +6,11 @@ import { connect } from 'react-redux';
 import Loader from '../../Loader/Loader';
 import style from './chats-block-user-admin.module.scss';
 import dumpImg from '../../../assets/chat/noImg.png';
->>>>>>> dev
 
 const ChatsBlockUserAdmin = ({
   firstName,
   lastName,
-<<<<<<< HEAD
-  userName,
-=======
   //   userName,
->>>>>>> dev
   avatar,
   error,
   isLoading,
@@ -84,8 +70,3 @@ export default connect(
     userName,
   }),
 )(withStyles(style)(React.memo(ChatsBlockUserAdmin)));
-<<<<<<< HEAD
-
-//src={`http://${avatar.url}`}
-=======
->>>>>>> dev

@@ -1,4 +1,4 @@
-import apiClient from "../utils/axios-with-auth";
+import apiClient from '../utils/axios-with-auth';
 import {
   USERS_CHAT_DATA_LOADING,
   USERS_CHAT_DATA_LOADING_DATA_SUCCESS,
@@ -6,7 +6,7 @@ import {
   USERS_CHAT_ADD_OWN_CHAT,
   USERS_CHAT_RESET_STATE,
   apiURL,
-} from "../constants";
+} from '../constants';
 
 const userChatDataSuccess = payload => ({
   payload,
@@ -51,12 +51,12 @@ export const getChatsWithParams = ({ search }) => async dispatch => {
   dispatch(userChatDataLoading({ search }));
   try {
     console.log(search);
-    const { data } = await apiClient.get(
+    const data = await apiClient.get(
       `${apiURL}/api/v1/chats?search=%${search}%`,
     );
-    dispatch(userChatDataSuccess({ data }));
+    dispatch(userChatDataSuccess(data));
     console.log(data);
-    return data;
+    //return data;
   } catch (error) {
     dispatch(userChatDataFailure(error.message));
   }
