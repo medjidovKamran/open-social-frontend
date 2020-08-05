@@ -43,7 +43,7 @@ const ChatsBlockUserAdmin = ({
   );
 };
 
-//   userName: PropTypes.string.isRequired,
+//
 
 ChatsBlockUserAdmin.propTypes = {
   // eslint-disable-next-line react/require-default-props

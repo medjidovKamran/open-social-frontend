@@ -5,10 +5,40 @@ import classNames from 'classnames';
 import Link from '../../Link/Link';
 import s from './tab.scss';
 
-const Tab = ({ item: { path, text, icon, type, items }, onClick }) => {
+const Tab = ({
+  item: { path, text, icon, type, name, items },
+  onClick,
+  currentTab,
+}) => {
   const [isShow, setIsShow] = useState(false);
+  const [isCurrent, setIsCurrent] = useState('');
   const blockReference = useRef();
   const itemsReference = useRef();
+
+  const currentLocation = () => {
+    switch (currentTab) {
+      case 'Profile':
+        setIsCurrent('profile');
+        break;
+      case 'Login':
+        setIsCurrent('profile');
+        break;
+      case 'SignUp':
+        setIsCurrent('profile');
+        break;
+      case 'Chats':
+        setIsCurrent('chats');
+        break;
+      case 'Users':
+        setIsCurrent('users');
+        break;
+      case 'About':
+        setIsCurrent('about');
+        break;
+      default:
+        break;
+    }
+  };
 
   // const handleClickOutside = (event) => {
   //   if (
@@ -25,6 +55,9 @@ const Tab = ({ item: { path, text, icon, type, items }, onClick }) => {
   //     document.removeEventListener("mousedown", handleClickOutside);
   //   };
   // });
+
+  useEffect(() => currentLocation(), [currentTab]);
+
   if (type === 'select') {
     return (
       <div
@@ -33,13 +66,20 @@ const Tab = ({ item: { path, text, icon, type, items }, onClick }) => {
         ref={blockReference}
       >
         <div className={s.content}>
-          {text && <p>{text}</p>}
+          {text && (
+            <p
+              className={classNames(s.text, {
+                [s.red]: isCurrent === name,
+              })}
+            >
+              {text}
+            </p>
+          )}
           {/* {icon && <img src={icon} alt="menu-item" />} */}
         </div>
         <div
           className={classNames(s.listItems, {
             [s.displaynone]: !isShow,
-            [s.displayblock]: isShow,
           })}
         >
           {items.map(object => {
@@ -50,8 +90,9 @@ const Tab = ({ item: { path, text, icon, type, items }, onClick }) => {
                   to={object.path}
                   onClick={() => onClick(object.type, object.text)}
                   ref={itemsReference}
+                  key={object.text}
                 >
-                  <p>{object.text}</p>
+                  <p className={(s.text, s.black)}>{object.text}</p>
                 </Link>
               );
             }
@@ -62,6 +103,7 @@ const Tab = ({ item: { path, text, icon, type, items }, onClick }) => {
                   null;
                 }}
                 ref={blockReference}
+                className={(s.text, s.black)}
               >
                 {object.text}
               </p>
@@ -74,7 +116,15 @@ const Tab = ({ item: { path, text, icon, type, items }, onClick }) => {
   return (
     <Link to={path} className={s.wrapper}>
       <div className={s.content}>
-        {text && <p>{text}</p>}
+        {text && (
+          <p
+            className={classNames(s.text, {
+              [s.red]: isCurrent === name,
+            })}
+          >
+            {text}
+          </p>
+        )}
         {/* {icon && <img src={icon} alt="menu-item" />} */}
       </div>
     </Link>
@@ -83,10 +133,12 @@ const Tab = ({ item: { path, text, icon, type, items }, onClick }) => {
 
 Tab.propTypes = {
   item: PropTypes.shape({
-    icon: PropTypes.node.isRequired,
+    currentTab: PropTypes.string,
+    icon: PropTypes.node,
     items: PropTypes.arrayOf(PropTypes.object),
-    path: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    path: PropTypes.string,
+    text: PropTypes.string,
     type: PropTypes.string.isRequired,
   }).isRequired,
   onClick: PropTypes.func.isRequired,

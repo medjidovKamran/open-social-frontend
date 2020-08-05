@@ -80,7 +80,7 @@ class UsersPage extends React.Component {
       );
     }
     return (
-      <div>
+      <div className={s.wrapper}>
         <div className={s.heading}>
           <div>
             <h3>Users</h3>

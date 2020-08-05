@@ -63,12 +63,14 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
   const testData = [
     {
       icon: about,
+      name: 'about',
       path: 'about',
       text: menuButtons.about.label[lang],
       type: 'button',
     },
     {
       icon: chats,
+      name: 'chats',
       path: 'chats',
       text: menuButtons.chats.label[lang],
       type: 'button',
@@ -76,7 +78,7 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
     {
       icon: users,
       items: [{ path: 'users', text: 'users', type: 'router' }],
-      path: 'chats',
+      name: 'users',
       text: menuButtons.users.label[lang],
       type: 'select',
     },
@@ -91,6 +93,7 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
         { path: 'login', text: 'login', type: 'router' },
         { path: '/', text: 'my profile', type: 'router' },
       ],
+      name: 'profile',
       text: 'profile',
       type: 'select',
     },
@@ -101,14 +104,12 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
         { path: null, text: 'ru', type: 'setLang' },
         { path: null, text: 'en', type: 'setLang' },
       ],
+      name: 'Lang',
       text: lang,
       type: 'select',
     },
   ];
 
-  const onMenuClick = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
   const handleClick = (type, value) => {
     switch (type) {
       case 'setLang':
@@ -118,7 +119,7 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
         signoutUser();
         break;
       default:
-        console.log('default case');
+        break;
     }
   };
 
@@ -127,10 +128,20 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
       <>
         {isomorphicCookie.load('token') &&
           testData.map(item => (
-            <Tab key={item.text} item={item} onClick={handleClick} />
+            <Tab
+              key={item.text}
+              item={item}
+              onClick={handleClick}
+              currentTab={currentTab}
+            />
           ))}
         {baseItems.map(item => (
-          <Tab key={item.text} item={item} onClick={handleClick} />
+          <Tab
+            key={item.text}
+            item={item}
+            onClick={handleClick}
+            currentTab={currentTab}
+          />
         ))}
       </>
     </div>
@@ -151,114 +162,3 @@ export default connect(
     signoutUser: signout,
   },
 )(withStyles(s)(Menu));
-
-// class Menu extends React.Component {
-//   static propTypes = {
-//     currentTab: PropTypes.string.isRequired,
-//     lang: PropTypes.string.isRequired,
-//     signoutUser: PropTypes.func.isRequired,
-//   };
-
-//   render() {
-//     const {
-//       props: { currentTab, signoutUser, lang },
-//     } = this;
-
-//     const { menuButtons } = textData;
-
-//     const menuItems = [
-//       {
-//         icon: profile,
-//         path: "",
-//         text: menuButtons.profile.label[lang],
-//       },
-//       {
-//         icon: about,
-//         path: "about",
-//         text: menuButtons.about.label[lang],
-//       },
-//       {
-//         icon: chats,
-//         path: "chats",
-//         text: menuButtons.chats.label[lang],
-//       },
-//       {
-//         icon: users,
-//         path: "users",
-//         text: menuButtons.users.label[lang],
-//       },
-//     ];
-
-//     const menuItemsOffline = [
-//       {
-//         icon: login,
-//         path: "login",
-//         text: menuButtons.login.label[lang],
-//       },
-//       {
-//         icon: signup,
-//         path: "signUp",
-//         text: menuButtons.signUp.label[lang],
-//       },
-//     ];
-
-//     return (
-//       <div className={s.menu}>
-//         <div className={s.menuHamburger}>
-//           <Hamburger
-//             isOpen={isMenuOpen}
-//             menuClicked={this.onMenuClick}
-//             width={25}
-//             height={15}
-//             color="#eeeeee"
-//           />
-//         </div>
-//         <div
-//           className={classNames(s.menuItems, {
-//             [s.menuItemsActive]: isMenuOpen,
-//           })}
-//         >
-//           {isomorphicCookie.load("token")
-//             ? menuItems.map((item) => (
-//                 <MenuItem
-//                   key={item.text}
-//                   item={item}
-//                   isActive={currentTab === item.text}
-//                   closeMenu={this.onMenuClick}
-//                 />
-//               ))
-//             : menuItemsOffline.map((item2) => (
-//                 <MenuItem
-//                   key={item2.text}
-//                   item={item2}
-//                   isActive={currentTab === item2.text}
-//                   closeMenu={this.onMenuClick}
-//                 />
-//               ))}
-//           {isomorphicCookie.load("token") && (
-//             <Button
-//               variant="outline-light"
-//               className={s.signout}
-//               onClick={signoutUser}
-//             >
-//               Sign out
-//             </Button>
-//           )}
-//         </div>
-//         <LangSelect />
-//       </div>
-//     );
-//   }
-
-//   onMenuClick = () => {
-//     const { isMenuOpen } = this.state;
-//     this.setState({ isMenuOpen: !isMenuOpen });
-//   };
-// }
-
-// export default connect(
-//   ({ menu: { currentTab, lang } }) => ({ currentTab, lang }),
-//   {
-//     signoutUser: signout,
-//   }
-// )(withStyles(s)(Menu));
