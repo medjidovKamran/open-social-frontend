@@ -22,45 +22,8 @@ import users from '../../assets/users.svg';
 
 const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
   const { menuButtons } = textData;
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const menuItems = [
-    {
-      icon: profile,
-      path: '',
-      text: menuButtons.profile.label[lang],
-    },
-    {
-      icon: about,
-      path: 'about',
-      text: menuButtons.about.label[lang],
-    },
-    {
-      icon: chats,
-      path: 'chats',
-      text: menuButtons.chats.label[lang],
-    },
-    {
-      icon: users,
-      path: 'users',
-      text: menuButtons.users.label[lang],
-    },
-  ];
-
-  const menuItemsOffline = [
-    {
-      icon: login,
-      path: 'login',
-      text: menuButtons.login.label[lang],
-    },
-    {
-      icon: signup,
-      path: 'signUp',
-      text: menuButtons.signUp.label[lang],
-    },
-  ];
-
-  const testData = [
+  const baseItemsToken = [
     {
       icon: about,
       name: 'about',
@@ -77,9 +40,30 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
     },
     {
       icon: users,
-      items: [{ path: 'users', text: 'users', type: 'router' }],
       name: 'users',
+      path: 'users',
       text: menuButtons.users.label[lang],
+      type: 'button',
+    },
+    {
+      icon: null,
+      items: [
+        { path: null, text: 'signout', type: 'signout' },
+        { path: '/', text: 'my profile', type: 'router' },
+      ],
+      name: 'profile',
+      text: 'profile',
+      type: 'select',
+    },
+    {
+      icon: null,
+      items: [
+        { path: null, text: 'uk', type: 'setLang' },
+        { path: null, text: 'ru', type: 'setLang' },
+        { path: null, text: 'en', type: 'setLang' },
+      ],
+      name: 'Lang',
+      text: lang,
       type: 'select',
     },
   ];
@@ -89,9 +73,7 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
       icon: null,
       items: [
         { path: 'signUp', text: 'registration', type: 'router' },
-        { path: null, text: 'signout', type: 'signout' },
         { path: 'login', text: 'login', type: 'router' },
-        { path: '/', text: 'my profile', type: 'router' },
       ],
       name: 'profile',
       text: 'profile',
@@ -125,9 +107,16 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
 
   return (
     <div className={s.wrapper}>
-      <>
-        {isomorphicCookie.load('token') &&
-          testData.map(item => (
+      {isomorphicCookie.load('token')
+        ? baseItemsToken.map(item => (
+            <Tab
+              key={item.text}
+              item={item}
+              onClick={handleClick}
+              currentTab={currentTab}
+            />
+          ))
+        : baseItems.map(item => (
             <Tab
               key={item.text}
               item={item}
@@ -135,15 +124,6 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
               currentTab={currentTab}
             />
           ))}
-        {baseItems.map(item => (
-          <Tab
-            key={item.text}
-            item={item}
-            onClick={handleClick}
-            currentTab={currentTab}
-          />
-        ))}
-      </>
     </div>
   );
 };
