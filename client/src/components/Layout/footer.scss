@@ -1,5 +1,5 @@
-@import "../../style/variables.scss";
-@import "../../style/index.scss";
+@import '../../style/variables.scss';
+@import '../../style/index.scss';
 
 .footer {
   z-index: 50;
@@ -39,7 +39,18 @@
 .menu {
   width: 50rem;
   height: 100%;
-  // background-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  a {
+    margin: 0 20px;
+
+    &:hover {
+      filter: brightness(400%);
+      transition: 1s;
+    }
+  }
 }
 
 // @media (max-width: var(--media-width-1)) {

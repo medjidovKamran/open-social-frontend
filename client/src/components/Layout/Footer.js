@@ -5,11 +5,14 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 
 import Link from '../Link';
 import logo from '../../assets/logos/logo.svg';
+import twitter from '../../assets/social_icons/twitter.png';
+import instagram from '../../assets/social_icons/instagram.svg';
+import facebook from '../../assets/social_icons/facebook.svg';
 import s from './footer.scss';
 
 function Footer() {
   return (
-    <header className={s.footer}>
+    <footer className={s.footer}>
       <Link to="/">
         <div className={s.logo}>
           <img src={logo} alt="logo" />
@@ -18,8 +21,18 @@ function Footer() {
       <div className={s.credo}>
         <p>New waves of synergy of your IT products</p>
       </div>
-      <div className={s.menu} />
-    </header>
+      <div className={s.menu}>
+        <Link to="/">
+          <img src={twitter} alt="twitter" />
+        </Link>
+        <Link to="/">
+          <img src={instagram} alt="instagram" />
+        </Link>
+        <Link to="/">
+          <img src={facebook} alt="facebook" />
+        </Link>
+      </div>
+    </footer>
   );
 }
 Footer.propTypes = {};
