@@ -113,6 +113,7 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
     switch (type) {
       case 'setLang':
         setCurrentLang(value);
+        localStorage.setItem('chatLang', value);
         break;
       case 'signout':
         signoutUser();
