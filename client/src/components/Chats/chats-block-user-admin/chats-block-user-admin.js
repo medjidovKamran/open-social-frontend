@@ -5,6 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { connect } from 'react-redux';
 import Loader from '../../Loader/Loader';
 import style from './chats-block-user-admin.module.scss';
+import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
 
 const ChatsBlockUserAdmin = ({ firstName, lastName, userName, avatar, error, isLoading }) => {
 	if (error) {
@@ -21,7 +22,7 @@ const ChatsBlockUserAdmin = ({ firstName, lastName, userName, avatar, error, isL
 	return (
 		<div className={style.blockUserAdmin}>
 			<div>
-				<Avatar className={style.avatar} alt={userName} src={`http://${avatar.url}`} />
+				<Avatar className={style.avatar} alt={userName} src={avatar ? `http://${avatar.url}` : defaultUserPhoto} />
 				<div>
 					<h4>{` ${firstName} ${lastName}`}</h4>
 				</div>

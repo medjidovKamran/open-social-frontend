@@ -84,7 +84,7 @@ class Menu extends React.Component {
 	menuItems = [
 		{
 			icon: profile,
-			path: `/profile${apiClient.userId()}`,
+			path: '/',
 			text: 'Profile'
 		},
 		{

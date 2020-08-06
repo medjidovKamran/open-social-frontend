@@ -40,7 +40,7 @@ class Profile extends Component {
     if (avatar) {
       return `${apiURL}/${avatar.name.replace('undefined', '')}`
     } else {
-      return defaultUserPhoto
+      return defaultUserPhoto;
     }
 
   }
