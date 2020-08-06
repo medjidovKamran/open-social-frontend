@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { connect, Provider as ReduxProvider } from 'react-redux';
 import PropTypes from 'prop-types';
+import LangData from '../utils/lib/languages';
 
 const ContextType = {
   // Universal HTTP client
@@ -73,34 +74,19 @@ class App extends React.PureComponent {
         this.setState({ isClient: true, isShow: true });
       } else {
         const userLang = navigator.language || navigator.userLanguage;
-        switch (userLang) {
-          case 'uk':
-            dispatch({
-              lang: 'uk',
-              type: 'SET_CURRENT_LANG',
-            });
-            localStorage.setItem('chatLang', 'uk');
-            break;
-          case 'en':
-            dispatch({
-              lang: 'en',
-              type: 'SET_CURRENT_LANG',
-            });
-            localStorage.setItem('chatLang', 'en');
-            break;
-          case 'ru':
-            dispatch({
-              lang: 'ru',
-              type: 'SET_CURRENT_LANG',
-            });
-            localStorage.setItem('chatLang', 'ru');
-            break;
-          default:
-            dispatch({
-              lang: 'en',
-              type: 'SET_CURRENT_LANG',
-            });
-            localStorage.setItem('chatLang', 'en');
+        const langList = LangData.langSelect;
+        if (langList.include(userLang)) {
+          dispatch({
+            lang: userLang,
+            type: 'SET_CURRENT_LANG',
+          });
+          localStorage.setItem('chatLang', userLang);
+        } else {
+          dispatch({
+            lang: 'en',
+            type: 'SET_CURRENT_LANG',
+          });
+          localStorage.setItem('chatLang', 'en');
         }
         this.setState({ isClient: true, isShow: true });
       }
