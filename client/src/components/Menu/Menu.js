@@ -9,6 +9,8 @@ import Button from 'react-bootstrap/Button';
 import MenuItem from './MenuItem/MenuItem';
 import { signout } from '../../actions/user';
 import apiClient from '../../utils/axios-with-auth';
+import LangSelect from '../LangSelect/LangSelect';
+import textData from '../../utils/lib/languages.json';
 
 import s from './Menu.scss';
 import profile from '../../assets/profile.svg';
@@ -19,14 +21,15 @@ import chats from '../../assets/chats.svg';
 import users from '../../assets/users.svg';
 
 class Menu extends React.Component {
-	static propTypes = {
-		currentTab: PropTypes.string.isRequired,
-		signoutUser: PropTypes.func.isRequired
-	};
+  static propTypes = {
+    currentTab: PropTypes.string.isRequired,
+    lang: PropTypes.string.isRequired,
+    signoutUser: PropTypes.func.isRequired,
+  };
 
-	state = {
-		isMenuOpen: false
-	};
+  state = {
+    isMenuOpen: false,
+  };
 
 	render() {
 		const { currentTab, signoutUser } = this.props;
@@ -75,6 +78,97 @@ class Menu extends React.Component {
 			</div>
 		);
 	}
+  render() {
+    const {
+      props: { currentTab, signoutUser, lang },
+      state: { isMenuOpen },
+    } = this;
+
+    const { menuButtons } = textData;
+
+    const menuItems = [
+      {
+        icon: profile,
+        path: '',
+        text: menuButtons.profile.label[lang],
+      },
+      {
+        icon: about,
+        path: 'about',
+        text: menuButtons.about.label[lang],
+      },
+      {
+        icon: chats,
+        path: 'chats',
+        text: menuButtons.chats.label[lang],
+      },
+      {
+        icon: users,
+        path: 'users',
+        text: menuButtons.users.label[lang],
+      },
+    ];
+
+    const menuItemsOffline = [
+      {
+        icon: login,
+        path: 'login',
+        text: menuButtons.login.label[lang],
+      },
+      {
+        icon: signup,
+        path: 'signUp',
+        text: menuButtons.signUp.label[lang],
+      },
+    ];
+
+    return (
+      <div className={s.menu}>
+        <div className={s.menuHamburger}>
+          <Hamburger
+            isOpen={isMenuOpen}
+            menuClicked={this.onMenuClick}
+            width={25}
+            height={15}
+            color="#eeeeee"
+          />
+        </div>
+        <div
+          className={classNames(s.menuItems, {
+            [s.menuItemsActive]: isMenuOpen,
+          })}
+        >
+          {isomorphicCookie.load('token')
+            ? menuItems.map(item => (
+                <MenuItem
+                  key={item.text}
+                  item={item}
+                  isActive={currentTab === item.text}
+                  closeMenu={this.onMenuClick}
+                />
+              ))
+            : menuItemsOffline.map(item2 => (
+                <MenuItem
+                  key={item2.text}
+                  item={item2}
+                  isActive={currentTab === item2.text}
+                  closeMenu={this.onMenuClick}
+                />
+              ))}
+          {isomorphicCookie.load('token') && (
+            <Button
+              variant="outline-light"
+              className={s.signout}
+              onClick={signoutUser}
+            >
+              Sign out
+            </Button>
+          )}
+        </div>
+        <LangSelect />
+      </div>
+    );
+  }
 
 	onMenuClick = () => {
 		const { isMenuOpen } = this.state;
@@ -116,6 +210,15 @@ class Menu extends React.Component {
 			text: 'SignUp'
 		}
 	];
+  onMenuClick = () => {
+    const { isMenuOpen } = this.state;
+    this.setState({ isMenuOpen: !isMenuOpen });
+  };
 }
 
-export default connect(({ menu: { currentTab } }) => ({ currentTab }), { signoutUser: signout })(withStyles(s)(Menu));
+export default connect(
+  ({ menu: { currentTab, lang } }) => ({ currentTab, lang }),
+  {
+    signoutUser: signout,
+  },
+)(withStyles(s)(Menu));

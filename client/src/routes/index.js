@@ -73,9 +73,7 @@ const routes = [
       },
       {
         load: () =>
-          import(
-            /* webpackChunkName: 'users' */ '../components/UsersPage'
-            ),
+          import(/* webpackChunkName: 'users' */ '../components/UsersPage'),
         path: '/users',
       },
       {

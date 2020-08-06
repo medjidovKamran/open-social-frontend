@@ -1,0 +1,156 @@
+{
+  "langSelect": ["uk", "en", "ru"],
+  "menuButtons": {
+    "profile": {
+      "label": { "uk": "Профіль", "en": "Profile", "ru": "Профиль" },
+      "path": ""
+    },
+    "about": {
+      "label": { "uk": "Про нас", "en": "About", "ru": "О нас" },
+      "path": "about"
+    },
+    "chats": {
+      "label": { "uk": "Чати", "en": "Chats", "ru": "Чаты" },
+      "path": "chats"
+    },
+    "users": {
+      "label": { "uk": "Користувачі", "en": "Users", "ru": "Пользователи" },
+      "path": "users"
+    },
+    "login": {
+      "label": { "uk": "Вхід", "en": "Login", "ru": "Вход" },
+      "path": "login"
+    },
+    "signUp": {
+      "label": { "uk": "Реєстрація", "en": "SignUp", "ru": "Регистрация" },
+      "path": "singup"
+    }
+  },
+
+  "loginPage": {
+    "title": {
+      "uk": "Увійдіть, щоб переглянути свою сторінку",
+      "en": "Log in to see your page",
+      "ru": "Войдите, чтобы увидеть свою страницу"
+    },
+    "signup": { "uk": "Реєстрація", "en": "Sign Up", "ru": "Регистрация" },
+    "isNotAutorized": {
+      "uk": "Ще не зареєструвалися?",
+      "en": "Not signed up yet?",
+      "ru": "Еще не зарегистрировались?"
+    },
+    "inputs": {
+      "email": {
+        "label": {
+          "uk": "Електрона почта",
+          "en": "Email address",
+          "ru": "Електронная почта"
+        },
+        "placeholder": {
+          "uk": "введіть email",
+          "en": "enter email",
+          "ru": "введите email"
+        }
+      },
+      "password": {
+        "label": { "uk": "Пароль", "en": "Password", "ru": "Пароль" },
+        "placeholder": {
+          "uk": "введіть пароль",
+          "en": "enter password",
+          "ru": "введите пароль"
+        }
+      }
+    }
+  },
+  "signupPage": {
+    "title": {
+      "uk": "Реєстрація",
+      "en": "Registration",
+      "ru": "Регистрация"
+    },
+    "login": { "uk": "Вхід", "en": "Log in", "ru": "Вход" },
+    "isRegistred": {
+      "uk": "Вже зареєстровані ?",
+      "en": "Already signed up?",
+      "ru": "Уже зарегистрировались?"
+    },
+    "inputs": {
+      "firstName": {
+        "label": {
+          "uk": "Ім'я",
+          "en": "First name",
+          "ru": "Имя"
+        },
+        "placeholder": {
+          "uk": "ваше ім'я",
+          "en": "first name",
+          "ru": "ваше имя"
+        }
+      },
+      "lastName": {
+        "label": { "uk": "призвище", "en": "last name", "ru": "фамилия" },
+        "placeholder": {
+          "uk": "ваше  призвище",
+          "en": "last name",
+          "ru": "ваша фамилия"
+        }
+      },
+      "userName": {
+        "label": {
+          "uk": "Ім'я користувача",
+          "en": "User name",
+          "ru": "Имя пользователя"
+        },
+        "placeholder": {
+          "uk": "ім'я користувача",
+          "en": "user name",
+          "ru": "имя пользователя"
+        }
+      },
+      "email": {
+        "label": {
+          "uk": "Електрона почта",
+          "en": "Email address",
+          "ru": "Електронная почта"
+        },
+        "placeholder": {
+          "uk": "введіть email",
+          "en": "enter email",
+          "ru": "введите email"
+        }
+      },
+      "birthdayDate": {
+        "label": {
+          "uk": "Дата народження",
+          "en": "Birthday date",
+          "ru": "Дата рождения"
+        },
+        "placeholder": {
+          "uk": "дата народження",
+          "en": "birthday date",
+          "ru": "дата рождения"
+        }
+      },
+      "password": {
+        "label": { "uk": "Пароль", "en": "Password", "ru": "Пароль" },
+        "placeholder": {
+          "uk": "введіть пароль",
+          "en": "enter password",
+          "ru": "введите пароль"
+        }
+      },
+      "confirmPassword": {
+        "label": {
+          "uk": "Повторіть пароль",
+          "en": "Confirm password",
+          "ru": "Повторите пароль"
+        },
+        "placeholder": {
+          "uk": "повторіть пароль",
+          "en": "confirm password",
+          "ru": "повторите пароль"
+        }
+      }
+    }
+  }
+}

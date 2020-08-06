@@ -35,7 +35,6 @@ function Layout(props) {
                 <ChatsMini />
               </div>
             )}
-
           </div>
         </Col>
       </Row>

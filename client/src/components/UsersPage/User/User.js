@@ -1,9 +1,10 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import BorderColorIcon from '@material-ui/icons/BorderColor';
+import AddIcon from '@material-ui/icons/Add';
 import s from './User.scss';
 import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
-import AddIcon from '@material-ui/icons/Add';
 import OwnChatButton from "../../profile/UserProfile/OwnChat";
 import { setUserData } from '../../../actions/profile';
 import { connect } from 'react-redux';

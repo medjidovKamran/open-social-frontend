@@ -5,30 +5,35 @@ import Avatar from '@material-ui/core/Avatar';
 import { connect } from 'react-redux';
 import Loader from '../../Loader/Loader';
 import style from './chats-block-user-admin.module.scss';
-import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
+import dumpImg from '../../../assets/chat/noImg.png';
 
 const ChatsBlockUserAdmin = ({ firstName, lastName, userName, avatar, error, isLoading }) => {
 	if (error) {
 		return <p className="mb-0">{error}</p>;
 	}
 
-	if (isLoading) {
-		return (
-			<div>
-				<Loader />
-			</div>
-		);
-	}
-	return (
-		<div className={style.blockUserAdmin}>
-			<div>
-				<Avatar className={style.avatar} alt={userName} src={avatar ? `http://${avatar.url}` : defaultUserPhoto} />
-				<div>
-					<h4>{` ${firstName} ${lastName}`}</h4>
-				</div>
-			</div>
-		</div>
-	);
+  if (isLoading) {
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
+  }
+
+  return (
+    <div className={style.blockUserAdmin}>
+      <div
+        className={style.avatar}
+        style={{
+          backgroundImage:
+            avatar && avatar.url
+              ? `url( http://${avatar.url})`
+              : `url( ${dumpImg})`,
+        }}
+      />
+      <h4>{` ${firstName} ${lastName}`}</h4>
+    </div>
+  );
 };
 
 ChatsBlockUserAdmin.propTypes = {
@@ -45,11 +50,15 @@ ChatsBlockUserAdmin.propTypes = {
 
 ChatsBlockUserAdmin.whyDidYouRender = true;
 
-export default connect(({ userProfile: { firstName, lastName, userName, avatar, error, isLoading } }) => ({
-	avatar,
-	error,
-	firstName,
-	isLoading,
-	lastName,
-	userName
-}))(withStyles(style)(React.memo(ChatsBlockUserAdmin)));
+export default connect(
+  ({
+    userProfile: { firstName, lastName, userName, avatar, error, isLoading },
+  }) => ({
+    avatar,
+    error,
+    firstName,
+    isLoading,
+    lastName,
+    userName,
+  }),
+)(withStyles(style)(React.memo(ChatsBlockUserAdmin)));

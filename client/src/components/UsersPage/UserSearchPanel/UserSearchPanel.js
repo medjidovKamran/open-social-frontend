@@ -1,8 +1,7 @@
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import s from './UsersSearchPanel.scss'
 import SearchIcon from '@material-ui/icons/Search';
-
+import s from './UsersSearchPanel.scss';
 
 const UserSearchPanel = () => {
   return (
@@ -10,7 +9,7 @@ const UserSearchPanel = () => {
       <div className={s.searchPanelDiv}>
         <input className={s.searchPanelInput} />
         <button className={s.searchPanelIcon}>
-          <SearchIcon style={{color: 'white'}} />
+          <SearchIcon style={{ color: 'white' }} />
         </button>
       </div>
     </div>

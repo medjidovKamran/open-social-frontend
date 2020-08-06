@@ -6,18 +6,18 @@ import {
 	USERS_DATA_LOADING_DATA_SUCCESS
 } from '../constants';
 
-const userDataSuccess = (payload) => ({
-	payload,
-	type: USERS_DATA_LOADING_DATA_SUCCESS
+const userDataSuccess = payload => ({
+  payload,
+  type: USERS_DATA_LOADING_DATA_SUCCESS,
 });
 
-const userDataFailure = (error) => ({
-	error,
-	type: USERS_DATA_LOADING_DATA_FAILURE
+const userDataFailure = error => ({
+  error,
+  type: USERS_DATA_LOADING_DATA_FAILURE,
 });
 
 const userDataLoading = () => ({
-	type: USERS_DATA_LOADING
+  type: USERS_DATA_LOADING,
 });
 
 export const getUsersData = () => async (dispatch) => {
@@ -29,3 +29,6 @@ export const getUsersData = () => async (dispatch) => {
 		dispatch(userDataFailure(error.message));
 	}
 };
+
+
+

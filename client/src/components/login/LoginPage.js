@@ -10,14 +10,16 @@ import UserForm from './LoginForm';
 import history from '../../history';
 import { login } from '../../actions/user';
 import apiClient from '../../utils/axios-with-auth';
+import textData from '../../utils/lib/languages.json';
 
 import s from './Login.scss';
 
 class LoginPage extends React.Component {
-	static propTypes = {
-		message: PropTypes.string.isRequired,
-		setUser: PropTypes.func.isRequired
-	};
+  static propTypes = {
+    lang: PropTypes.string.isRequired,
+    message: PropTypes.string.isRequired,
+    setUser: PropTypes.func.isRequired,
+  };
 
 	handleSubmit = async (data) => {
 		const { setUser } = this.props;
@@ -25,28 +27,34 @@ class LoginPage extends React.Component {
 		history.push(`/profile${apiClient.userId()}`);
 	};
 
-	render() {
-		const { message } = this.props;
-		return (
-			<div className={s.form}>
-				{message && <Alert variant="info">{message}</Alert>}
-				<h3 className={s.heading}>Log in to see your page</h3>
-				{process.env.BROWSER && (
-					<div>
-						<UserForm onSubmit={this.handleSubmit} submitText="Log in" />
-						<div className={s.links}>
-							<span className={s.notSignedUp}>Not signed up yet?</span>
-							<Button variant="link">
-								<Link to="/signup">Sign up</Link>
-							</Button>
-						</div>
-					</div>
-				)}
-			</div>
-		);
-	}
+  render() {
+    const { message, lang } = this.props;
+    const { loginPage } = textData;
+    return (
+      <div className={s.form}>
+        {message && <Alert variant="info">{message}</Alert>}
+        <h3 className={s.heading}>{loginPage.title[lang]}</h3>
+        {process.env.BROWSER && (
+          <div>
+            <UserForm onSubmit={this.handleSubmit} submitText="Log in" />
+            <div className={s.links}>
+              <span className={s.notSignedUp}>
+                {loginPage.isNotAutorized[lang]}
+              </span>
+              <Button variant="link">
+                <Link to="/signup">{loginPage.signup[lang]}</Link>
+              </Button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
 export default withStyles(bootstrap, s)(
-	connect(({ user: { message } }) => ({ message }), { setUser: login })(LoginPage)
+  connect(
+    ({ user: { message }, menu: { lang } }) => ({ lang, message }),
+    { setUser: login },
+  )(LoginPage),
 );

@@ -13,7 +13,7 @@ module.exports = {
     'plugin:promise/recommended',
     'plugin:unicorn/recommended',
     'plugin:array-func/all',
-    'plugin:react-perf/recommended',
+    // 'plugin:react-perf/recommended',
   ],
   globals: {
     __DEV__: true,
@@ -34,7 +34,7 @@ module.exports = {
     'promise',
     'unicorn',
     'array-func',
-    'react-perf',
+    // 'react-perf',
     'sort-keys-fix',
   ],
 
