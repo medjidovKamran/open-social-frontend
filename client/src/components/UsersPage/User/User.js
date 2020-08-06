@@ -5,42 +5,51 @@ import AddIcon from '@material-ui/icons/Add';
 import s from './User.scss';
 import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
+import OwnChatButton from "../../profile/UserProfile/OwnChat";
+import { setUserData } from '../../../actions/profile';
+import { connect } from 'react-redux';
 
-const User = ({ user }) => {
-  const { firstName, lastName } = user;
+class User extends React.Component {
 
-  return (
-    <>
-      <div className={s.userConatainer}>
-        <div>
-          <Link to={`/${user.id}`}>
-            <img
-              className={s.UsersAvatar}
-              src={UsersAvatar}
-              alt={UsersAvatar}
-            />
-          </Link>
+  toUserProfile = (id) =>{
+    this.props.setUserData({id});
+  };
+
+  componentDidMount() {
+		this.toUserProfile()
+  }
+  componentWillUnmount() {
+    this.props.setUserData({id:null})
+ 	}
+  render(){
+    const { firstName, lastName, id } = this.props.user;
+    return (
+      <>
+      <div className={s.userContainer}>
+        <div onClick={() => this.toUserProfile(id)}>
+          <Link to={'/profile'+ id}>
+            <img className={s.UsersAvatar} src={UsersAvatar} alt={UsersAvatar}/>
           <span>
             {firstName} {lastName}
           </span>
+          </Link>
         </div>
         <div className={s.buttonAddWrite}>
           <div>
-            <button className={s.buttonAdd}>
-              Add <AddIcon className={s.buttonAddPlus} />
-            </button>
+          <button className={s.buttonAdd}>
+            Add <AddIcon className={s.buttonAddPlus} />
+          </button>
           </div>
           <div>
-            <Link to="#">
-              <BorderColorIcon className={s.buttonMessage} fontSize="large" />
-            </Link>
+            <OwnChatButton />
           </div>
         </div>
       </div>
-      <hr className={s.line} />
-    </>
-  );
+        <hr className={s.line}/>
+        </>
+    );
+  };
 };
 
-User.whyDidYouRender = true;
-export default withStyles(s)(React.memo(User));
+ User.whyDidYouRender = true;
+ export default connect(null, {setUserData})(withStyles(s)(React.memo(User)));

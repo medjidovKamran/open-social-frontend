@@ -51,6 +51,11 @@ const routes = [
       },
       {
         load: () =>
+          import(/* webpackChunkName: 'profile' */ '../components/profile'),
+        path: '/profile:id',
+      },
+      {
+        load: () =>
           import(/* webpackChunkName: 'about' */ '../components/about'),
         path: '/about',
       },

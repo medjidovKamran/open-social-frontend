@@ -6,26 +6,21 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './ProfilePhoto.scss';
-import defaultUserPhoto from '../../../../assets/default_user_profile.jpg';
+import apiClient from "../../../../utils/axios-with-auth";
 
 const ProfilePhoto = ({
-  isDefaultPhotoDisplayed,
   imgSource,
   changeProfilePhotoHandler,
   loadPhoto,
-  role,
+  id,
 }) => {
-  const userPhoto = isDefaultPhotoDisplayed ? (
-    <img src={defaultUserPhoto} alt="profile" className={styles.UserImg} />
-  ) : (
-    <img src={imgSource} className={styles.UserImg} alt="profile" />
-  );
+  const userPhoto = <img src={imgSource} className={styles.UserImg} alt="profile" />;
 
   return (
     <div className={classNames(styles.ProfileBackgroundImages, 'card')}>
       {userPhoto}
       <div className="text-center">
-        {role === 'user' || role === 'admin' || role === 'superadmin' ? (
+        { id === apiClient.userId() && (
           <>
             <label
               className={styles.ChangePhoto}
@@ -41,7 +36,7 @@ const ProfilePhoto = ({
               />
             </label>
           </>
-        ) : null}
+        ) }
       </div>
     </div>
   );
@@ -50,13 +45,12 @@ const ProfilePhoto = ({
 ProfilePhoto.propTypes = {
   changeProfilePhotoHandler: PropTypes.func.isRequired,
   imgSource: PropTypes.string.isRequired,
-  isDefaultPhotoDisplayed: PropTypes.bool.isRequired,
   loadPhoto: PropTypes.func.isRequired,
-  role: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 ProfilePhoto.whyDidYouRender = true;
 
-export default connect(({ userProfile: { role } }) => ({
-  role,
+export default connect(({ userProfile: { id } }) => ({
+  id,
 }))(withStyles(styles)(React.memo(ProfilePhoto)));

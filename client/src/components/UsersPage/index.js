@@ -7,6 +7,7 @@ import { getUsersData } from '../../actions/users';
 export default async function action({ store: { dispatch } }) {
   dispatch(setCurrentTab('Users'));
   dispatch(getUsersData());
+
   await dispatch;
 
   return {
@@ -16,6 +17,6 @@ export default async function action({ store: { dispatch } }) {
         <UsersPage />
       </Layout>
     ),
-    title: 'Users',
+    title: 'users',
   };
 }

@@ -10,6 +10,7 @@ import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import s from './EditProfileForm.scss';
 import Link from '../Link';
+import apiClient from "../../utils/axios-with-auth";
 
 const EditProfileForm = ({ handleSubmit, submitText }) => {
   return (
@@ -86,13 +87,13 @@ const EditProfileForm = ({ handleSubmit, submitText }) => {
         </Col>
       </Form.Group>
       <div className={s.buttonClose}>
-        <Link to="/">
-          <Button variant="secondary">Cancel</Button>
+        <Link to={`/profile${apiClient.userId()}`}>
+          <Button variant="cancel">Cancel</Button>
         </Link>
       </div>
       <div className={s.buttonSave}>
-        <Button variant="success" type="submit">
-          {submitText || 'Submit'}
+        <Button variant="save" type="submit">
+          <div className={s.textSave}>{submitText || 'Submit'}</div>
         </Button>
       </div>
     </Form>

@@ -8,6 +8,7 @@ import s from './EditProfile.scss';
 import EditProfileForm from '../EditProfileForm/EditProfileForm';
 import { editProfile } from '../../actions/profile';
 import history from '../../history';
+import apiClient from "../../utils/axios-with-auth";
 
 class EditProfilePage extends React.Component {
   static propTypes = {
@@ -17,7 +18,7 @@ class EditProfilePage extends React.Component {
   handleSubmit = async data => {
     const { editProfile } = this.props;
     await editProfile(data);
-    history.push('/');
+    history.push(`/profile${apiClient.userId()}`);
   };
 
   render() {
