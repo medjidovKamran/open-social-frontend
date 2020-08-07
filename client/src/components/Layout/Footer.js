@@ -5,7 +5,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 
 import Link from '../Link';
 import logo from '../../assets/logos/logo.svg';
-import twitter from '../../assets/social_icons/twitter.png';
+import twitter from '../../assets/social_icons/twitter.svg';
 import instagram from '../../assets/social_icons/instagram.svg';
 import facebook from '../../assets/social_icons/facebook.svg';
 import s from './footer.scss';
