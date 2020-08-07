@@ -6,7 +6,6 @@ import style from './messages.module.scss';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import { connect } from 'react-redux';
 
-
 function Messages({ chat: { messages } }) {
 
 	if (!messages.length) {

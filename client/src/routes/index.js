@@ -51,6 +51,11 @@ const routes = [
       },
       {
         load: () =>
+          import(/* webpackChunkName: 'profile' */ '../components/profile'),
+        path: '/profile:id',
+      },
+      {
+        load: () =>
           import(/* webpackChunkName: 'about' */ '../components/about'),
         path: '/about',
       },
@@ -68,9 +73,7 @@ const routes = [
       },
       {
         load: () =>
-          import(
-            /* webpackChunkName: 'users' */ '../components/UsersPage'
-            ),
+          import(/* webpackChunkName: 'users' */ '../components/UsersPage'),
         path: '/users',
       },
       {

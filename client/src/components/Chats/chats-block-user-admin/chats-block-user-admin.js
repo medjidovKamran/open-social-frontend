@@ -5,6 +5,7 @@ import Avatar from '@material-ui/core/Avatar';
 import { connect } from 'react-redux';
 import Loader from '../../Loader/Loader';
 import style from './chats-block-user-admin.module.scss';
+import dumpImg from '../../../assets/chat/noImg.png';
 
 const ChatsBlockUserAdmin = ({ firstName, lastName, userName, avatar, error, isLoading }) => {
 	if (error) {
@@ -45,11 +46,15 @@ ChatsBlockUserAdmin.propTypes = {
 
 ChatsBlockUserAdmin.whyDidYouRender = true;
 
-export default connect(({ userProfile: { firstName, lastName, userName, avatar, error, isLoading } }) => ({
-	avatar,
-	error,
-	firstName,
-	isLoading,
-	lastName,
-	userName
-}))(withStyles(style)(React.memo(ChatsBlockUserAdmin)));
+export default connect(
+  ({
+    userProfile: { firstName, lastName, userName, avatar, error, isLoading },
+  }) => ({
+    avatar,
+    error,
+    firstName,
+    isLoading,
+    lastName,
+    userName,
+  }),
+)(withStyles(style)(React.memo(ChatsBlockUserAdmin)));

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import emojii from 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
 import style from './chats-dialogs.module.scss';
 import avatar from '../../../assets/avatar.png';
 import Messages from './messages';
-import emojii from 'emoji-mart/css/emoji-mart.css';
-import { Picker } from 'emoji-mart';
 import { connect } from 'react-redux';
 import { sendMessage, saveMessage } from '../../../actions/chats';
 import io from 'socket.io-client';
@@ -26,21 +26,21 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage }) => {
 		}
 	}, []);
 
-	let emojiPicker;
-	if (emojiPickerState) {
-		emojiPicker = (
-			<Picker
-				title="Pick your emoji…"
-				emoji="point_up"
-				onSelect={(emoji) => SetMessage(message + emoji.native)}
-			/>
-		);
-	}
+  let emojiPicker;
+  if (emojiPickerState) {
+    emojiPicker = (
+      <Picker
+        title="Pick your emoji…"
+        emoji="point_up"
+        onSelect={emoji => SetMessage(message + emoji.native)}
+      />
+    );
+  }
 
-	function triggerPicker(event) {
-		event.preventDefault();
-		SetEmojiPicker(!emojiPickerState);
-	}
+  function triggerPicker(event) {
+    event.preventDefault();
+    SetEmojiPicker(!emojiPickerState);
+  }
 
 	function createMessage(event) {
 		event.preventDefault();
@@ -101,7 +101,7 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage }) => {
 				</div>
 			</header>
 
-			<Messages />
+      <Messages />
 
 			<div className={style.formLine} />
 			<div className={style.formWrapper}>
@@ -121,14 +121,14 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage }) => {
 					<button type="submit" className={style.sendButton} />
 				</form>
 
-				<div className="dropUp">
-					<img src="./img/Icon File.png" alt="" />
-					<img src="./img/Icon Photo.png" alt="" />
-					<img src="./img/Icon Video.png" alt="" />
-				</div>
-			</div>
-		</div>
-	);
+        <div className="dropUp">
+          <img src="./img/Icon File.png" alt="" />
+          <img src="./img/Icon Photo.png" alt="" />
+          <img src="./img/Icon Video.png" alt="" />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 ChatsDialogs.propTypes = {

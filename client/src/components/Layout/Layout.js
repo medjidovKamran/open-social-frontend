@@ -6,7 +6,6 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import { Row, Col } from 'react-bootstrap';
 import isomorphicCookie from 'isomorphic-cookie';
-
 import Link from '../Link';
 import Menu from '../Menu';
 import logo from '../../assets/logo.png';
@@ -36,7 +35,6 @@ function Layout(props) {
                 <ChatsMini />
               </div>
             )}
-
           </div>
         </Col>
       </Row>
@@ -55,7 +53,7 @@ function Layout(props) {
   );
 }
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+	children: PropTypes.node.isRequired
 };
 Layout.whyDidYouRender = true;
 export default withStyles(bootstrap, normalizeCss, s)(React.memo(Layout));
