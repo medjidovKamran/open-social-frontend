@@ -175,7 +175,7 @@ video {
   }
 }
 
-@media (min-width: var(--media-width-7)) {
+@media screen and (min-width: 1920px) {
   body {
     font-size: 1.6rem;
   }

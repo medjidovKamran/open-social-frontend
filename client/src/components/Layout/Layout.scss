@@ -1,22 +1,11 @@
 @import "../variables.scss";
 @import "../../style/index.scss";
 
-.container {
-  padding: 0;
-}
-
 .childrenWrap {
-  min-height: calc(100vh - 150px);
-  padding: 0 3rem;
+  width: 100%;
+  max-width: 100vw;
+  min-height: calc(100vh - 15rem);
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.rightContainer {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  padding-left: 50px;
-  padding-top: 70px;
 }
