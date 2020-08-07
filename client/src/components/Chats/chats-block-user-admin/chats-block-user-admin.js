@@ -21,7 +21,8 @@ const ChatsBlockUserAdmin = ({ firstName, lastName, userName, avatar, error, isL
 	return (
 		<div className={style.blockUserAdmin}>
 			<div>
-				<Avatar className={style.avatar} alt={userName} src={`http://${avatar.url}`} />
+				<Avatar className={style.avatar} alt={userName}  />
+				{/* src={`http://${avatar.url}`} */}
 				<div>
 					<h4>{` ${firstName} ${lastName}`}</h4>
 				</div>

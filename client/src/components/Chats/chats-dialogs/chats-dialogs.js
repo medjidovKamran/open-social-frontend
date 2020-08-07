@@ -1,14 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import style from './chats-dialogs.module.scss';
 import avatar from '../../../assets/avatar.png';
 import Messages from './messages';
 import emojii from 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
+import { connect } from 'react-redux';
+import { sendMessage, saveMessage } from '../../../actions/chats';
+import io from 'socket.io-client';
 
-const ChatsDialogs = () => {
+let socket;
+
+const ChatsDialogs = ({ chat, sendMessage, saveMessage }) => {
 	const [ emojiPickerState, SetEmojiPicker ] = useState(false);
 	const [ message, SetMessage ] = useState('');
+	const ENDPOINT = 'http://localhost:5000';
+
+	useEffect(() => {
+		if (!socket) {
+			socket = io(ENDPOINT);
+			socket.on('message', message => {
+				saveMessage(message);
+			});
+		}
+	}, []);
 
 	let emojiPicker;
 	if (emojiPickerState) {
@@ -26,6 +42,45 @@ const ChatsDialogs = () => {
 		SetEmojiPicker(!emojiPickerState);
 	}
 
+	function createMessage(event) {
+		event.preventDefault();
+		if (message.length) {
+			const parameters = {
+				text: message,
+				chat_id: chat.chatOption.id
+			};
+			sendMessage(parameters);
+			SetMessage('');
+		}
+	}
+
+	if (chat.isLoading) {
+		return (
+			<div>
+				LOADING...
+			</div>
+		);
+	}
+
+	if (!chat.chatOption.id) {
+		return (
+			<div className={style.wrapper}>
+				<header className={style.headerInfo}>
+					<div className={style.user}>
+						<div className={style.userName}>
+							<span className={style.infoMessage}>Please select a chat to start messaging</span>
+						</div>
+					</div>
+				</header>
+				<div className={style.messagesWrapper}>
+					<span className={style.infoMessage}>Select a chat first</span>
+				</div>
+				<div className={style.formLine}></div>
+			</div>
+		);
+	}
+
+
 	return (
 		<div className={style.wrapper}>
 			<header>
@@ -35,7 +90,7 @@ const ChatsDialogs = () => {
 					</a>
 					<div className={style.userName}>
 						<a href="" className={style.name}>
-							<span>Nika Jerrardo</span>
+							<span>{chat.chatOption.partner.firstName} {chat.chatOption.partner.lastName}</span>
 						</a>
 						<span className={style.lastTime}>last online 5 hours ago</span>
 					</div>
@@ -51,7 +106,7 @@ const ChatsDialogs = () => {
 			<div className={style.formLine} />
 			<div className={style.formWrapper}>
 				<button className={style.dropUpButton} />
-				<form action="">
+				<form onSubmit={createMessage}>
 					<textarea
 						name=""
 						id=""
@@ -59,6 +114,7 @@ const ChatsDialogs = () => {
 						placeholder="Type a message here"
 						value={message}
 						onChange={(event) => SetMessage(event.target.value)}
+						onKeyPress={event => event.key === 'Enter' ? createMessage(event) : null}
 					/>
 					{emojiPicker}
 					<button className={style.smileButton} onClick={triggerPicker} />
@@ -74,6 +130,20 @@ const ChatsDialogs = () => {
 		</div>
 	);
 };
-// ChatsDialogs.whyDidYouRender = true;
-export default withStyles(style, emojii)(React.memo(ChatsDialogs));
-// export default ChatsDialogs;
+
+ChatsDialogs.propTypes = {
+	chat: PropTypes.object,
+	sendMessage: PropTypes.func,
+	saveMessage: PropTypes.func,
+};
+
+ChatsDialogs.whyDidYouRender = true;
+
+const mapStateToProps = state => ({
+	chat: state.userChats
+});
+
+export default connect(
+	mapStateToProps,
+	{ sendMessage, saveMessage }
+)(withStyles(style, emojii)(React.memo(ChatsDialogs)));
