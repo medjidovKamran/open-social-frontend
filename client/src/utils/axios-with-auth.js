@@ -17,6 +17,7 @@ const authorize = response => {
   }
 };
 
+
 export default {
   async get(url, data) {
     this.setHeader();

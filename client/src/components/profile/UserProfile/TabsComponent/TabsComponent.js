@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './TabsComponent.scss';
 import Link from '../../../Link';
+import apiClient from "../../../../utils/axios-with-auth";
 
 const TabsComponent = ({
   firstName,
@@ -17,7 +18,7 @@ const TabsComponent = ({
   userName,
   email,
   birthdayDate,
-  role,
+  id,
 }) => {
   const dataObject = {
     userInformation: [
@@ -39,7 +40,7 @@ const TabsComponent = ({
             <Tab id="additionalInfo">Additional info</Tab>
             <Tab id="credits">Credits</Tab>
             <div className={styles.IconsWrapper}>
-              {role === 'user' || role === 'admin' || role === 'superadmin' ? (
+              {id === apiClient.userId()  &&
                 <>
                   <span className={styles.Edit}>
                     <Link to="/edit-profile">
@@ -53,7 +54,7 @@ const TabsComponent = ({
                     <FontAwesomeIcon icon={faCog} />
                   </span>
                 </>
-              ) : null}
+               }
             </div>
           </div>
         </TabList>
@@ -94,20 +95,20 @@ TabsComponent.propTypes = {
   email: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
-  role: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   userName: PropTypes.string.isRequired,
 };
 
 TabsComponent.whyDidYouRender = true;
 export default connect(
   ({
-    userProfile: { firstName, lastName, userName, email, birthdayDate, role },
+    userProfile: { firstName, lastName, userName, email, birthdayDate, id },
   }) => ({
     birthdayDate,
     email,
     firstName,
     lastName,
-    role,
+    id,
     userName,
   }),
 )(withStyles(styles, reactStyle)(React.memo(TabsComponent)));
