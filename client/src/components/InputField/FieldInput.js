@@ -19,7 +19,7 @@ const FieldInput = ({
     <>
       <div>
         <FormControl
-          className={showError ? styles.InputError : ''}
+          className={showError ? styles.InputError : styles.fieldDefault}
           name={name}
           onBlur={onBlur}
           type={type}

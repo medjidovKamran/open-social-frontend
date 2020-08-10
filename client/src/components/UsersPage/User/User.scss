@@ -7,7 +7,7 @@
   border-radius: 100px;
 }
 
-.userConatainer {
+.userContainer {
   display: grid;
   grid-template-columns: 80% 180px;
 }
@@ -39,9 +39,4 @@
   color: lightgrey;
   height: 1px;
   margin: 10px;
-}
-
-.buttonMessage {
-  cursor: pointer;
-  color: black;
 }

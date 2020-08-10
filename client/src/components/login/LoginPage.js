@@ -9,6 +9,7 @@ import Link from '../Link/Link';
 import UserForm from './LoginForm';
 import history from '../../history';
 import { login } from '../../actions/user';
+import apiClient from '../../utils/axios-with-auth';
 import textData from '../../utils/lib/languages.json';
 
 import s from './Login.scss';
@@ -22,11 +23,11 @@ class LoginPage extends React.Component {
     setUser: PropTypes.func.isRequired,
   };
 
-  handleSubmit = async data => {
-    const { setUser } = this.props;
-    await setUser(data);
-    history.push('/');
-  };
+	handleSubmit = async (data) => {
+		const { setUser } = this.props;
+		await setUser(data);
+		history.push(`/profile${apiClient.userId()}`);
+	};
 
   render() {
     const { message, lang } = this.props;
