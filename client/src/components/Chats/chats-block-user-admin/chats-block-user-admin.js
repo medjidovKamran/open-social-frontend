@@ -7,10 +7,17 @@ import Loader from '../../Loader/Loader';
 import style from './chats-block-user-admin.module.scss';
 import dumpImg from '../../../assets/chat/noImg.png';
 
-const ChatsBlockUserAdmin = ({ firstName, lastName, userName, avatar, error, isLoading }) => {
+const ChatsBlockUserAdmin = ({
+  firstName,
+  lastName,
+  userName,
+  avatar,
+  error,
+  isLoading,
+}) => {
   if (error) {
-	  return <p className="mb-0">{error}</p>;
-	}
+    return <p className="mb-0">{error}</p>;
+  }
 
   if (isLoading) {
     return (

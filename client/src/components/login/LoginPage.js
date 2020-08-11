@@ -23,11 +23,11 @@ class LoginPage extends React.Component {
     setUser: PropTypes.func.isRequired,
   };
 
-	handleSubmit = async (data) => {
-		const { setUser } = this.props;
-		await setUser(data);
-		history.push(`/profile${apiClient.userId()}`);
-	};
+  handleSubmit = async data => {
+    const { setUser } = this.props;
+    await setUser(data);
+    history.push(`/profile${apiClient.userId()}`);
+  };
 
   render() {
     const { message, lang } = this.props;
@@ -45,7 +45,10 @@ class LoginPage extends React.Component {
           <h3 className={s.heading}>{loginPage.title[lang]}</h3>
           {process.env.BROWSER && (
             <div>
-              <UserForm onSubmit={this.handleSubmit} submitText={loginPage.submitButton[lang]} />
+              <UserForm
+                onSubmit={this.handleSubmit}
+                submitText={loginPage.submitButton[lang]}
+              />
               <div className={s.links}>
                 <span className={s.notSignedUp}>
                   {loginPage.isNotAutorized[lang]}

@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './TabsComponent.scss';
 import Link from '../../../Link';
-import apiClient from "../../../../utils/axios-with-auth";
+import apiClient from '../../../../utils/axios-with-auth';
 
 const TabsComponent = ({
   firstName,
@@ -40,7 +40,7 @@ const TabsComponent = ({
             <Tab id="additionalInfo">Additional info</Tab>
             <Tab id="credits">Credits</Tab>
             <div className={styles.IconsWrapper}>
-              {id === apiClient.userId()  &&
+              {id === apiClient.userId() && (
                 <>
                   <span className={styles.Edit}>
                     <Link to="/edit-profile">
@@ -54,7 +54,7 @@ const TabsComponent = ({
                     <FontAwesomeIcon icon={faCog} />
                   </span>
                 </>
-               }
+              )}
             </div>
           </div>
         </TabList>
@@ -94,8 +94,8 @@ TabsComponent.propTypes = {
   birthdayDate: PropTypes.string,
   email: PropTypes.string.isRequired,
   firstName: PropTypes.string.isRequired,
-  lastName: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
+  lastName: PropTypes.string.isRequired,
   userName: PropTypes.string.isRequired,
 };
 
@@ -107,8 +107,8 @@ export default connect(
     birthdayDate,
     email,
     firstName,
-    lastName,
     id,
+    lastName,
     userName,
   }),
 )(withStyles(styles, reactStyle)(React.memo(TabsComponent)));

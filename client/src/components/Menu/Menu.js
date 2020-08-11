@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import isomorphicCookie from 'isomorphic-cookie';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import classNames from 'classnames';
@@ -8,20 +8,20 @@ import Hamburger from 'react-hamburger-menu';
 import Button from 'react-bootstrap/Button';
 import MenuItem from './MenuItem/MenuItem';
 import Tab from './MenuItem/Tab';
-import {signout} from '../../actions/user';
-import {setLang} from '../../actions/lang';
+import { signout } from '../../actions/user';
+import { setLang } from '../../actions/lang';
 import textData from '../../utils/lib/languages.json';
 
 import s from './Menu.scss';
 import profile from '../../assets/profile.svg';
 import about from '../../assets/about.svg';
 import login from '../../assets/login.svg';
-import signup from '../../assets/signup.svg';
+
 import chats from '../../assets/chats.svg';
 import users from '../../assets/users.svg';
 
-const Menu = ({currentTab, signoutUser, setCurrentLang, lang}) => {
-  const {menuButtons} = textData;
+const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
+  const { menuButtons } = textData;
 
   const baseItemsToken = [
     {
@@ -48,8 +48,8 @@ const Menu = ({currentTab, signoutUser, setCurrentLang, lang}) => {
     {
       icon: null,
       items: [
-        {path: null, text: 'signout', type: 'signout'},
-        {path: '/', text: 'my profile', type: 'router'},
+        { path: null, text: 'signout', type: 'signout' },
+        { path: '/', text: 'my profile', type: 'router' },
       ],
       name: 'profile',
       text: 'profile',
@@ -58,9 +58,9 @@ const Menu = ({currentTab, signoutUser, setCurrentLang, lang}) => {
     {
       icon: null,
       items: [
-        {path: null, text: 'uk', type: 'setLang'},
-        {path: null, text: 'ru', type: 'setLang'},
-        {path: null, text: 'en', type: 'setLang'},
+        { path: null, text: 'uk', type: 'setLang' },
+        { path: null, text: 'ru', type: 'setLang' },
+        { path: null, text: 'en', type: 'setLang' },
       ],
       name: 'Lang',
       text: lang,
@@ -72,8 +72,8 @@ const Menu = ({currentTab, signoutUser, setCurrentLang, lang}) => {
     {
       icon: null,
       items: [
-        {path: 'signUp', text: 'registration', type: 'router'},
-        {path: 'login', text: 'login', type: 'router'},
+        { path: 'signUp', text: 'registration', type: 'router' },
+        { path: 'login', text: 'login', type: 'router' },
       ],
       name: 'profile',
       text: 'profile',
@@ -82,9 +82,9 @@ const Menu = ({currentTab, signoutUser, setCurrentLang, lang}) => {
     {
       icon: null,
       items: [
-        {path: null, text: 'uk', type: 'setLang'},
-        {path: null, text: 'ru', type: 'setLang'},
-        {path: null, text: 'en', type: 'setLang'},
+        { path: null, text: 'uk', type: 'setLang' },
+        { path: null, text: 'ru', type: 'setLang' },
+        { path: null, text: 'en', type: 'setLang' },
       ],
       name: 'Lang',
       text: lang,
@@ -110,21 +110,21 @@ const Menu = ({currentTab, signoutUser, setCurrentLang, lang}) => {
     <div className={s.wrapper}>
       {isomorphicCookie.load('token')
         ? baseItemsToken.map(item => (
-          <Tab
-            key={item.text}
-            item={item}
-            onClick={handleClick}
-            currentTab={currentTab}
-          />
-        ))
+            <Tab
+              key={item.text}
+              item={item}
+              onClick={handleClick}
+              currentTab={currentTab}
+            />
+          ))
         : baseItems.map(item => (
-          <Tab
-            key={item.text}
-            item={item}
-            onClick={handleClick}
-            currentTab={currentTab}
-          />
-        ))}
+            <Tab
+              key={item.text}
+              item={item}
+              onClick={handleClick}
+              currentTab={currentTab}
+            />
+          ))}
     </div>
   );
 };
@@ -137,9 +137,8 @@ Menu.propTypes = {
 };
 
 export default connect(
-  ({menu: {currentTab, lang}}) => ({currentTab, lang}),
+  ({ menu: { currentTab, lang } }) => ({ currentTab, lang }),
   {
-    setCurrentLang: setLang,
     setCurrentLang: setLang,
     signoutUser: signout,
   },

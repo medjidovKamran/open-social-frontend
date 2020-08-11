@@ -1,20 +1,20 @@
 /* eslint-disable promise/prefer-await-to-then */
 /* eslint-disable react-perf/jsx-no-new-function-as-prop */
-import React, {useState} from 'react';
-import {Modal, Button, Form} from 'react-bootstrap';
-import {connect} from 'react-redux';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faPlus} from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import PropTypes from 'prop-types';
-import {createChat} from '../../../actions/chats';
-import styles from './ProfileButton.scss';
-import history from '../../../history';
-import {Switch, Route, BrowserRouter} from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import { createChat } from '../../../actions/chats';
+import styles from './ProfileButton.scss';
+import history from '../../../history';
 
 // eslint-disable-next-line no-shadow
-function OwnChatButton({user: {id}, createChat}) {
+function OwnChatButton({ user: { id }, createChat }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [descpiption, setDescription] = useState('');
@@ -45,26 +45,26 @@ function OwnChatButton({user: {id}, createChat}) {
         className={styles.ProfileButton}
         onClick={handleShow}
       >
-        <FontAwesomeIcon className={styles.Icon} icon={faPlus}/>
+        <FontAwesomeIcon className={styles.Icon} icon={faPlus} />
         Own chat
       </Button>
-    )
+    );
   };
   const UserOwnChatButton = () => {
     return (
       <div className={styles.buttonMessage}>
-      <BorderColorIcon onClick={handleShow} fontSize='large'/>
+        <BorderColorIcon onClick={handleShow} fontSize="large" />
       </div>
-    )
+    );
   };
 
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path={'/profile:id'} component={ProfileOwnChatButton}/>
-          <Route exact path={'/'} component={ProfileOwnChatButton}/>
-          <Route exact path='/users' component={UserOwnChatButton}/>
+          <Route exact path="/profile:id" component={ProfileOwnChatButton} />
+          <Route exact path="/" component={ProfileOwnChatButton} />
+          <Route exact path="/users" component={UserOwnChatButton} />
         </Switch>
       </BrowserRouter>
       <Modal show={show} onHide={handleClose}>
@@ -115,6 +115,5 @@ const mapStateToProps = state => ({
 OwnChatButton.whyDidYouRender = true;
 export default connect(
   mapStateToProps,
-  {createChat}
+  { createChat },
 )(withStyles(styles)(React.memo(OwnChatButton)));
-

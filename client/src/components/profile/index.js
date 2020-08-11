@@ -6,18 +6,18 @@ import apiClient from '../../utils/axios-with-auth';
 import setCurrentTab from '../../actions/menu';
 
 export default async function action({ store: { dispatch, getState } }) {
-	dispatch(setCurrentTab('Profile'));
-	dispatch(getUserData(getState().users.userOption.id || apiClient.userId()));
+  dispatch(setCurrentTab('Profile'));
+  dispatch(getUserData(getState().users.userOption.id || apiClient.userId()));
 
-	await dispatch;
+  await dispatch;
 
-	return {
-		chunks: [ 'profile' ],
-		component: (
-			<Layout>
-				<ProfileContainer />
-			</Layout>
-		),
-		title: 'Profile'
-	};
+  return {
+    chunks: ['profile'],
+    component: (
+      <Layout>
+        <ProfileContainer />
+      </Layout>
+    ),
+    title: 'Profile',
+  };
 }
