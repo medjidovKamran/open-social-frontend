@@ -1,8 +1,8 @@
 import React, { PureComponent } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import { useSelector } from 'react-redux';
 import s from './About.scss';
 import textData from '../../utils/lib/languages';
-import { useSelector } from 'react-redux';
 
 const About = () => {
   const lang = useSelector(store => store.menu.lang);

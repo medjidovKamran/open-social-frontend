@@ -80,7 +80,10 @@ class Profile extends Component {
   };
 
   render() {
-    const { id: { id }, lang } = this.props;
+    const {
+      id: { id },
+      lang,
+    } = this.props;
     const { profilePage } = textData;
     return (
       <Container className={styles.UserProfile}>
@@ -117,7 +120,9 @@ class Profile extends Component {
                     />
                   }
                 />
-                {id === apiClient.userId() && <OwnChatButton nameBtn = {profilePage.buttons.chat[lang]} />}
+                {id === apiClient.userId() && (
+                  <OwnChatButton nameBtn={profilePage.buttons.chat[lang]} />
+                )}
               </div>
             </Col>
             <Col lg={7} md={7} sm={12}>
@@ -153,8 +158,10 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default connect(({ userProfile: avatar, userProfile: id, menu: { lang } }) => ({
+export default connect(
+  ({ userProfile: avatar, userProfile: id, menu: { lang } }) => ({
     avatar,
     id,
     lang,
-  }))(withStyles(styles, stylesButton)(React.memo(Profile)));
+  }),
+)(withStyles(styles, stylesButton)(React.memo(Profile)));

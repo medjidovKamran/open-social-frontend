@@ -7,7 +7,7 @@ import { faBell, faCog, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import {connect, useSelector} from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import styles from './TabsComponent.scss';
 import Link from '../../../Link';
 import apiClient from '../../../../utils/axios-with-auth';
@@ -22,7 +22,9 @@ const TabsComponent = ({
   id,
 }) => {
   const lang = useSelector(store => store.menu.lang);
-  const {profilePage: {tabs, aboutData}} = textData;
+  const {
+    profilePage: { tabs, aboutData },
+  } = textData;
   const dataObject = {
     userInformation: [
       { column: `${aboutData.username[lang]}`, value: `${userName}` },
@@ -67,12 +69,8 @@ const TabsComponent = ({
             return (
               <Container key={item.column}>
                 <div className={styles.TabsItemRow}>
-                  <div className={styles.TabsItemCol}>
-                    {item.column}:
-                  </div>
-                  <div>
-                    {item.value}
-                  </div>
+                  <div className={styles.TabsItemCol}>{item.column}:</div>
+                  <div>{item.value}</div>
                 </div>
               </Container>
             );

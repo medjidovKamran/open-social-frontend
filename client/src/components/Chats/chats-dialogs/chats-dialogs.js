@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import emojii from 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
+import { useSelector } from 'react-redux';
 import style from './chats-dialogs.module.scss';
 import avatar from '../../../assets/avatar.png';
 import Messages from './messages';
-import {useSelector} from "react-redux";
-import textData from "../../../utils/lib/languages";
+import textData from '../../../utils/lib/languages';
 
-const ChatsDialogs = ( dialogText ) => {
+const ChatsDialogs = dialogText => {
   const [emojiPickerState, SetEmojiPicker] = useState(false);
   const [message, SetMessage] = useState('');
   const lang = useSelector(store => store.menu.lang);
-  const { chatsPage: {dialog}} = textData;
+  const {
+    chatsPage: { dialog },
+  } = textData;
 
   let emojiPicker;
   if (emojiPickerState) {

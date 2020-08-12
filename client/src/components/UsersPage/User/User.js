@@ -8,7 +8,7 @@ import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
 import OwnChatButton from '../../profile/UserProfile/OwnChat';
 import { setUserData } from '../../../actions/profile';
-import textData from "../../../utils/lib/languages";
+import textData from '../../../utils/lib/languages';
 
 class User extends React.Component {
   toUserProfile = id => {
@@ -24,7 +24,10 @@ class User extends React.Component {
   }
 
   render() {
-    const { user:{firstName, lastName, id}, lang } = this.props;
+    const {
+      user: { firstName, lastName, id },
+      lang,
+    } = this.props;
     const { usersPage } = textData;
 
     return (

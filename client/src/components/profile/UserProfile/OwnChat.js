@@ -19,7 +19,9 @@ function OwnChatButton({ user: { id }, createChat, nameBtn, lang }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [descpiption, setDescription] = useState('');
-  const {profilePage: {ownChat}} = textData;
+  const {
+    profilePage: { ownChat },
+  } = textData;
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const onSubmit = () => {
