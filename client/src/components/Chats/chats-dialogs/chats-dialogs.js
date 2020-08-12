@@ -5,16 +5,20 @@ import { Picker } from 'emoji-mart';
 import style from './chats-dialogs.module.scss';
 import avatar from '../../../assets/avatar.png';
 import Messages from './messages';
+import {useSelector} from "react-redux";
+import textData from "../../../utils/lib/languages";
 
-const ChatsDialogs = () => {
+const ChatsDialogs = ( dialogText ) => {
   const [emojiPickerState, SetEmojiPicker] = useState(false);
   const [message, SetMessage] = useState('');
+  const lang = useSelector(store => store.menu.lang);
+  const { chatsPage: {dialog}} = textData;
 
   let emojiPicker;
   if (emojiPickerState) {
     emojiPicker = (
       <Picker
-        title="Pick your emoji…"
+        title={dialog.emojiTitle[lang]}
         emoji="point_up"
         onSelect={emoji => SetMessage(message + emoji.native)}
       />
@@ -56,7 +60,7 @@ const ChatsDialogs = () => {
             name=""
             id=""
             rows="1"
-            placeholder="Type a message here"
+            placeholder={dialog.inputPlaceholder[lang]}
             value={message}
             onChange={event => SetMessage(event.target.value)}
           />

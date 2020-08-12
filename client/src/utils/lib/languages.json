@@ -158,5 +158,95 @@
       "en": "Registration",
       "ru": "Регистрация"
     }
+  },
+  "aboutPage": {
+    "title": {
+      "uk": "Про нас",
+      "en": "About us",
+      "ru": "О нас"
+    }
+  },
+  "chatsPage": {
+    "title": {
+      "uk": "Повідомлення",
+      "en": "Messages",
+      "ru": "Сообщения"
+    },
+    "dialog": {
+      "inputPlaceholder": {
+        "uk": "Введіть тут повідомлення",
+        "en": "Type a message here",
+        "ru": "Напишите здесь сообщение"
+      },
+      "emojiTitle": {
+        "uk": "Виберіть смайл…",
+        "en": "Pick your emoji…",
+        "ru": "Выберите смайл…"
+      }
+    }
+  },
+  "usersPage": {
+    "title": { "uk": "Користувачі", "en": "Users", "ru": "Пользователи" },
+    "addButton": { "uk": "Додати", "en": "Add", "ru": "Добавить" }
+  },
+  "profilePage": {
+    "ownChat": {
+      "title": {
+        "uk": "Створити свій новий чат",
+        "en": "Create new own chat",
+        "ru": "Создать свой новый чат"
+      },
+      "nameInput": {
+        "uk": "Введіть назву чату. Поле не має бути пустим",
+        "en": "Please enter chat name. Name cant be empty",
+        "ru": "Пожалуйста, введите название чата. Поле не может быть пустым"
+      },
+      "descriptionInput": {
+        "uk": "Додайте опис, якщо це потрібно ...",
+        "en": "Add some description if you need...",
+        "ru": "Добавьте описание, если это нужно ..."
+      },
+      "submitText": {
+        "uk": "Створити свій чат",
+        "en": "Create own chat",
+        "ru": "Создать свой чат"
+      }
+    },
+    "tabs": {
+      "about": { "uk": "Про мене", "en": "About me", "ru": "Обо мне" },
+      "additional": {
+        "uk": "Додатково",
+        "en": "Additional info",
+        "ru": "Дополнительно"
+      },
+      "credits": { "uk": "Вплив", "en": "Credits", "ru": "Влияние" }
+    },
+    "aboutData": {
+      "username": {
+        "uk": "Ім'я користувача",
+        "en": "User name",
+        "ru": "Имя пользователя"
+      },
+      "email": { "uk": "Ел. пошта", "en": "Email", "ru": "Эл. адрес" },
+      "birthday": {
+        "uk": "Дата народження",
+        "en": "Birthday date",
+        "ru": "Дата рождения"
+      }
+    },
+    "buttons": {
+      "connect": { "uk": "Підключення", "en": "Connect", "ru": "Подключение" },
+      "message": { "uk": "Повідомлення", "en": "Messages", "ru": "Сообщения" },
+      "review": { "uk": "Переглянути", "en": "Review", "ru": "Обзор" },
+      "chat": { "uk": "Новий чат", "en": "Own chat", "ru": "Новый чат" }
+    },
+    "activities": {
+      "followers": {
+        "uk": "Підписники",
+        "en": "Followers",
+        "ru": "Подписчики"
+      },
+      "chats": { "uk": "Всіх чатів", "en": "Active chats", "ru": "Всех чатов" }
+    }
   }
 }

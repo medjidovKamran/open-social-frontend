@@ -15,6 +15,7 @@ import OwnChatButton from './OwnChat';
 import apiClient from '../../../utils/axios-with-auth';
 import { apiURL } from '../../../constants';
 import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
+import textData from '../../../utils/lib/languages.json';
 
 class Profile extends Component {
   static propTypes = {
@@ -79,8 +80,8 @@ class Profile extends Component {
   };
 
   render() {
-    const { id } = this.props.id;
-
+    const { id: { id }, lang } = this.props;
+    const { profilePage } = textData;
     return (
       <Container className={styles.UserProfile}>
         <Card className={styles.ProfileCard}>
@@ -94,11 +95,11 @@ class Profile extends Component {
               <div>
                 <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Connect"
+                  name={profilePage.buttons.connect[lang]}
                 />
                 <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Message"
+                  name={profilePage.buttons.message[lang]}
                   iconLeft={
                     <FontAwesomeIcon
                       className={stylesButton.Icon}
@@ -108,7 +109,7 @@ class Profile extends Component {
                 />
                 <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Review"
+                  name={profilePage.buttons.review[lang]}
                   iconRight={
                     <FontAwesomeIcon
                       className={stylesButton.Icon}
@@ -116,7 +117,7 @@ class Profile extends Component {
                     />
                   }
                 />
-                {id === apiClient.userId() && <OwnChatButton />}
+                {id === apiClient.userId() && <OwnChatButton nameBtn = {profilePage.buttons.chat[lang]} />}
               </div>
             </Col>
             <Col lg={7} md={7} sm={12}>
@@ -133,11 +134,11 @@ class Profile extends Component {
                   <Row className={styles.FollowersRow}>
                     <Col className={styles.Followers}>
                       <h3>203</h3>
-                      <p>Followers</p>
+                      <p>{profilePage.activities.followers[lang]}</p>
                     </Col>
                     <Col className={styles.Followers}>
                       <h3>5</h3>
-                      <p>Active chats</p>
+                      <p>{profilePage.activities.chats[lang]}</p>
                     </Col>
                   </Row>
                 </Card>
@@ -152,7 +153,8 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default connect(({ userProfile: avatar, userProfile: id }) => ({
-  avatar,
-  id,
-}))(withStyles(styles, stylesButton)(React.memo(Profile)));
+export default connect(({ userProfile: avatar, userProfile: id, menu: { lang } }) => ({
+    avatar,
+    id,
+    lang,
+  }))(withStyles(styles, stylesButton)(React.memo(Profile)));

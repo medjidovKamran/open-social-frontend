@@ -9,6 +9,7 @@ import { getUsersData } from '../../actions/users';
 import User from './User/User';
 import Loader from '../Loader/Loader';
 import UserSearchPanel from './UserSearchPanel/UserSearchPanel';
+import textData from '../../utils/lib/languages';
 
 class UsersPage extends React.Component {
   static propTypes = {
@@ -22,6 +23,7 @@ class UsersPage extends React.Component {
     error: PropTypes.string.isRequired,
     getUsersData: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired,
+    lang: PropTypes.string.isRequired,
   };
 
   constructor(props) {
@@ -68,7 +70,9 @@ class UsersPage extends React.Component {
   }
 
   render() {
-    const { error, isLoading } = this.props;
+    const { error, isLoading, lang } = this.props;
+    const { usersPage } = textData;
+
     if (error) {
       return <p className="mb-0">{error}</p>;
     }
@@ -83,7 +87,7 @@ class UsersPage extends React.Component {
       <div className={s.wrapper}>
         <div className={s.heading}>
           <div>
-            <h3>Users</h3>
+            <h3>{usersPage.title[lang]}</h3>
           </div>
           <div>
             <UserSearchPanel />
@@ -109,10 +113,11 @@ class UsersPage extends React.Component {
 
 UsersPage.whyDidYouRender = true;
 export default connect(
-  ({ users: { data, error, isLoading } }) => ({
+  ({ users: { data, error, isLoading }, menu: { lang } }) => ({
     data,
     error,
     isLoading,
+    lang,
   }),
   { getUsersData },
 )(withStyles(bootstrap, s)(React.memo(UsersPage)));

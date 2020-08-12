@@ -8,6 +8,7 @@ import Link from '../../Link';
 import UsersAvatar from '../../../assets/usersAvatar.png';
 import OwnChatButton from '../../profile/UserProfile/OwnChat';
 import { setUserData } from '../../../actions/profile';
+import textData from "../../../utils/lib/languages";
 
 class User extends React.Component {
   toUserProfile = id => {
@@ -23,7 +24,9 @@ class User extends React.Component {
   }
 
   render() {
-    const { firstName, lastName, id } = this.props.user;
+    const { user:{firstName, lastName, id}, lang } = this.props;
+    const { usersPage } = textData;
+
     return (
       <>
         <div className={s.userContainer}>
@@ -42,7 +45,8 @@ class User extends React.Component {
           <div className={s.buttonAddWrite}>
             <div>
               <button className={s.buttonAdd}>
-                Add <AddIcon className={s.buttonAddPlus} />
+                {usersPage.addButton[lang]}
+                <AddIcon className={s.buttonAddPlus} />
               </button>
             </div>
             <div>
@@ -58,6 +62,8 @@ class User extends React.Component {
 
 User.whyDidYouRender = true;
 export default connect(
-  null,
+  ({ menu: { lang } }) => ({
+    lang,
+  }),
   { setUserData },
 )(withStyles(s)(React.memo(User)));

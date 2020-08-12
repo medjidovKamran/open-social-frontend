@@ -12,12 +12,14 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import { createChat } from '../../../actions/chats';
 import styles from './ProfileButton.scss';
 import history from '../../../history';
+import textData from '../../../utils/lib/languages.json';
 
 // eslint-disable-next-line no-shadow
-function OwnChatButton({ user: { id }, createChat }) {
+function OwnChatButton({ user: { id }, createChat, nameBtn, lang }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState('');
   const [descpiption, setDescription] = useState('');
+  const {profilePage: {ownChat}} = textData;
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const onSubmit = () => {
@@ -46,7 +48,7 @@ function OwnChatButton({ user: { id }, createChat }) {
         onClick={handleShow}
       >
         <FontAwesomeIcon className={styles.Icon} icon={faPlus} />
-        Own chat
+        {nameBtn}
       </Button>
     );
   };
@@ -69,14 +71,14 @@ function OwnChatButton({ user: { id }, createChat }) {
       </BrowserRouter>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Create new own chat</Modal.Title>
+          <Modal.Title>{ownChat.title[lang]}</Modal.Title>
         </Modal.Header>
         <Form.Group style={modalStyle}>
           <Form.Control
             type="name"
             value={name}
             onChange={event => setName(event.target.value)}
-            placeholder="Please enter chat name. Name cant be empty"
+            placeholder={ownChat.nameInput[lang]}
           />
         </Form.Group>
         <Form.Group style={modalStyle}>
@@ -84,14 +86,14 @@ function OwnChatButton({ user: { id }, createChat }) {
             as="textarea"
             rows="3"
             name="description"
-            placeholder="Add some description if you need..."
+            placeholder={ownChat.descriptionInput[lang]}
             value={descpiption}
             onChange={event => setDescription(event.target.value)}
           />
         </Form.Group>
         <Modal.Footer>
           <Button variant="primary" onClick={onSubmit}>
-            Create Own Chat
+            {ownChat.submitText[lang]}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -104,11 +106,13 @@ OwnChatButton.propTypes = {
   // eslint-disable-next-line react/require-default-props
   user: PropTypes.shape({
     id: PropTypes.number,
+    lang: PropTypes.string.isRequired,
   }),
 };
 
 const mapStateToProps = state => ({
   chat: state.userChats,
+  lang: state.menu.lang,
   user: state.userProfile,
 });
 

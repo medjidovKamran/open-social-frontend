@@ -7,10 +7,11 @@ import { faBell, faCog, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import styles from './TabsComponent.scss';
 import Link from '../../../Link';
 import apiClient from '../../../../utils/axios-with-auth';
+import textData from '../../../../utils/lib/languages.json';
 
 const TabsComponent = ({
   firstName,
@@ -20,12 +21,14 @@ const TabsComponent = ({
   birthdayDate,
   id,
 }) => {
+  const lang = useSelector(store => store.menu.lang);
+  const {profilePage: {tabs, aboutData}} = textData;
   const dataObject = {
     userInformation: [
-      { column: 'Username', value: `${userName}` },
-      { column: 'Email', value: `${email}` },
+      { column: `${aboutData.username[lang]}`, value: `${userName}` },
+      { column: `${aboutData.email[lang]}`, value: `${email}` },
       {
-        column: 'Birthday date',
+        column: `${aboutData.birthday[lang]}`,
         value: `${moment(birthdayDate).format('MM-DD-YYYY')}`,
       },
     ],
@@ -36,9 +39,9 @@ const TabsComponent = ({
       <Tabs className={styles.TabsWrapper}>
         <TabList>
           <div>
-            <Tab id="aboutMe">About me</Tab>
-            <Tab id="additionalInfo">Additional info</Tab>
-            <Tab id="credits">Credits</Tab>
+            <Tab id="aboutMe">{tabs.about[lang]}</Tab>
+            <Tab id="additionalInfo">{tabs.additional[lang]}</Tab>
+            <Tab id="credits">{tabs.credits[lang]}</Tab>
             <div className={styles.IconsWrapper}>
               {id === apiClient.userId() && (
                 <>
@@ -63,14 +66,14 @@ const TabsComponent = ({
           {dataObject.userInformation.map(item => {
             return (
               <Container key={item.column}>
-                <Row className={styles.TabsItemRow}>
-                  <Col lg={3} md={3} sm={12} className={styles.TabsItemCol}>
+                <div className={styles.TabsItemRow}>
+                  <div className={styles.TabsItemCol}>
                     {item.column}:
-                  </Col>
-                  <Col lg={9} md={9} sm={12}>
+                  </div>
+                  <div>
                     {item.value}
-                  </Col>
-                </Row>
+                  </div>
+                </div>
               </Container>
             );
           })}
