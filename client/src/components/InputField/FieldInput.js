@@ -11,25 +11,25 @@ const FieldInput = ({
   type,
   description,
   placeholder,
+  id,
   ...props
 }) => {
   const showError = touched && error;
 
   return (
-    <>
-      <div>
-        <FormControl
-          className={showError ? styles.InputError : styles.fieldDefault}
-          name={name}
-          onBlur={onBlur}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onChange={onChange}
-          description={description}
-          props={props && ''}
-        />
-      </div>
+    <div className={styles.inputWrap}>
+      <FormControl
+        id={id}
+        className={showError ? styles.InputError : styles.fieldDefault}
+        name={name}
+        onBlur={onBlur}
+        type={type}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        description={description}
+        props={props && ''}
+      />
       <>
         {showError ? (
           <span className={styles.TextError}>{`${description} ${error}`}</span>
@@ -37,7 +37,7 @@ const FieldInput = ({
           <span className={styles.TextHidden}>message</span>
         )}
       </>
-    </>
+    </div>
   );
 };
 
@@ -55,6 +55,7 @@ FieldInput.propTypes = {
   }).isRequired,
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
+  id: PropTypes.string,
 };
 
 export default withStyles(bootstrap, styles)(FieldInput);

@@ -55,7 +55,7 @@
   }
 }
 
-@media (min-width: 360px) and (max-width: 1024px) {
+@media (max-width: 1024px) {
   .footer {
     padding: 0 1rem;
   }
@@ -70,5 +70,22 @@
     p {
       font-size: 1rem;
     }
+  }
+}
+
+@media (max-width: 500px) {
+  .logo {
+    padding-right: 10px;
+  }
+
+  .menu {
+    min-width: 7rem;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .credo {
+    width: auto;
   }
 }
