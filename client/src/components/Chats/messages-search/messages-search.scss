@@ -1,0 +1,22 @@
+.SearchMessages {
+	width: 95%;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.SearchInputMessages {
+	border: 1px solid rgb(172, 172, 172);
+	border-radius: 10px;
+	height: 30px;
+	width: 200px;
+	outline: none;
+	padding: 6px 7px;
+}
+
+.SearchInputMessages:focus {
+	background-color: #ccc;
+	outline: none;
+}

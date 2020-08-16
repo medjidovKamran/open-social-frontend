@@ -50,7 +50,17 @@ export const getUsersChatData = ({ limit, offset }) => async (dispatch) => {
 export const getChatsWithParams = ({ search }) => async (dispatch) => {
 	dispatch(userChatDataLoading({ search }));
 	try {
-		const data = await apiClient.get(`${apiURL}/api/v1/chats?search=%${search}%`);
+		const data = await apiClient.get(`${apiURL}/api/v1/chats?search=${search}`);
+		dispatch(userChatDataSuccess(data));
+	} catch (error) {
+		dispatch(userChatDataFailure(error.message));
+	}
+};
+
+export const getMessagesWithParams = ({ search }) => async (dispatch) => {
+	dispatch(userChatDataLoading({ search }));
+	try {
+		const data = await apiClient.get(`${apiURL}/api/v1/messages?search=%${search}%`);
 		dispatch(userChatDataSuccess(data));
 	} catch (error) {
 		dispatch(userChatDataFailure(error.message));
