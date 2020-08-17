@@ -19,28 +19,24 @@ const ChatsBlockUserAdmin = ({
     return <p className="mb-0">{error}</p>;
   }
 
-  if (isLoading) {
-    return (
-      <div>
-        <Loader />
-      </div>
-    );
-  }
-
-  return (
-    <div className={style.blockUserAdmin}>
-      <div
-        className={style.avatar}
-        style={{
-          backgroundImage:
-            avatar && avatar.url
-              ? `url( http://${avatar.url})`
-              : `url( ${dumpImg})`,
-        }}
-      />
-      <h4>{` ${firstName} ${lastName}`}</h4>
-    </div>
-  );
+	if (isLoading) {
+		return (
+			<div>
+				<Loader />
+			</div>
+		);
+	}
+	return (
+		<div className={style.blockUserAdmin}>
+			<div>
+				<Avatar className={style.avatar} alt={userName}  />
+				{/* src={`http://${avatar.url}`} */}
+				<div>
+					<h4>{` ${firstName} ${lastName}`}</h4>
+				</div>
+			</div>
+		</div>
+	);
 };
 
 ChatsBlockUserAdmin.propTypes = {
