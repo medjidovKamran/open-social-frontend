@@ -57,7 +57,7 @@
     "redux-form": "~8.2.6",
     "redux-thunk": "~2.3.0",
     "reselect": "~4.0.0",
-    "serialize-javascript": ">=2.1.1",
+    "serialize-javascript": ">=3.1.0",
     "typestyle": "^2.1.0",
     "universal-router": "~8.2.1",
     "url-loader": "^2.2.0",
