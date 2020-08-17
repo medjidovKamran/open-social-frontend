@@ -185,15 +185,17 @@
   }
 
   .TabPanel {
-    margin-left: 1.5em;
+    margin: 2rem 0 0 1.5em;
     width: 85%;
   }
 
   .TabsItemRow {
     padding: 0.3em 0 0.3em 0;
+    display: flex;
   }
 
   .TabsItemCol {
     color: gray;
+    width: 30%;
   }
 }

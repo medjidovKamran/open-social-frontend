@@ -1,28 +1,32 @@
+.wrapper {
+  margin: 0 auto;
+}
+
 .UsersAvatar {
   height: 76px;
   border-radius: 100px;
 }
 
 .userContainer {
-  display: grid;
-  grid-template-columns: 80% 180px;
+  display: flex;
+  justify-content: space-between;
+  grid-template-columns: 80% 20%;
 }
 
 .buttonAdd {
   color: lightgrey;
   background-color: #3f426b;
   height: 35px;
-  width: 90px;
+  min-width: 70px;
   font-size: 12pt;
-  padding-top: 4px;
+  padding: 4px;
 }
 
 .buttonAddWrite {
   padding-top: 23px;
   text-align: center;
   justify-content: center;
-  display: grid;
-  grid-template-columns: 50% 50%;
+  display: flex;
 }
 
 .buttonAdd:active {

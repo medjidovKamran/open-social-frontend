@@ -6,7 +6,7 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styles from './ProfilePhoto.scss';
-import apiClient from "../../../../utils/axios-with-auth";
+import apiClient from '../../../../utils/axios-with-auth';
 
 const ProfilePhoto = ({
   imgSource,
@@ -14,13 +14,15 @@ const ProfilePhoto = ({
   loadPhoto,
   id,
 }) => {
-  const userPhoto = <img src={imgSource} className={styles.UserImg} alt="profile" />;
+  const userPhoto = (
+    <img src={imgSource} className={styles.UserImg} alt="profile" />
+  );
 
   return (
     <div className={classNames(styles.ProfileBackgroundImages, 'card')}>
       {userPhoto}
       <div className="text-center">
-        { id === apiClient.userId() && (
+        {id === apiClient.userId() && (
           <>
             <label
               className={styles.ChangePhoto}
@@ -36,7 +38,7 @@ const ProfilePhoto = ({
               />
             </label>
           </>
-        ) }
+        )}
       </div>
     </div>
   );
@@ -44,9 +46,9 @@ const ProfilePhoto = ({
 
 ProfilePhoto.propTypes = {
   changeProfilePhotoHandler: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
   imgSource: PropTypes.string.isRequired,
   loadPhoto: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
 };
 
 ProfilePhoto.whyDidYouRender = true;
