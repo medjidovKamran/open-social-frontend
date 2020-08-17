@@ -13,6 +13,8 @@ import apiClient from '../../utils/axios-with-auth';
 import textData from '../../utils/lib/languages.json';
 
 import s from './Login.scss';
+// import banner from "../../assets/images_banner/loginBackground.png";
+import banner from '../../assets/images_banner/withoutLogo.png';
 
 class LoginPage extends React.Component {
   static propTypes = {
@@ -21,32 +23,43 @@ class LoginPage extends React.Component {
     setUser: PropTypes.func.isRequired,
   };
 
-	handleSubmit = async (data) => {
-		const { setUser } = this.props;
-		await setUser(data);
-		history.push(`/profile${apiClient.userId()}`);
-	};
+  handleSubmit = async data => {
+    const { setUser } = this.props;
+    await setUser(data);
+    history.push(`/profile${apiClient.userId()}`);
+  };
 
   render() {
     const { message, lang } = this.props;
     const { loginPage } = textData;
     return (
-      <div className={s.form}>
-        {message && <Alert variant="info">{message}</Alert>}
-        <h3 className={s.heading}>{loginPage.title[lang]}</h3>
-        {process.env.BROWSER && (
-          <div>
-            <UserForm onSubmit={this.handleSubmit} submitText="Log in" />
-            <div className={s.links}>
-              <span className={s.notSignedUp}>
-                {loginPage.isNotAutorized[lang]}
-              </span>
-              <Button variant="link">
-                <Link to="/signup">{loginPage.signup[lang]}</Link>
-              </Button>
+      <div className={s.wrapper}>
+        <div
+          className={s.bannerWrap}
+          style={{
+            backgroundImage: `url(${banner})`,
+          }}
+        />
+        <div className={s.form}>
+          {message && <Alert variant="info">{message}</Alert>}
+          <h3 className={s.heading}>{loginPage.title[lang]}</h3>
+          {process.env.BROWSER && (
+            <div>
+              <UserForm
+                onSubmit={this.handleSubmit}
+                submitText={loginPage.submitButton[lang]}
+              />
+              <div className={s.links}>
+                <span className={s.notSignedUp}>
+                  {loginPage.isNotAutorized[lang]}
+                </span>
+                <Button variant="link">
+                  <Link to="/signup">{loginPage.signup[lang]}</Link>
+                </Button>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   }
@@ -55,6 +68,8 @@ class LoginPage extends React.Component {
 export default withStyles(bootstrap, s)(
   connect(
     ({ user: { message }, menu: { lang } }) => ({ lang, message }),
-    { setUser: login },
+    {
+      setUser: login,
+    },
   )(LoginPage),
 );

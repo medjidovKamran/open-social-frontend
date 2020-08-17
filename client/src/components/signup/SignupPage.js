@@ -34,7 +34,7 @@ class SignupPage extends React.Component {
         {message && <Alert variant="info">{message}</Alert>}
         <h3 className={s.heading}>{signupPage.title[lang]}</h3>
         {process.env.BROWSER && (
-          <UserRegForm onSubmit={this.handleSubmit} submitText="Sign up" />
+          <UserRegForm onSubmit={this.handleSubmit} submitText={signupPage.submitButton[lang]} />
         )}
         {process.env.BROWSER && (
           <div className={s.links}>

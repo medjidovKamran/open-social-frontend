@@ -8,7 +8,7 @@ import s from './EditProfile.scss';
 import EditProfileForm from '../EditProfileForm/EditProfileForm';
 import { editProfile } from '../../actions/profile';
 import history from '../../history';
-import apiClient from "../../utils/axios-with-auth";
+import apiClient from '../../utils/axios-with-auth';
 
 class EditProfilePage extends React.Component {
   static propTypes = {
