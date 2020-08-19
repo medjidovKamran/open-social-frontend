@@ -99,16 +99,38 @@ header {
   background-position: center;
 }
 
+.headerInfo {
+  height: 111px;
+  background: #FAFBFF;
+  border-radius: 6px 6px 0px 0px;
+  border-bottom: 1px solid rgba(112, 124, 151, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.infoMessage {
+  font-size: 18px;
+  line-height: 21px;
+  color: #0d1c2e;
+}
+
+.messagesWrapper {
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 // form
 
 .formLine {
-  background: rgba(112, 124, 151, 0.15);
-  border-radius: 2px;
-  height: 2px;
-  margin: 133px 60px 0 60px;
-}
-
-.formWrapper {
+    background: rgba(112, 124, 151, 0.15);
+    border-radius: 2px;
+    height: 2px;
+    margin: 33px 60px 0 60px;
+  }
+.formWrapper{
   padding: 0 60px;
   display: flex;
   height: 89px;
@@ -118,9 +140,11 @@ header {
   form {
     display: flex;
     align-items: center;
+    width: 100%;
   }
 
   textarea {
+    width: 100%;
     font-size: 20px;
     line-height: 24px;
     color: rgba(112, 124, 151, 0.5);
@@ -133,8 +157,8 @@ header {
 }
 
 .smileButton {
-  height: 24px;
-  width: 24px;
+  min-height: 24px;
+  min-width: 24px;
   margin-right: 22px;
   border-radius: 50%;
   background: none;
@@ -147,8 +171,8 @@ header {
   background-image: url(../../../assets/chat/send-icon.png);
   background-repeat: no-repeat;
   background-position: center;
-  height: 40px;
-  width: 40px;
+  min-height: 40px;
+  min-width: 40px;
   overflow: visible;
   border-radius: 50%;
 }
@@ -157,8 +181,8 @@ header {
   background-image: url(../../../assets/chat/icon-add.png);
   background-repeat: no-repeat;
   background-position: center;
-  height: 40px;
-  width: 40px;
+  min-height: 40px;
+  min-width: 40px;
   border-radius: 50%;
 }
 

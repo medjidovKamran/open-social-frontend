@@ -10,7 +10,7 @@ import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import s from './EditProfileForm.scss';
 import Link from '../Link';
-import apiClient from "../../utils/axios-with-auth";
+import apiClient from '../../utils/axios-with-auth';
 
 const EditProfileForm = ({ handleSubmit, submitText }) => {
   return (

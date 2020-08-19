@@ -7,7 +7,7 @@ import {
 const initialState = {
   error: '',
   isLoading: true,
-  userOption: {id: ''},
+  userOption: { id: '' },
 };
 
 export default (state = initialState, action) => {
@@ -20,9 +20,9 @@ export default (state = initialState, action) => {
         isLoading: false,
       };
     case PROFILE_DATA_LOADING:
-      return {...state};
+      return { ...state };
     case PROFILE_DATA_LOADING_DATA_FAILURE:
-      return {...state, error: action.error, isLoading: false};
+      return { ...state, error: action.error, isLoading: false };
     default:
       return state;
   }

@@ -1,63 +1,10 @@
-@media (max-width: 1024px) {
-  .UserProfile {
-    margin-left: -3em !important;
-    margin-top: 1em !important;
-    width: 57em;
-  }
-}
-
-@media (max-width: 768px) {
-  .UserProfile {
-    margin-left: -1.7em !important;
-    margin-top: -3em !important;
-  }
-}
-
-@media (max-width: 580px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 24.8em;
-    margin-left: -2.7em !important;
-  }
-}
-
-@media (max-width: 500px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 24.8em;
-    margin-left: -2.7em !important;
-  }
-}
-
-@media (max-width: 375px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 22.7em;
-    margin-left: -2.8em !important;
-  }
-}
-
-@media (max-width: 360px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 21.7em;
-    margin-left: -2.7em !important;
-  }
-}
-
-@media (max-width: 330px) {
-  .UserProfile {
-    padding: 0.3em !important;
-    width: 19.3em;
-    margin-left: -2.8em !important;
-  }
-}
-
 .UserProfile {
+  width: 90%;
+  max-width: 100rem;
+  margin-top: 7rem;
   border-radius: 5px;
   box-shadow: 0 0 10px gray;
-  padding: 1em;
-  margin: 0 auto;
+  padding-bottom: 1em;
 
   .ProfileCard {
     margin: 0.5em 0.5em 0 0.5em;

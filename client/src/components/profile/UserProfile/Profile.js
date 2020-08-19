@@ -1,20 +1,21 @@
-import React, {Component} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCaretDown, faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretDown, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import {Card, Col, Container, Row} from 'react-bootstrap';
+import { Card, Col, Container, Row } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import styles from './Profile.scss';
 import stylesButton from './ProfileButton.scss';
-import {ProfileButton} from './ProfileButton/ProfileButton';
+import { ProfileButton } from './ProfileButton/ProfileButton';
 import 'react-tabs/style/react-tabs.css';
 import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
 import OwnChatButton from './OwnChat';
 import apiClient from '../../../utils/axios-with-auth';
-import {apiURL} from '../../../constants';
+import { apiURL } from '../../../constants';
 import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
+import textData from '../../../utils/lib/languages.json';
 
 class Profile extends Component {
   static propTypes = {
@@ -24,9 +25,8 @@ class Profile extends Component {
       }),
     }).isRequired,
     id: PropTypes.shape({
-      id: PropTypes.number
-    }).isRequired
-
+      id: PropTypes.number,
+    }).isRequired,
   };
 
   state = {
@@ -36,17 +36,15 @@ class Profile extends Component {
 
   getUserAvatar() {
     console.log('avatar:', this.props.avatar);
-    const {avatar} = this.props.avatar;
+    const { avatar } = this.props.avatar;
     if (avatar) {
-      return `${apiURL}/${avatar.name.replace('undefined', '')}`
-    } else {
-      return defaultUserPhoto;
+      return `${apiURL}/${avatar.name.replace('undefined', '')}`;
     }
-
+    return defaultUserPhoto;
   }
 
   componentDidMount() {
-    const {avatar} = this.props.avatar;
+    const { avatar } = this.props.avatar;
     if (avatar) {
       this.setState(previousState => ({
         isDisplayed: !previousState.isDisplayed,
@@ -69,7 +67,7 @@ class Profile extends Component {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(photo);
     fileReader.addEventListener('load', () => {
-      const {result} = fileReader;
+      const { result } = fileReader;
       if (result) {
         this.setState(previousState => ({
           isDefaultPhotoDisplayed: false,
@@ -82,8 +80,11 @@ class Profile extends Component {
   };
 
   render() {
-    const {id} = this.props.id;
-
+    const {
+      id: { id },
+      lang,
+    } = this.props;
+    const { profilePage } = textData;
     return (
       <Container className={styles.UserProfile}>
         <Card className={styles.ProfileCard}>
@@ -97,11 +98,11 @@ class Profile extends Component {
               <div>
                 <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Connect"
+                  name={profilePage.buttons.connect[lang]}
                 />
                 <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Message"
+                  name={profilePage.buttons.message[lang]}
                   iconLeft={
                     <FontAwesomeIcon
                       className={stylesButton.Icon}
@@ -111,7 +112,7 @@ class Profile extends Component {
                 />
                 <ProfileButton
                   className={stylesButton.ProfileButton}
-                  name="Review"
+                  name={profilePage.buttons.review[lang]}
                   iconRight={
                     <FontAwesomeIcon
                       className={stylesButton.Icon}
@@ -119,11 +120,13 @@ class Profile extends Component {
                     />
                   }
                 />
-                {id === apiClient.userId() && <OwnChatButton/>}
+                {id === apiClient.userId() && (
+                  <OwnChatButton nameBtn={profilePage.buttons.chat[lang]} />
+                )}
               </div>
             </Col>
             <Col lg={7} md={7} sm={12}>
-              <TabsComponent/>
+              <TabsComponent />
             </Col>
           </Row>
         </Card>
@@ -136,11 +139,11 @@ class Profile extends Component {
                   <Row className={styles.FollowersRow}>
                     <Col className={styles.Followers}>
                       <h3>203</h3>
-                      <p>Followers</p>
+                      <p>{profilePage.activities.followers[lang]}</p>
                     </Col>
                     <Col className={styles.Followers}>
                       <h3>5</h3>
-                      <p>Active chats</p>
+                      <p>{profilePage.activities.chats[lang]}</p>
                     </Col>
                   </Row>
                 </Card>
@@ -155,6 +158,10 @@ class Profile extends Component {
 
 Profile.whyDidYouRender = true;
 
-export default connect(({userProfile: avatar, userProfile: id}) => ({
-  avatar, id
-}))(withStyles(styles, stylesButton)(React.memo(Profile)));
+export default connect(
+  ({ userProfile: avatar, userProfile: id, menu: { lang } }) => ({
+    avatar,
+    id,
+    lang,
+  }),
+)(withStyles(styles, stylesButton)(React.memo(Profile)));

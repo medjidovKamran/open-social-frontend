@@ -1,9 +1,6 @@
 .form {
   width: 400px;
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 70px;
 }
 
 .heading {
@@ -21,19 +18,19 @@
   color: #aeaeae;
 }
 
-div[class=input-group] {
+div[class="input-group"] {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
 }
 
-div[class=input-group-prepend] {
+div[class="input-group-prepend"] {
   width: 15%;
   float: left;
   display: inline;
 }
 
-input[name=userName] {
+input[name="userName"] {
   width: 85%;
   display: inline;
 }
