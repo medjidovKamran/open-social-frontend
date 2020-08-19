@@ -24,7 +24,8 @@ export default (state = initialState, action) => {
     case USERS_CHAT_DATA_LOADING_DATA_SUCCESS:
       return {
         ...state,
-        data: [...state.data, ...action.payload.data],
+        ...action.payload,
+        //data: Array.from(action.payload),
         error: '',
         isLoading: false,
       };

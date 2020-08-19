@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
     case USERS_DATA_LOADING_DATA_SUCCESS:
       return {
         ...state,
-        data: Array.from(action.payload),
+        ...action.payload,
         error: '',
         isLoading: false,
       };

@@ -75,14 +75,22 @@ export const getUsersChatData = ({ take, skip }) => async dispatch => {
   }
 };
 
-export const getChatsWithParams = ({ search }) => async dispatch => {
+export const getChatsWithParams = ({
+  take,
+  skip,
+  search,
+}) => async dispatch => {
   dispatch(userChatDataLoading({ search }));
   console.log(search);
   try {
-    const data = await apiClient.get(`${apiURL}/api/v1/chats`, {
+    const { data } = await apiClient.get(`${apiURL}/api/v1/chats`, {
+      take,
+      skip,
       search: search,
     });
-    dispatch(userChatDataSuccess(data));
+    dispatch(userChatDataSuccess({ data }));
+
+    return data;
   } catch (error) {
     dispatch(userChatDataFailure(error.message));
   }

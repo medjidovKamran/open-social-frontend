@@ -11,7 +11,12 @@ import {
   ListItemAvatar,
   ListItemText,
 } from '@material-ui/core';
-import { getUsersChatData, resetChatState, setChatData, setMessagesData } from '../../../actions/chats';
+import {
+  getUsersChatData,
+  resetChatState,
+  setChatData,
+  setMessagesData,
+} from '../../../actions/chats';
 import Loader from '../../Loader/Loader';
 import avatar from '../../../assets/avatar2.png';
 import style from './chats-block-users.module.scss';
@@ -41,7 +46,7 @@ class ChatsBlockUsers extends Component {
   componentDidMount() {
     const { dispatchGetUsersChatData } = this.props;
     const { take, skip } = this.state;
-    dispatchGetUsersChatData({ take, skip })
+    dispatchGetUsersChatData({ take, skip });
   }
 
   componentWillUnmount() {
@@ -117,13 +122,12 @@ class ChatsBlockUsers extends Component {
     });
   };
 
-  selectChat = (data) => {
-    const { dispatchSetChatData, dispatchSetMessagesData} = this.props;
+  selectChat = data => {
+    const { dispatchSetChatData, dispatchSetMessagesData } = this.props;
     dispatchSetChatData(data);
     dispatchSetMessagesData(data.id);
-  }
+  };
 }
-
 
 ChatsBlockUsers.whyDidYouRender = true;
 export default connect(
