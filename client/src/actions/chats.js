@@ -85,6 +85,7 @@ export const createChat = parameters => async dispatch => {
 	}
 };
 
+// eslint-disable-next-line unicorn/consistent-function-scoping
 export const resetChatState = () => dispatch => {
 	dispatch(clearChatState());
 };
