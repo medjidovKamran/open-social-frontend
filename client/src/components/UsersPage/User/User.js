@@ -29,7 +29,6 @@ class User extends React.Component {
       lang,
     } = this.props;
     const { usersPage } = textData;
-
     return (
       <>
         <div className={s.userContainer}>
