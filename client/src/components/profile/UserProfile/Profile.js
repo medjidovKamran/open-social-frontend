@@ -15,12 +15,13 @@ import OwnChatButton from './OwnChat';
 import apiClient from '../../../utils/axios-with-auth';
 import { apiURL } from '../../../constants';
 import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
+import Link from '../../Link';
 import textData from '../../../utils/lib/languages.json';
 
 class Profile extends Component {
   static propTypes = {
-    avatar: PropTypes.shape({
-      avatar: PropTypes.shape({
+    data: PropTypes.shape({
+      data: PropTypes.shape({
         name: PropTypes.string,
       }),
     }).isRequired,
@@ -35,16 +36,15 @@ class Profile extends Component {
   };
 
   getUserAvatar() {
-    console.log('avatar:', this.props.avatar);
-    const { avatar } = this.props.avatar;
-    if (avatar) {
-      return `${apiURL}/${avatar.name.replace('undefined', '')}`;
+    const { avatar } = this.props.data;
+    if (avatar == null) {
+      return defaultUserPhoto;
     }
-    return defaultUserPhoto;
+    return `http://${avatar.url}`;
   }
 
   componentDidMount() {
-    const { avatar } = this.props.avatar;
+    const { avatar } = this.props.data;
     if (avatar) {
       this.setState(previousState => ({
         isDisplayed: !previousState.isDisplayed,
