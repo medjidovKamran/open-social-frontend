@@ -17,7 +17,6 @@ const authorize = response => {
   }
 };
 
-
 export default {
   async get(url, data) {
     this.setHeader();
@@ -52,13 +51,9 @@ export default {
     const formData = new FormData();
     formData.append('file', profilePhoto);
     try {
-      return await axios.put(
-        `${apiURL}/api/v1/users/${this.userId()}`,
-        formData,
-        {
-          headers: { ...authHeader, 'Content-Type': 'multipart/form-data' },
-        },
-      );
+      return await axios.post(`${apiURL}/api/v1/users/images`, formData, {
+        headers: { ...authHeader, 'Content-Type': 'multipart/form-data' },
+      });
     } catch (error) {
       return error;
     }

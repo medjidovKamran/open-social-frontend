@@ -32,12 +32,17 @@ const clearChatState = () => ({
 });
 
 // eslint-disable-next-line consistent-return
-export const getUsersChatData = ({ limit, offset }) => async dispatch => {
+export const getUsersChatData = ({
+  limit,
+  offset,
+  search,
+}) => async dispatch => {
   dispatch(userChatDataLoading());
   try {
     const { data } = await apiClient.get(`${apiURL}/api/v1/chats`, {
       limit,
       offset,
+      search: 'Petr',
     });
     dispatch(userChatDataSuccess({ data }));
 
