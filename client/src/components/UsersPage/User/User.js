@@ -37,7 +37,7 @@ class User extends React.Component {
               {avatar ? (
                 <img
                   className={s.UsersAvatar}
-                  src={`http://${avatar.url}`}
+                  src={avatar.url}
                   alt={UsersAvatar}
                 />
               ) : (

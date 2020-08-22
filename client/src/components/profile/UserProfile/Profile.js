@@ -41,7 +41,7 @@ class Profile extends Component {
     if (avatar == null) {
       return defaultUserPhoto;
     } else {
-      return `http://${avatar.url}`;
+      return avatar.url;
     }
   }
 
