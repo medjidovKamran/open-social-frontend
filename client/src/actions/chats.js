@@ -79,12 +79,14 @@ export const getUsersChatData = ({ take, skip, search }) => async dispatch => {
 };
 
 export const getMessagesWithParams = ({ search }) => async dispatch => {
-  dispatch(userChatDataLoading({ search }));
+  dispatch(userChatDataLoading());
   try {
-    const data = await apiClient.get(
-      `${apiURL}/api/v1/messages?search=%${search}%`,
-    );
-    dispatch(userChatDataSuccess(data));
+    const { data } = await apiClient.get(`${apiURL}/api/v1/messages`, {
+      search: search,
+    });
+    dispatch(userChatDataSuccess({ data }));
+
+    return data;
   } catch (error) {
     dispatch(userChatDataFailure(error.message));
   }

@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { sendMessage, saveMessage } from '../../../actions/chats';
 import io from 'socket.io-client';
 import textData from '../../../utils/lib/languages';
+import MessageSearchPanel from '../messages-search/messages-search';
 
 let socket;
 
@@ -87,6 +88,7 @@ const ChatsDialogs = ({ chat, sendMessage, saveMessage, dialogText }) => {
 
   return (
     <div className={style.wrapper}>
+      <MessageSearchPanel />
       <header>
         <div className={style.user}>
           <a href="">
