@@ -25,7 +25,7 @@ class LoginPage extends React.Component {
   handleSubmit = async data => {
     const { setUser } = this.props;
     await setUser(data);
-    history.push(`/`);
+     history.push(`/`);
   };
 
   render() {
@@ -33,8 +33,7 @@ class LoginPage extends React.Component {
     const { loginPage } = textData;
     return (
       <div className={s.wrapper}>
-        <div
-          className={s.bannerWrap}
+        <div className={s.bannerWrap}
           style={{
             backgroundImage: `url(${banner})`,
           }}
