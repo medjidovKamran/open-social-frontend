@@ -15,6 +15,7 @@ import OwnChatButton from './OwnChat';
 import apiClient from '../../../utils/axios-with-auth';
 import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
 import textData from '../../../utils/lib/languages.json';
+import history from '../../../history';
 
 class Profile extends Component {
   static propTypes = {
@@ -36,14 +37,10 @@ class Profile extends Component {
     return avatar.url;
   }
 
-  refreshPage() {
-    window.location.reload(false);
-  }
-
   loadPhoto = event => {
     const photo = event.target.files[0];
     apiClient.saveUserProfilePhoto(photo);
-    this.refreshPage();
+    history.push(`/`);
   };
 
   render() {
