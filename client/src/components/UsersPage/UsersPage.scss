@@ -1,39 +1,39 @@
 .wrapper {
-  width: 40%;
-  min-width: 400px;
+	width: 40%;
+	min-width: 400px;
 }
 
 .heading {
-  // height: 70px;
-  margin-top: 70px;
-  display: flex;
-  justify-content: space-between;
+	margin-top: 70px;
+	display: flex;
+	justify-content: space-between;
+	padding-left: 35px;
 }
 
 .pagination {
-  margin: 15px auto;
-  display: flex;
-  list-style: none;
-  outline: none;
-  justify-content: center;
+	margin: 15px auto;
+	display: flex;
+	list-style: none;
+	outline: none;
+	justify-content: center;
 }
 
 .pagination > li > a {
-  border: 1px solid grey;
-  padding: 5px 10px;
-  outline: none;
-  cursor: pointer;
+	border: 1px solid grey;
+	padding: 5px 10px;
+	outline: none;
+	cursor: pointer;
 }
 
 .pagination > li > a,
 .pagination > li > span {
-  color: grey;
+	color: grey;
 }
 
 .pagination > .active > a {
-  background-color: grey;
-  border-color: grey;
-  color: #fff;
+	background-color: grey;
+	border-color: grey;
+	color: #fff;
 }
 
 .pagination > .active > a,
@@ -42,13 +42,13 @@
 .pagination > .active > span:hover,
 .pagination > .active > a:focus,
 .pagination > .active > span:focus {
-  background-color: #3f426b;
-  border-color: #3f426b;
-  outline: none;
+	background-color: #3f426b;
+	border-color: #3f426b;
+	outline: none;
 }
 
 .line {
-  color: lightgrey;
-  height: 1px;
-  margin: 10px;
+	color: lightgrey;
+	height: 1px;
+	margin: 10px;
 }
