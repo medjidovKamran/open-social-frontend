@@ -59,7 +59,7 @@ class Profile extends Component {
                 loadPhoto={this.loadPhoto}
               />
               <div>
-                <ProfileButton
+           {/*     <ProfileButton
                   className={stylesButton.ProfileButton}
                   name={profilePage.buttons.connect[lang]}
                 />
@@ -82,7 +82,7 @@ class Profile extends Component {
                       icon={faCaretDown}
                     />
                   }
-                />
+                />*/}
                 {id === apiClient.userId() && (
                   <OwnChatButton nameBtn={profilePage.buttons.chat[lang]} />
                 )}
@@ -94,7 +94,7 @@ class Profile extends Component {
           </Row>
         </Card>
 
-        <Container className={styles.FollowersContainer}>
+  {/*      <Container className={styles.FollowersContainer}>
           <Card className={styles.CardBody}>
             <Row className={styles.RowContainer}>
               <Col lg={4} md={4} sm={12}>
@@ -113,7 +113,7 @@ class Profile extends Component {
               </Col>
             </Row>
           </Card>
-        </Container>
+        </Container>*/}
       </Container>
     );
   }
