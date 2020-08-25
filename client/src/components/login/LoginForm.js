@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import textData from '../../utils/lib/languages.json';
+import s from './Login.scss'
 
 const UserForm = ({ handleSubmit, submitText }) => {
   const lang = useSelector(store => store.menu.lang);
@@ -40,7 +41,7 @@ const UserForm = ({ handleSubmit, submitText }) => {
           validate={VALIDATION_RULES.PASSWORD}
         />
       </Form.Group>
-      <Button variant="danger" type="submit">
+      <Button className={s.loginButton} variant="danger" type="submit">
         {submitText || 'Submit'}
       </Button>
     </Form>
