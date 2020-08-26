@@ -1,0 +1,22 @@
+.restoreWrap,
+.restoreForm {
+  display: flex;
+  flex-direction: column;
+  background: #000; /* для теста */
+}
+
+.header {
+  text-align: center;
+}
+
+.restoreForm {
+  align-items: center;
+
+  label {
+    display: flex;
+  }
+
+  .input {
+    border: 1px solid #000;
+  }
+}

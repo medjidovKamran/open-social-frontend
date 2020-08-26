@@ -25,6 +25,11 @@ const routes = [
   },
   {
     load: () =>
+      import(/* webpackChunkName: 'restore' */ '../components/restore'),
+    path: '/restore',
+  },
+  {
+    load: () =>
       import(/* webpackChunkName: 'confirm' */ '../components/confirm'),
     path: '/auth/confirm',
     // action : (props) => <Confirm {...props} />
