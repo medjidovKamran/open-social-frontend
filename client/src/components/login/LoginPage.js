@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
 import Button from 'react-bootstrap/Button';
@@ -8,7 +8,7 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Link from '../Link/Link';
 import UserForm from './LoginForm';
 import history from '../../history';
-import {login} from '../../actions/user';
+import { login } from '../../actions/user';
 import apiClient from '../../utils/axios-with-auth';
 import textData from '../../utils/lib/languages.json';
 
@@ -24,18 +24,22 @@ class LoginPage extends React.Component {
   };
 
   handleSubmit = async data => {
-    const {setUser} = this.props;
+    const { setUser } = this.props;
     await setUser(data);
     history.push(`/profile${apiClient.userId()}`);
   };
 
   render() {
-    const {message, lang} = this.props;
+    const { message, lang } = this.props;
     const { loginPage } = textData;
     return (
       <div className={s.wrapper}>
         <div className={s.bannerWrap}>
-          <img className={s.logo} src={require('../../assets/logos/big-logo.png')} alt="logo"/>
+          <img
+            className={s.logo}
+            src={require('../../assets/logos/big-logo.png')}
+            alt="logo"
+          />
         </div>
         <div className={s.interfaceWrap}>
           <div className={s.interface}>
@@ -48,7 +52,7 @@ class LoginPage extends React.Component {
                   submitText={loginPage.submitButton[lang]}
                 />
                 <div className={s.links}>
-                  <Link to="/forgotPassword" className={s.link}>
+                  <Link to="/restore" className={s.link}>
                     {loginPage.forgotPassword[lang]}
                   </Link>
                   <Link to="/signup" className={s.link}>
@@ -66,7 +70,7 @@ class LoginPage extends React.Component {
 
 export default withStyles(bootstrap, s)(
   connect(
-    ({user: {message}, menu: {lang}}) => ({lang, message}),
+    ({ user: { message }, menu: { lang } }) => ({ lang, message }),
     {
       setUser: login,
     },
