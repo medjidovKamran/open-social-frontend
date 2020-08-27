@@ -17,6 +17,8 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border-right: 1px solid #fff;
+  padding-right: 3%;
 
   img {
     height: 10rem;
@@ -26,7 +28,6 @@
 .credo {
   width: 40%;
   height: 6rem;
-  border-left: 0.1rem solid var(--color-header-text);
   display: flex;
   justify-content: center;
   align-items: center;
