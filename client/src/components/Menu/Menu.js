@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import isomorphicCookie from 'isomorphic-cookie';
 import withStyles from 'isomorphic-style-loader/withStyles';
-import classNames from 'classnames';
-import Hamburger from 'react-hamburger-menu';
-import Button from 'react-bootstrap/Button';
-import MenuItem from './MenuItem/MenuItem';
 import Tab from './MenuItem/Tab';
 import { signout } from '../../actions/user';
 import { setLang } from '../../actions/lang';
@@ -48,11 +44,11 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
     {
       icon: null,
       items: [
-        { path: null, text: 'signout', type: 'signout' },
-        { path: '/', text: 'my profile', type: 'router' },
+        { path: null, text: menuButtons.signOut.label[lang], type: 'signout' },
+        { path: '/', text: menuButtons.MyProfile.label[lang], type: 'router' },
       ],
       name: 'profile',
-      text: 'profile',
+      text: menuButtons.profile.label[lang],
       type: 'select',
     },
     {
@@ -72,11 +68,15 @@ const Menu = ({ currentTab, signoutUser, setCurrentLang, lang }) => {
     {
       icon: null,
       items: [
-        { path: 'signUp', text: 'registration', type: 'router' },
-        { path: 'login', text: 'login', type: 'router' },
+        {
+          path: 'signUp',
+          text: menuButtons.signUp.label[lang],
+          type: 'router',
+        },
+        { path: 'login', text: menuButtons.login.label[lang], type: 'router' },
       ],
       name: 'profile',
-      text: 'profile',
+      text: menuButtons.profile.label[lang],
       type: 'select',
     },
     {

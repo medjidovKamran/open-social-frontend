@@ -8,8 +8,8 @@ import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Link from '../Link/Link';
 import UserForm from './LoginForm';
 import history from '../../history';
-import {login} from '../../actions/user';
-import apiClient from '../../utils/axios-with-auth';
+
+import { login } from '../../actions/user';
 import textData from '../../utils/lib/languages.json';
 
 import s from './Login.scss';
@@ -26,7 +26,7 @@ class LoginPage extends React.Component {
   handleSubmit = async data => {
     const {setUser} = this.props;
     await setUser(data);
-    history.push(`/profile${apiClient.userId()}`);
+     history.push(`/`);
   };
 
   render() {
@@ -34,6 +34,7 @@ class LoginPage extends React.Component {
     const { loginPage } = textData;
     return (
       <div className={s.wrapper}>
+
         <div className={s.bannerWrap}>
           <img className={s.logo} src={require('../../assets/logos/big-logo.png')} alt="logo"/>
         </div>
@@ -55,6 +56,7 @@ class LoginPage extends React.Component {
                     {loginPage.signup[lang]}
                   </Link>
                 </div>
+
               </div>
             )}
           </div>

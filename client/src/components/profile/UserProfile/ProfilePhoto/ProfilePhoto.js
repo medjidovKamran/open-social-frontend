@@ -8,12 +8,7 @@ import { connect } from 'react-redux';
 import styles from './ProfilePhoto.scss';
 import apiClient from '../../../../utils/axios-with-auth';
 
-const ProfilePhoto = ({
-  imgSource,
-  changeProfilePhotoHandler,
-  loadPhoto,
-  id,
-}) => {
+const ProfilePhoto = ({ imgSource, loadPhoto, id }) => {
   const userPhoto = (
     <img src={imgSource} className={styles.UserImg} alt="profile" />
   );
@@ -24,10 +19,7 @@ const ProfilePhoto = ({
       <div className="text-center">
         {id === apiClient.userId() && (
           <>
-            <label
-              className={styles.ChangePhoto}
-              onClick={changeProfilePhotoHandler}
-            >
+            <label className={styles.ChangePhoto}>
               <FontAwesomeIcon icon={faCamera} />
               <input
                 type="file"
@@ -45,7 +37,6 @@ const ProfilePhoto = ({
 };
 
 ProfilePhoto.propTypes = {
-  changeProfilePhotoHandler: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   imgSource: PropTypes.string.isRequired,
   loadPhoto: PropTypes.func.isRequired,

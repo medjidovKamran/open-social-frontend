@@ -24,6 +24,14 @@
     "signUp": {
       "label": { "uk": "Реєстрація", "en": "SignUp", "ru": "Регистрация" },
       "path": "singup"
+    },
+    "signOut": {
+      "label": { "uk": "Вихід", "en": "Sign out", "ru": "Выход" },
+      "path": "signout"
+    },
+    "MyProfile": {
+      "label": { "uk": "Мій профіль", "en": "My profile", "ru": "Мой профиль" },
+      "path": "/"
     }
   },
 

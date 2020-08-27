@@ -11,7 +11,7 @@ import {
   ListItemAvatar,
   ListItemText,
 } from '@material-ui/core';
-import { getUsersChatData, resetChatState } from '../../../actions/chats';
+import { getUsersChatData, resetChatState, setChatData, setMessagesData } from '../../../actions/chats';
 import Loader from '../../Loader/Loader';
 import avatar from '../../../assets/avatar2.png';
 import style from './chats-block-users.module.scss';
@@ -34,14 +34,14 @@ class ChatsBlockUsers extends Component {
 
   state = {
     hasMore: true,
-    limit: 5,
-    offset: 0,
+    take: 5,
+    skip: 0,
   };
 
   componentDidMount() {
     const { dispatchGetUsersChatData } = this.props;
-    const { limit, offset } = this.state;
-    dispatchGetUsersChatData({ limit, offset });
+    const { take, skip } = this.state;
+    dispatchGetUsersChatData({ take, skip })
   }
 
   componentWillUnmount() {
@@ -52,6 +52,7 @@ class ChatsBlockUsers extends Component {
   render() {
     const { data, isLoading, error } = this.props;
     const { hasMore } = this.state;
+
     if (error) {
       return <p className="mb-0">{error}</p>;
     }
@@ -87,7 +88,7 @@ class ChatsBlockUsers extends Component {
                   key={value.id}
                   to="./dialogsUser1"
                 >
-                  <ListItem button>
+                  <ListItem button onClick={() => this.selectChat(value)}>
                     <ListItemAvatar>
                       <Avatar src={avatar} />
                     </ListItemAvatar>
@@ -105,28 +106,38 @@ class ChatsBlockUsers extends Component {
 
   getChats = () => {
     // eslint-disable-next-line prefer-const
-    let { limit, offset } = this.state;
+    let { take, skip, hasMore } = this.state;
     const { dispatchGetUsersChatData } = this.props;
     const { data } = this.props;
-    offset += limit;
+    skip += take;
     // eslint-disable-next-line promise/catch-or-return
-    dispatchGetUsersChatData({ limit, offset }).then(chats => {
+    dispatchGetUsersChatData({ take, skip }).then(chats => {
       data.concat(chats);
-      this.setState({ hasMore: !!chats.length, offset });
+      this.setState({ hasMore: !!chats.length, skip });
     });
   };
+
+  selectChat = (data) => {
+    const { dispatchSetChatData, dispatchSetMessagesData} = this.props;
+    dispatchSetChatData(data);
+    dispatchSetMessagesData(data.id);
+  }
 }
+
 
 ChatsBlockUsers.whyDidYouRender = true;
 export default connect(
-  ({ userChats: { data, events, error, isLoading } }) => ({
+  ({ userChats: { data, events, error, isLoading, chatOption } }) => ({
     data,
     error,
     events,
     isLoading,
+    chatOption,
   }),
   {
     dispatchGetUsersChatData: getUsersChatData,
     dispatchresetChatState: resetChatState,
+    dispatchSetChatData: setChatData,
+    dispatchSetMessagesData: setMessagesData,
   },
 )(withStyles(style)(React.memo(ChatsBlockUsers)));
