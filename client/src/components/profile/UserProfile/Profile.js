@@ -13,15 +13,15 @@ import TabsComponent from './TabsComponent/TabsComponent';
 import ProfilePhoto from './ProfilePhoto/ProfilePhoto';
 import OwnChatButton from './OwnChat';
 import apiClient from '../../../utils/axios-with-auth';
-import { apiURL } from '../../../constants';
 import defaultUserPhoto from '../../../assets/default_user_profile.jpg';
 import textData from '../../../utils/lib/languages.json';
+import history from '../../../history';
 
 class Profile extends Component {
   static propTypes = {
     avatar: PropTypes.shape({
       avatar: PropTypes.shape({
-        name: PropTypes.string,
+        url: PropTypes.string,
       }),
     }).isRequired,
     id: PropTypes.shape({
@@ -29,54 +29,18 @@ class Profile extends Component {
     }).isRequired,
   };
 
-  state = {
-    isPhotoLoaded: false,
-    photo: '',
-  };
-
   getUserAvatar() {
-    console.log('avatar:', this.props.avatar);
     const { avatar } = this.props.avatar;
-    if (avatar) {
-      return `${apiURL}/${avatar.name.replace('undefined', '')}`;
+    if (avatar == null) {
+      return defaultUserPhoto;
     }
-    return defaultUserPhoto;
+    return avatar.url;
   }
-
-  componentDidMount() {
-    const { avatar } = this.props.avatar;
-    if (avatar) {
-      this.setState(previousState => ({
-        isDisplayed: !previousState.isDisplayed,
-        isPhotoLoaded: !previousState.isPhotoLoaded,
-      }));
-    }
-  }
-
-  changeProfilePhotoHandler = () => {
-    this.setState(previousState => ({
-      isDisplayed: !previousState.isDisplayed,
-    }));
-  };
 
   loadPhoto = event => {
     const photo = event.target.files[0];
-
     apiClient.saveUserProfilePhoto(photo);
-
-    const fileReader = new FileReader();
-    fileReader.readAsDataURL(photo);
-    fileReader.addEventListener('load', () => {
-      const { result } = fileReader;
-      if (result) {
-        this.setState(previousState => ({
-          isDefaultPhotoDisplayed: false,
-          isDisplayed: !previousState.isDisplayed,
-          isPhotoLoaded: !previousState.isPhotoLoaded,
-          photo: result,
-        }));
-      }
-    });
+    history.push(`/`);
   };
 
   render() {
@@ -92,11 +56,10 @@ class Profile extends Component {
             <Col lg={5} md={5} sm={12}>
               <ProfilePhoto
                 imgSource={this.getUserAvatar()}
-                changeProfilePhotoHandler={this.changeProfilePhotoHandler}
                 loadPhoto={this.loadPhoto}
               />
               <div>
-                <ProfileButton
+           {/*     <ProfileButton
                   className={stylesButton.ProfileButton}
                   name={profilePage.buttons.connect[lang]}
                 />
@@ -119,7 +82,7 @@ class Profile extends Component {
                       icon={faCaretDown}
                     />
                   }
-                />
+                />*/}
                 {id === apiClient.userId() && (
                   <OwnChatButton nameBtn={profilePage.buttons.chat[lang]} />
                 )}
@@ -131,7 +94,7 @@ class Profile extends Component {
           </Row>
         </Card>
 
-        <Container className={styles.FollowersContainer}>
+  {/*      <Container className={styles.FollowersContainer}>
           <Card className={styles.CardBody}>
             <Row className={styles.RowContainer}>
               <Col lg={4} md={4} sm={12}>
@@ -150,7 +113,7 @@ class Profile extends Component {
               </Col>
             </Row>
           </Card>
-        </Container>
+        </Container>*/}
       </Container>
     );
   }

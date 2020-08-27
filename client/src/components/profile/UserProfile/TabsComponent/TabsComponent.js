@@ -42,8 +42,8 @@ const TabsComponent = ({
         <TabList>
           <div>
             <Tab id="aboutMe">{tabs.about[lang]}</Tab>
-            <Tab id="additionalInfo">{tabs.additional[lang]}</Tab>
-            <Tab id="credits">{tabs.credits[lang]}</Tab>
+           {/* <Tab id="additionalInfo">{tabs.additional[lang]}</Tab>
+            <Tab id="credits">{tabs.credits[lang]}</Tab>*/}
             <div className={styles.IconsWrapper}>
               {id === apiClient.userId() && (
                 <>
@@ -52,12 +52,12 @@ const TabsComponent = ({
                       <FontAwesomeIcon icon={faUserEdit} />
                     </Link>
                   </span>
-                  <span className={styles.Bell}>
+                  {/*<span className={styles.Bell}>
                     <FontAwesomeIcon icon={faBell} />
                   </span>
                   <span className={styles.Cog}>
                     <FontAwesomeIcon icon={faCog} />
-                  </span>
+                  </span>*/}
                 </>
               )}
             </div>

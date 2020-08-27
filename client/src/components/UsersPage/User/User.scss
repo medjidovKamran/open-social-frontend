@@ -3,8 +3,17 @@
 }
 
 .UsersAvatar {
-  height: 76px;
-  border-radius: 100px;
+  height: 100px;
+  width: 100px;
+  border-radius: 60px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.UsersAvatarDefault {
+  height: 90px;
+  width: 145px;
+  border-radius: 60px;
 }
 
 .userContainer {

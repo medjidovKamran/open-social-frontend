@@ -25,21 +25,28 @@ class User extends React.Component {
 
   render() {
     const {
-      user: { firstName, lastName, id },
+      user: { firstName, lastName, id, avatar },
       lang,
     } = this.props;
     const { usersPage } = textData;
-
     return (
       <>
         <div className={s.userContainer}>
           <div onClick={() => this.toUserProfile(id)}>
             <Link to={`/profile${id}`}>
-              <img
-                className={s.UsersAvatar}
-                src={UsersAvatar}
-                alt={UsersAvatar}
-              />
+              {avatar ? (
+                <img
+                  className={s.UsersAvatar}
+                  src={avatar.url}
+                  alt={UsersAvatar}
+                />
+              ) : (
+                <img
+                  className={s.UsersAvatarDefault}
+                  src={UsersAvatar}
+                  alt={UsersAvatar}
+                />
+              )}
               <span>
                 {firstName} {lastName}
               </span>
@@ -49,7 +56,7 @@ class User extends React.Component {
             <div>
               <button className={s.buttonAdd}>
                 {usersPage.addButton[lang]}
-                <AddIcon className={s.buttonAddPlus} />
+                 <AddIcon className={s.buttonAddPlus} />
               </button>
             </div>
             <div>
@@ -60,8 +67,8 @@ class User extends React.Component {
         <hr className={s.line} />
       </>
     );
-  }
-}
+  };
+};
 
 User.whyDidYouRender = true;
 export default connect(
