@@ -108,9 +108,9 @@ class ChatsBlockUsers extends Component {
 	};
 
 	selectChat = (data) => {
-		const { dispatchSetChatData, dispatchSetMessagesData } = this.props;
+		const { dispatchSetChatData, dispatchsetMessagesData } = this.props;
 		dispatchSetChatData(data);
-		dispatchSetMessagesData(data.id);
+		dispatchsetMessagesData(data.id);
 	};
 }
 
@@ -127,6 +127,6 @@ export default connect(
 		dispatchGetUsersChatData: getUsersChatData,
 		dispatchresetChatState: resetChatState,
 		dispatchSetChatData: setChatData,
-		dispatchSetMessagesData: setMessagesData
+		dispatchsetMessagesData: setMessagesData
 	}
 )(withStyles(style)(React.memo(ChatsBlockUsers)));

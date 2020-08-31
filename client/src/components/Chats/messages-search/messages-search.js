@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getMessagesWithParams } from '../../../actions/chats';
+import { setMessagesData } from '../../../actions/chats';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 import withStyles from 'isomorphic-style-loader/withStyles';
@@ -9,7 +9,7 @@ import s from './messages-search.scss';
 
 class MessageSearchPanel extends Component {
 	static propTypes = {
-		getMessagesWithParams: PropTypes.func.isRequired
+		setMessagesData: PropTypes.func.isRequired
 	};
 	state = {
 		search: ''
@@ -17,7 +17,7 @@ class MessageSearchPanel extends Component {
 
 	handleOnInputChange = _.debounce((search) => {
 		this.setState({ search: search });
-		this.props.getMessagesWithParams({ search });
+		this.props.setMessagesData(this.props.chatOption.id, { search });
 	}, 700);
 
 	render() {
@@ -38,10 +38,11 @@ class MessageSearchPanel extends Component {
 
 MessageSearchPanel.whyDidYouRender = true;
 export default connect(
-	({ userChats: { data, error, isLoading } }) => ({
+	({ userChats: { data, error, isLoading, chatOption } }) => ({
 		data,
 		error,
-		isLoading
+		isLoading,
+		chatOption
 	}),
-	{ getMessagesWithParams }
+	{ setMessagesData }
 )(withStyles(s)(React.memo(MessageSearchPanel)));
