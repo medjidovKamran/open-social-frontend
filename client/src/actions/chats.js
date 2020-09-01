@@ -86,7 +86,7 @@ export const setMessagesData = (chat_id, search) => async (dispatch) => {
 	try {
 		const { data } = await apiClient.get(`${apiURL}/api/v1/messages`, {
 			chat_id: chat_id,
-			search: search
+			search
 		});
 		console.log(data);
 		dispatch(messagesData({ data }));

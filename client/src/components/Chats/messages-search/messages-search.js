@@ -17,7 +17,7 @@ class MessageSearchPanel extends Component {
 
 	handleOnInputChange = _.debounce((search) => {
 		this.setState({ search: search });
-		this.props.setMessagesData(this.props.chatOption.id, { search });
+		this.props.setMessagesData(this.props.chatOption.id, search);
 	}, 700);
 
 	render() {
