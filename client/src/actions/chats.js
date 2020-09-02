@@ -79,16 +79,13 @@ export const getUsersChatData = ({ take, skip, search }) => async (dispatch) => 
 };
 
 export const setMessagesData = (chat_id, search) => async (dispatch) => {
-	console.log(chat_id);
-	console.log(search);
 	dispatch(userChatDataLoading());
 	dispatch(clearMessages());
 	try {
 		const { data } = await apiClient.get(`${apiURL}/api/v1/messages`, {
-			chat_id: chat_id,
+			chat_id,
 			search
 		});
-		console.log(data);
 		dispatch(messagesData({ data }));
 	} catch (error) {
 		console.log(error);
