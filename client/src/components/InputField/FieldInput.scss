@@ -2,6 +2,7 @@
   border: 2px solid #dd404e !important;
   box-shadow: 0 0 5px #dd404e !important;
   border-radius: 5px;
+  font-size: 14px;
 }
 
 .TextError {
@@ -12,6 +13,7 @@
 
 .TextHidden {
   visibility: hidden;
+  font-size: 14px;
 }
 
 div[class*=form-group] {
@@ -20,4 +22,5 @@ div[class*=form-group] {
 
 .fieldDefault {
   border: 1px solid #3f426b;
+  font-size: 14px;
 }

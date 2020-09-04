@@ -7,15 +7,17 @@
 }
 
 .form {
-  width: 35%;
+  width: 20%;
+  margin-right: 10%;
 }
 
 .bannerWrap {
   width: 60%;
-  height: calc(100vh - 15rem);
-  background-position: right;
+  height: 84vh;
+  background-position: left;
   background-repeat: no-repeat;
   overflow: hidden;
+  background-size: 100% 100%;
 }
 
 .heading {
@@ -25,7 +27,7 @@
 
 .links {
   margin-top: 3rem;
-  border-top: 0.1 solid #e2e2e2;
+  border-top: 0.1rem solid #e2e2e2;
 }
 
 .notSignedUp {
@@ -45,4 +47,9 @@
     width: 0%;
     display: none;
   }
+}
+
+.loginButton {
+  width: 100px;
+  font-size: 12px;
 }
