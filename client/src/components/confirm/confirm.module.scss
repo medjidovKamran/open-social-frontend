@@ -1,8 +1,63 @@
 .confirm {
-  position: absolute;
+  /*position: absolute;
   top: 50%;
-  left: 43%;
+  left: 43%;*/
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  padding-bottom: 50px;
+}
+
+.inputWrap {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .label {
+    padding-right: 10px;
+  }
+
+  .input {
+    border: 1px solid #3f426b;
+    height: 33px;
+    font-size: 16px;
+    padding: 0 5px;
+    min-width: 250px;
+  }
+}
+
+.label {
+  width: 30%;
+  min-width: 120px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #777;
+  cursor: pointer;
+  line-height: initial;
+}
+
+.submitButton {
+  margin-top: 30px;
+  font-size: 14px;
+  line-height: 16px;
+  border: none;
+  background: #3f426b;
+  color: #fff;
+  padding: 1rem 5rem 1rem 35px;
 }

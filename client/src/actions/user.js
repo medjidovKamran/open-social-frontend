@@ -47,7 +47,7 @@ export const login = ({ email, password }) => dispatch => {
           .toDate(),
         secure: false,
       });
-
+      console.log(response)
       const token = await isomorphicCookie.load('token');
       dispatch(setUserAuth(response.data.user));
 

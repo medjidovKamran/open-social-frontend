@@ -10,7 +10,7 @@ import FieldInput from '../InputField/FieldInput';
 import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import textData from '../../utils/lib/languages.json';
 import s from './Login.scss';
-import styles from '../InputField/FieldInput.scss';
+
 
 const UserForm = ({ handleSubmit, submitText }) => {
   const lang = useSelector(store => store.menu.lang);

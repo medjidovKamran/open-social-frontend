@@ -32,7 +32,7 @@ const routes = [
     load: () =>
       import(/* webpackChunkName: 'confirm' */ '../components/confirm'),
     path: '/auth/confirm',
-    // action : (props) => <Confirm {...props} />
+    action : (props) => <Confirm {...props} />
   },
   {
     async action({ next, token }) {
