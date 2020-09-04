@@ -7,7 +7,6 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 import { connect } from 'react-redux';
 
 function Messages({ chat: { messages } }) {
-
 	if (!messages.length) {
 		return (
 			<div className={style.firstMessage}>
@@ -18,20 +17,21 @@ function Messages({ chat: { messages } }) {
 
 	return (
 		<ScrollToBottom className={style.messages}>
-			{messages.map((message) => <div key={message.id}><Message message={message}/></div>)}
+			{messages.map((message) => (
+				<div key={message.id}>
+					<Message message={message} />
+				</div>
+			))}
 		</ScrollToBottom>
 	);
 }
 
 Messages.propTypes = {
-	chat: PropTypes.object,
+	chat: PropTypes.object
 };
 
-const mapStateToProps = state => ({
-	chat: state.userChats,
+const mapStateToProps = (state) => ({
+	chat: state.userChats
 });
 
-export default connect(
-	mapStateToProps,
-	null
-) (withStyles(style)(React.memo(Messages)));
+export default connect(mapStateToProps, null)(withStyles(style)(React.memo(Messages)));

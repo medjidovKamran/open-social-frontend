@@ -10,30 +10,30 @@ import {
 	USER_CHAT_CLEAR_MESSAGES,
 	USER_CHAT_ADD_MESSAGE,
 	USER_CHAT_RECIVED_MESSAGE,
-	apiURL,
+	apiURL
 } from '../constants';
 
-const userChatDataSuccess = payload => ({
+const userChatDataSuccess = (payload) => ({
 	payload,
-	type: USERS_CHAT_DATA_LOADING_DATA_SUCCESS,
+	type: USERS_CHAT_DATA_LOADING_DATA_SUCCESS
 });
 
-const newChatDataSuccess = payload => ({
+const newChatDataSuccess = (payload) => ({
 	payload,
-	type: USERS_CHAT_ADD_OWN_CHAT,
+	type: USERS_CHAT_ADD_OWN_CHAT
 });
 
-const userChatDataFailure = error => ({
+const userChatDataFailure = (error) => ({
 	error,
-	type: USERS_CHAT_DATA_LOADING_DATA_FAILURE,
+	type: USERS_CHAT_DATA_LOADING_DATA_FAILURE
 });
 
 const userChatDataLoading = () => ({
-	type: USERS_CHAT_DATA_LOADING,
+	type: USERS_CHAT_DATA_LOADING
 });
 
 const clearChatState = () => ({
-	type: USERS_CHAT_RESET_STATE,
+	type: USERS_CHAT_RESET_STATE
 });
 
 const chatData = (payload) => ({
@@ -50,32 +50,53 @@ const clearMessages = () => ({
 	type: USER_CHAT_CLEAR_MESSAGES
 });
 
-const newMessageDataSuccess = payload => ({
+const newMessageDataSuccess = (payload) => ({
 	payload,
-	type: USER_CHAT_ADD_MESSAGE,
+	type: USER_CHAT_ADD_MESSAGE
 });
 
-const saveRecivedMessage = payload => ({
+const saveRecivedMessage = (payload) => ({
 	payload,
-	type: USER_CHAT_RECIVED_MESSAGE,
+	type: USER_CHAT_RECIVED_MESSAGE
 });
 
 // eslint-disable-next-line consistent-return
-export const getUsersChatData = ({ take, skip }) => async dispatch => {
+
+export const getUsersChatData = ({ take, skip, search }) => async (dispatch) => {
 	dispatch(userChatDataLoading());
 	try {
 		const { data } = await apiClient.get(`${apiURL}/api/v1/chats`, {
 			take,
 			skip,
+			search: search
 		});
 		dispatch(userChatDataSuccess({ data }));
+
 		return data;
 	} catch (error) {
 		dispatch(userChatDataFailure(error.message));
 	}
 };
 
-export const createChat = parameters => async dispatch => {
+export const setMessagesData = (chat_id, search) => async (dispatch) => {
+	dispatch(userChatDataLoading());
+	dispatch(clearMessages());
+	try {
+		const { data } = await apiClient.get(`${apiURL}/api/v1/messages`, {
+			chat_id,
+			search
+		});
+		dispatch(messagesData({ data }));
+	} catch (error) {
+		console.log(error);
+	}
+};
+
+export const setChatData = (data) => (dispatch) => {
+	dispatch(chatData(data));
+};
+
+export const createChat = (parameters) => async (dispatch) => {
 	dispatch(userChatDataLoading());
 	try {
 		const { data } = await apiClient.post(`${apiURL}/api/v1/chats`, parameters);
@@ -86,30 +107,15 @@ export const createChat = parameters => async dispatch => {
 };
 
 // eslint-disable-next-line unicorn/consistent-function-scoping
-export const resetChatState = () => dispatch => {
+export const resetChatState = () => (dispatch) => {
 	dispatch(clearChatState());
 };
 
-export const setChatData = (data) => dispatch => {
-	dispatch(chatData(data));
-};
-
-export const resetMessages = () => dispatch => {
+export const resetMessages = () => (dispatch) => {
 	dispatch(clearMessages());
 };
 
-export const setMessagesData = parameters => async dispatch => {
-	dispatch(userChatDataLoading());
-	dispatch(clearMessages());
-	try {
-		const { data } = await apiClient.get(`${apiURL}/api/v1/messages`, { chat_id: parameters});
-		dispatch(messagesData({data}));
-	} catch (error) {
-		console.log(error);
-	}
-};
-
-export const sendMessage = parameters => async dispatch => {
+export const sendMessage = (parameters) => async (dispatch) => {
 	dispatch(userChatDataLoading());
 	try {
 		const { data } = await apiClient.post(`${apiURL}/api/v1/messages`, parameters);
@@ -119,6 +125,6 @@ export const sendMessage = parameters => async dispatch => {
 	}
 };
 
-export const saveMessage = (message) => async dispatch => {
+export const saveMessage = (message) => async (dispatch) => {
 	await dispatch(saveRecivedMessage(message));
 };
