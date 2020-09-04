@@ -1,8 +1,6 @@
 .InputError {
   border: 2px solid #dd404e !important;
   box-shadow: 0 0 5px #dd404e !important;
-  border-radius: 5px;
-  font-size: 14px;
 }
 
 .TextError {
@@ -23,4 +21,19 @@ div[class*=form-group] {
 .fieldDefault {
   border: 1px solid #3f426b;
   font-size: 14px;
+}
+
+.inputWrap {
+  width: 70%;
+
+  .fieldDefault {
+    border: 1px solid #3f426b;
+    //width: 70%;
+    height: 33px;
+    font-size: 15px;
+  }
+
+  .InputError {
+    height: 33px;
+  }
 }

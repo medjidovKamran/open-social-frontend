@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
 // import normalizeCss from "normalize.css";
 
@@ -13,11 +13,11 @@ import s from './footer.scss';
 function Footer() {
   return (
     <footer className={s.footer}>
-      <Link to="/">
-        <div className={s.logo}>
+      <div className={s.logo}>
+        <Link to="/">
           <img src={logo} alt="logo" />
-        </div>
-      </Link>
+        </Link>
+      </div>
       <div className={s.credo}>
         <p>New waves of synergy of your IT products</p>
       </div>

@@ -75,7 +75,7 @@ class App extends React.PureComponent {
       } else {
         const userLang = navigator.language || navigator.userLanguage;
         const langList = LangData.langSelect;
-        if (langList.include(userLang)) {
+        if (langList.includes(userLang)) {
           dispatch({
             lang: userLang,
             type: 'SET_CURRENT_LANG',
