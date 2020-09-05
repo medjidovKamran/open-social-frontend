@@ -11,7 +11,6 @@ import { VALIDATION_RULES } from '../../utils/validators/ValidationRules';
 import textData from '../../utils/lib/languages.json';
 import s from './Login.scss';
 
-
 const UserForm = ({ handleSubmit, submitText }) => {
   const lang = useSelector(store => store.menu.lang);
   const {
@@ -62,7 +61,11 @@ const UserForm = ({ handleSubmit, submitText }) => {
           <Button className={s.submitButton} type="submit">
             {submitText || 'Submit'}
           </Button>
-          <img className={s.submitArrow} src={require('../../assets/submitArrow.svg')} alt="arrow"/>
+          <img
+            className={s.submitArrow}
+            src={require('../../assets/submitArrow.svg')}
+            alt="arrow"
+          />
         </Form.Group>
       </div>
     </Form>

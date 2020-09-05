@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import style from './Restore.scss';
 import { apiURL } from '../../constants';
-import withStyles from 'isomorphic-style-loader/withStyles';
 
 const Restore = () => {
   const [emailInput, setEmailInput] = useState('');
@@ -35,7 +35,14 @@ const Restore = () => {
       <form onSubmit={handleSubmit} className={style.restoreForm}>
         <label htmlFor="email">
           Write your e-mail
-          <input className={style.input} value={emailInput} onChange={handleInput} type="email" id="email" name="email" />
+          <input
+            className={style.input}
+            value={emailInput}
+            onChange={handleInput}
+            type="email"
+            id="email"
+            name="email"
+          />
         </label>
         <input className={style.submit} type="submit" value="Send" />
       </form>

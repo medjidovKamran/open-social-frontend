@@ -24,7 +24,7 @@ export default (state = initialState, action = {}) => {
   }
 };
 
-const SUCCESS_CODE = 201; //200
+const SUCCESS_CODE = 201; // 200
 
 export const confirmThunk = (id, userKey) => dispatch => {
   confirmUser(+id, userKey)

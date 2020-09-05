@@ -29,10 +29,10 @@ const routes = [
     path: '/restore',
   },
   {
+    action: props => <Confirm {...props} />,
     load: () =>
       import(/* webpackChunkName: 'confirm' */ '../components/confirm'),
     path: '/auth/confirm',
-    action : (props) => <Confirm {...props} />
   },
   {
     async action({ next, token }) {

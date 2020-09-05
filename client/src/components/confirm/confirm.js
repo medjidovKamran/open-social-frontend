@@ -3,12 +3,12 @@ import React, { useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import axios from "axios";
 import {failConfirm} from '../../actions/confirm';
 import {confirmThunk} from '../../reducers/confirm';
 import history from '../../history';
 
 import s from './confirm.module.scss';
-import axios from "axios";
 import {apiURL} from "../../constants";
 
 const Confirm = ({confirmation, userKey, id, confirmThunk, failConfirm}) => {

@@ -64,9 +64,17 @@ export default {
   },
 
   setHeader() {
-    if (!authHeader.Authorization) {
-      authHeader.Authorization = `Bearer ${isomorphicCookie.load('token')}`;
+    if (authHeader.Authorization) {
+      return;
     }
+
+    const token = isomorphicCookie.load('token');
+
+    if (!token) {
+      return;
+    }
+
+    authHeader.Authorization = `Bearer ${isomorphicCookie.load('token')}`;
   },
 
   userId() {
