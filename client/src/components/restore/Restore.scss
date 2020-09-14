@@ -2,7 +2,7 @@
 .restoreForm {
   display: flex;
   flex-direction: column;
-  //background: #000; /* для теста */
+  width: 40rem;
 }
 
 .header {
@@ -12,23 +12,29 @@
 .restoreForm {
   align-items: center;
 
-  label {
+  .formGroup{
+    width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: Roboto, sans-serif;
-    font-size: 14px;
-    color: #777;
-    cursor: pointer;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
     padding: 20px 0;
+
+    label {
+      width: 40%;
+      min-width: 100px;
+      font-family: Roboto, sans-serif;
+      font-size: 14px;
+      color: #777;
+      cursor: pointer;
+    }
+
+    div{
+      width: 60%;
+    }
   }
 
-  .input {
-    border: 1px solid #3f426b;
-    height: 33px;
-    font-size: 15px;
-    margin-left: 20px;
-  }
+
 
   .submit {
     font-family: 'Roboto', sans-serif;
