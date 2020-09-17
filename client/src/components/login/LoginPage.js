@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import withStyles from 'isomorphic-style-loader/withStyles';
+import Button from 'react-bootstrap/Button';
 import Alert from 'react-bootstrap/Alert';
 import bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Link from '../Link/Link';
