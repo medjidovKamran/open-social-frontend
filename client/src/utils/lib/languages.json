@@ -79,7 +79,12 @@
       "en": "Forgot the password?",
       "ru": "Забыли пароль?"
     },
-    "submitButton": { "uk": "Вхід", "en": "Go", "ru": "Вход" }
+    "submitButton": { "uk": "Вхід", "en": "Go", "ru": "Вход" },
+    "successSignUp": {
+      "uk": "Дякуємо за реєстрацію! Ми відправимо вам повідомлення на вашу електронну пошту.",
+      "en": "Thanks for registration! We send you a message on your email.",
+      "ru": "Спасибо за регистрацию! Мы отправим вам сообщение на вашу электронную почту."
+    }
   },
   "signupPage": {
     "title": {
